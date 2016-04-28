@@ -8,7 +8,7 @@ YES | NO
 A few sentences describing the overall goals of the pull request's commits.
 
 ## Related PRs
-List related PRs against other branches:
+ (include "closes #--" to subsume waffle issue)
 
 branch | PR
 ------ | ------
