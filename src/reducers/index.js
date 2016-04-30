@@ -3,4 +3,8 @@ import counter from './counter';
 
 export default combineReducers({
   counter
+  //login,
+  //match,
+  //favorites,
+  //search
 });
