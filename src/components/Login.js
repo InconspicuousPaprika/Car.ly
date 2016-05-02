@@ -1,4 +1,5 @@
 var React = require('react-native');
+var FBLogin = require('react-native-facebook-login');
 
 var {
   View,
@@ -6,7 +7,8 @@ var {
   StyleSheet,
   TextInput,
   TouchableHighlight,
-  ActivityIndicatorIOS
+  ActivityIndicatorIOS,
+  Image
 } = React;
 
 var styles = StyleSheet.create({
@@ -16,7 +18,7 @@ var styles = StyleSheet.create({
     marginTop: 65,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#48BBEC'
+    backgroundColor: '#fff'
   },
   title: {
     marginBottom: 20,
@@ -24,33 +26,53 @@ var styles = StyleSheet.create({
     textAlign: 'center',
     color: '#fff'
   },
-  searchInput: {
+  emailInput: {
     height: 50,
     padding: 4,
     marginRight: 5,
     fontSize: 23,
     borderWidth: 1,
-    borderColor: 'white',
+    borderColor: '#48BBEC',
+    backgroundColor: '#48BBEC',
     borderRadius: 8,
     color: 'white'
   },
+
+  passwordInput: {
+   	height: 50,
+    padding: 4,
+    marginRight: 5,
+  	marginTop: 10,
+    fontSize: 23,
+    borderWidth: 1,
+    borderColor: '#48BBEC',
+    backgroundColor: '#48BBEC',
+    borderRadius: 8,
+    color: 'white'
+  },
+  
   buttonText: {
     fontSize: 18,
-    color: '#111',
+    color: 'white',
     alignSelf: 'center'
   },
   button: {
-    height: 45,
+    height: 50,
     flexDirection: 'row',
-    backgroundColor: 'white',
-    borderColor: 'white',
+    backgroundColor: 'green',
     borderWidth: 1,
     borderRadius: 8,
     marginBottom: 10,
     marginTop: 10,
     alignSelf: 'stretch',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
+  orText: {
+  	textAlign: 'center',
+  },
+  // fbButton: {
+
+  // }
 });
 
 
@@ -59,8 +81,8 @@ class Login extends React.Component {
 		super(props)
 
 		this.state = {
-			email: '',
-			password: '',
+			email: 'email',
+			password: 'password',
 			isLoading: false,
 			error: false
 		}
@@ -69,7 +91,11 @@ class Login extends React.Component {
 	render() {
 		return (
 			<View style={styles.mainContainer}>
-				<Text style={styles.title}>Carly</Text>
+				<TextInput value={this.state.email} style={styles.emailInput}/>
+				<TextInput value={this.state.password} style={styles.passwordInput}/>
+				<TouchableHighlight style={styles.button}><Text style={styles.buttonText}>Sign In</Text></TouchableHighlight>
+				<Text style={styles.orText}>Or</Text>
+				<TouchableHighlight><FBLogin /></TouchableHighlight>
 			</View>
 		);
 	}
