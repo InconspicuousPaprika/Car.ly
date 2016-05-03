@@ -71,7 +71,6 @@ var styles = StyleSheet.create({
   },
 });
 
-
 class Login extends React.Component {
   constructor(props) {
     super(props)
@@ -80,19 +79,33 @@ class Login extends React.Component {
       email: 'email',
       password: 'password',
       isLoading: false,
-      error: false
+      error: false,
+      isPassword: false
     }
   }
 
-  handleChange: function(event) {
-    this.setState({value: event.target.value})
+  handleChangeEmail(event) {
+    this.setState({
+      email: event.nativeEvent.text,
+    });
+  }
+
+  handleChangePassword(event) {
+    this.setState({
+      password: event.nativeEvent.text, 
+      isPassword: true
+    });
+  }
+
+  handleSubmit(){
+    this.setState({value: ''});
   }
 
   render() {
     return (
       <View style={styles.mainContainer}>
-        <TextInput value={this.state.email} style={styles.emailInput}/>
-        <TextInput value={this.state.password} style={styles.passwordInput}/>
+        <TextInput value={this.state.email} onChange={this.handleChangeEmail.bind(this)} style={styles.emailInput}/>
+        <TextInput value={this.state.password} secureTextEntry={this.state.isPassword} onChange={this.handleChangePassword.bind(this)} style={styles.passwordInput}/>
         <TouchableHighlight style={styles.button}><Text style={styles.buttonText}>Sign In</Text></TouchableHighlight>
         <Text style={styles.orText}>Or</Text>
       </View>
@@ -101,3 +114,7 @@ class Login extends React.Component {
 }
 
 module.exports = Login;
+
+
+
+
