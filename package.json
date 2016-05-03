@@ -19,8 +19,12 @@
     "lodash": "^4.3.0",
     "react": "^0.14.7",
     "react-native": "^0.24.1",
+<<<<<<< HEAD
     "react-native-material-kit": "^0.3.1",
     "react-native-multi-slider": "^0.2.4",
+=======
+    "react-native-facebook-login": "^1.0.3",
+>>>>>>> 4d6e603f2f0b28411e658e68b70560e1189e1627
     "react-redux": "^4.4.0",
     "redux": "^3.3.1",
     "redux-actions": "^0.9.1",

@@ -12,3 +12,4 @@ const Carly = () => (
 );
 
 AppRegistry.registerComponent('Carly', () => Carly);
+
