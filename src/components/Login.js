@@ -49,7 +49,7 @@ var styles = StyleSheet.create({
     borderRadius: 8,
     color: 'white'
   },
-  
+
   buttonText: {
     fontSize: 18,
     color: 'white',
