@@ -16,7 +16,9 @@
   },
   "dependencies": {
     "immutable": "^3.7.6",
+    "express": "^4.10.6",
     "lodash": "^4.3.0",
+    "mysql": "^2.5.4",
     "react": "^0.14.7",
     "react-native": "^0.24.1",
     "react-native-facebook-login": "^1.0.3",
