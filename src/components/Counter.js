@@ -3,13 +3,21 @@ import React, {
   PropTypes,
   StyleSheet,
   Text,
+  TextInput,
   View,
   TouchableHighlight,
   PickerIOS,
+  Slider,
 } from 'react-native';
+import backend from '../service/backend.js'
+import MultiSlider from 'react-native-multi-slider';
 import Immutable from 'immutable';
-
-
+import {
+  MKColor,
+  MKSlider,
+  MKRangeSlider,
+  setTheme,
+} from 'react-native-material-kit';
 
 const styles = StyleSheet.create({
   container: {
@@ -34,7 +42,17 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: 'white',
     alignSelf: 'center'
-  }
+  },
+  slider: {
+    height: 10,
+    margin: 10,
+  },
+  slideText: {
+    fontSize: 14,
+    textAlign: 'center',
+    fontWeight: '500',
+    margin: 10,
+  },
 });
 
 // const {
@@ -101,17 +119,36 @@ export default class Counter extends Component {
     this.incrementAsync = () => incrementAsync();
     this.state = {
       carMake: 'cadillac',
-      modelIndex: 3
+      modelIndex: 3,
+      value: 0,
+      sliderLeft:1990,
+      sliderRight:2017,
+      payload:'',
+      minPrice:1000,
+      maxPrice:150000,
+      zipcode:'',
+      model: ''
+
     };
   }
 
+  sliderChange(values) {
+    this.setState({
+      sliderLeft: values[0],
+      sliderRight: values[1],
+    });
+  }
+
   goToResults() {
+    let object = this.state;
+    backend.getCarData(object);
     console.log('going');
   }
 
   render() {
     // const { increment, incrementIfOdd, decrement, counter } = this.props;
 
+    const make = CAR_MAKES_AND_MODELS[this.state.carMake];
       // <View style={styles.container}>
         // <Text style={styles.text}>Clicked: {counter.get('counter')} times</Text>
         // <TouchableHighlight onPress={increment}>
@@ -126,7 +163,6 @@ export default class Counter extends Component {
         // <TouchableHighlight onPress={this.incrementAsync}>
         //   <Text style={styles.text}>Increment async</Text>
         // </TouchableHighlight>
-    const make = CAR_MAKES_AND_MODELS[this.state.carMake];
     let selectionObject = `${make.name} ${make.models[this.state.modelIndex]}`;
     return (
   <View>
@@ -158,13 +194,37 @@ export default class Counter extends Component {
       ))}
     </PickerIOS>
     <Text>You selected: {selectionObject}</Text>
+    <Text>Zipcode: </Text>
+    <TextInput
+      style={ { height: 40, width:100, alignSelf:'center', borderColor: 'gray', borderWidth: 1 } }
+      onChangeText={(zipcode) => this.setState({ zipcode })}
+      value={this.state.zipcode}
+    />
     <TouchableHighlight
       style={styles.button}
       underlayColor="#88D4F5"
       onPress={this.goToResults}
     >
-        <Text style={styles.buttonText}>Search </Text>
-  </TouchableHighlight>
+    <Text style={styles.buttonText}>Search </Text>
+    </TouchableHighlight>
+
+    <Text>{`$${this.state.minPrice}-$${this.state.maxPrice}`}</Text>
+    <MultiSlider
+      values={[this.state.minPrice, this.state.maxPrice]}
+      min={1000}
+      max={150000}
+      step={1000}
+      onValuesChangeFinish={(value) => this.setState({ minPrice:value[0], maxPrice:value[1] })}
+      // onValuesChangeFinish={this.sliderChange.bind(this)}
+    />
+    <Text>{`${this.state.sliderLeft}-${this.state.sliderRight}`}</Text>
+    <MultiSlider
+      values={[this.state.sliderLeft, this.state.sliderRight]}
+      min={1990}
+      max={2017}
+      step={1}
+      onValuesChangeFinish={this.sliderChange.bind(this)}
+    />
   </View>
 );
   }
