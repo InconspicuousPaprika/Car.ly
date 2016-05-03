@@ -1,5 +1,4 @@
 var React = require('react-native');
-var FBLogin = require('react-native-facebook-login');
 
 var {
   View,
@@ -95,7 +94,6 @@ class Login extends React.Component {
 				<TextInput value={this.state.password} style={styles.passwordInput}/>
 				<TouchableHighlight style={styles.button}><Text style={styles.buttonText}>Sign In</Text></TouchableHighlight>
 				<Text style={styles.orText}>Or</Text>
-				<TouchableHighlight><FBLogin /></TouchableHighlight>
 			</View>
 		);
 	}
