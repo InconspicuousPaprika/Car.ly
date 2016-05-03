@@ -141,8 +141,9 @@ export default class Counter extends Component {
 
   goToResults() {
     let object = this.state;
-    backend.getCarData(object);
+    console.log(this.state.carMake);
     console.log('going');
+    backend.getCarData(object);
   }
 
   render() {
@@ -150,19 +151,20 @@ export default class Counter extends Component {
 
     const make = CAR_MAKES_AND_MODELS[this.state.carMake];
       // <View style={styles.container}>
-        // <Text style={styles.text}>Clicked: {counter.get('counter')} times</Text>
-        // <TouchableHighlight onPress={increment}>
-        //   <Text style={styles.text}>+</Text>
-        // </TouchableHighlight>
-        // <TouchableHighlight onPress={decrement}>
-        //   <Text style={styles.text}>-</Text>
-        // </TouchableHighlight>
-        // <TouchableHighlight onPress={incrementIfOdd}>
-        //   <Text style={styles.text}>Increment if odd</Text>
-        // </TouchableHighlight>
-        // <TouchableHighlight onPress={this.incrementAsync}>
-        //   <Text style={styles.text}>Increment async</Text>
-        // </TouchableHighlight>
+      //   <Text style={styles.text}>Clicked: {counter.get('counter')} times</Text>
+      //   <TouchableHighlight onPress={increment}>
+      //     <Text style={styles.text}>+</Text>
+      //   </TouchableHighlight>
+      //   <TouchableHighlight onPress={decrement}>
+      //     <Text style={styles.text}>-</Text>
+      //   </TouchableHighlight>
+      //   <TouchableHighlight onPress={incrementIfOdd}>
+      //     <Text style={styles.text}>Increment if odd</Text>
+      //   </TouchableHighlight>
+      //   <TouchableHighlight onPress={this.incrementAsync}>
+      //     <Text style={styles.text}>Increment async</Text>
+      //   </TouchableHighlight>
+
     let selectionObject = `${make.name} ${make.models[this.state.modelIndex]}`;
     return (
   <View>
@@ -179,11 +181,12 @@ export default class Counter extends Component {
         />
       ))}
     </PickerIOS>
+
     <Text>Please choose a model of {make.name}:</Text>
     <PickerIOS
       selectedValue={this.state.modelIndex}
       key={this.state.carMake}
-      onValueChange={(modelIndex) => this.setState({ modelIndex })}
+      onValueChange={(modelIndex) => this.setState({ modelIndex:modelIndex, model:make.models[modelIndex] })}
     >
       {CAR_MAKES_AND_MODELS[this.state.carMake].models.map((modelName, modelIndex) => (
         <PickerItemIOS
@@ -193,6 +196,7 @@ export default class Counter extends Component {
         />
       ))}
     </PickerIOS>
+
     <Text>You selected: {selectionObject}</Text>
     <Text>Zipcode: </Text>
     <TextInput
@@ -200,10 +204,11 @@ export default class Counter extends Component {
       onChangeText={(zipcode) => this.setState({ zipcode })}
       value={this.state.zipcode}
     />
+
     <TouchableHighlight
       style={styles.button}
       underlayColor="#88D4F5"
-      onPress={this.goToResults}
+      onPress={this.goToResults.bind(this)}
     >
     <Text style={styles.buttonText}>Search </Text>
     </TouchableHighlight>
@@ -217,6 +222,7 @@ export default class Counter extends Component {
       onValuesChangeFinish={(value) => this.setState({ minPrice:value[0], maxPrice:value[1] })}
       // onValuesChangeFinish={this.sliderChange.bind(this)}
     />
+
     <Text>{`${this.state.sliderLeft}-${this.state.sliderRight}`}</Text>
     <MultiSlider
       values={[this.state.sliderLeft, this.state.sliderRight]}
@@ -225,7 +231,7 @@ export default class Counter extends Component {
       step={1}
       onValuesChangeFinish={this.sliderChange.bind(this)}
     />
-  </View>
-);
+      </View>
+)
   }
 }
