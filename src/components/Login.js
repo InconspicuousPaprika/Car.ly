@@ -74,24 +74,24 @@ var styles = StyleSheet.create({
   // }
 });
 
-
 class Login extends React.Component {
 	constructor(props) {
 		super(props)
 
 		this.state = {
-			email: 'email',
-			password: 'password',
-			isLoading: false,
-			error: false
-		}
+      email: '',
+      password: '',
+      isLoading: false,
+      error: false,
+      isPassword: false
+    }
 	}
 
   render() {
     return (
       <View style={styles.mainContainer}>
-        <TextInput value={this.state.email} onChange={this.handleChangeEmail.bind(this)} style={styles.emailInput}/>
-        <TextInput value={this.state.password} secureTextEntry={this.state.isPassword} onChange={this.handleChangePassword.bind(this)} style={styles.passwordInput}/>
+        <TextInput placeholder={'email'} onChange={this.handleChangeEmail.bind(this)} style={styles.emailInput}/>
+        <TextInput placeholder={'password'} secureTextEntry={this.state.isPassword} onChange={this.handleChangePassword.bind(this)} style={styles.passwordInput}/>
         <TouchableHighlight style={styles.button}><Text style={styles.buttonText}>Sign In</Text></TouchableHighlight>
         <Text style={styles.orText}>Or</Text>
         <Text style={styles.orText}>Don't have an account yet? Signup</Text>
