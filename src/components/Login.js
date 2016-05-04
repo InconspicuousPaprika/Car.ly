@@ -38,10 +38,10 @@ var styles = StyleSheet.create({
   },
 
   passwordInput: {
-   	height: 50,
+    height: 50,
     padding: 4,
     marginRight: 5,
-  	marginTop: 10,
+    marginTop: 10,
     fontSize: 23,
     borderWidth: 1,
     borderColor: '#48BBEC',
@@ -49,7 +49,7 @@ var styles = StyleSheet.create({
     borderRadius: 8,
     color: 'white'
   },
-
+  
   buttonText: {
     fontSize: 18,
     color: 'white',
@@ -67,25 +67,39 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
   },
   orText: {
-  	textAlign: 'center',
+    textAlign: 'center',
   },
-  // fbButton: {
-
-  // }
 });
 
 class Login extends React.Component {
-	constructor(props) {
-		super(props)
+  constructor(props) {
+    super(props)
 
-		this.state = {
+    this.state = {
       email: '',
       password: '',
       isLoading: false,
       error: false,
       isPassword: false
     }
-	}
+  }
+
+  handleChangeEmail(event) {
+    this.setState({
+      email: event.nativeEvent.text,
+    });
+  }
+
+  handleChangePassword(event) {
+    this.setState({
+      password: event.nativeEvent.text, 
+      isPassword: true
+    });
+  }
+
+  handleSubmit(){
+    this.setState({value: ''});
+  }
 
   render() {
     return (
@@ -101,3 +115,7 @@ class Login extends React.Component {
 }
 
 module.exports = Login;
+
+
+
+
