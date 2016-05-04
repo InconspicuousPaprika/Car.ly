@@ -87,19 +87,17 @@ class Login extends React.Component {
 		}
 	}
 
-	render() {
-		return (
-			<View style={styles.mainContainer}>
-				<TextInput value={this.state.email} style={styles.emailInput}/>
-				<TextInput value={this.state.password} style={styles.passwordInput}/>
-				<TouchableHighlight style={styles.button}><Text style={styles.buttonText}>Sign In</Text></TouchableHighlight>
-				<Text style={styles.orText}>Or</Text>
-        <Text style={styles.orText}>Don't have an account yet?
-        <TouchableHighlight>Signup</TouchableHighlight>
-        </Text>
-			</View>
-		);
-	}
+  render() {
+    return (
+      <View style={styles.mainContainer}>
+        <TextInput value={this.state.email} onChange={this.handleChangeEmail.bind(this)} style={styles.emailInput}/>
+        <TextInput value={this.state.password} secureTextEntry={this.state.isPassword} onChange={this.handleChangePassword.bind(this)} style={styles.passwordInput}/>
+        <TouchableHighlight style={styles.button}><Text style={styles.buttonText}>Sign In</Text></TouchableHighlight>
+        <Text style={styles.orText}>Or</Text>
+        <Text style={styles.orText}>Don't have an account yet? Signup</Text>
+      </View>
+    );
+  }
 }
 
 module.exports = Login;
