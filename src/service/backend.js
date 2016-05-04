@@ -1,8 +1,8 @@
-import config from '../../config.js';
+// import config from '../../config.js';
 import Search from '../components/Counter.js';
-const {
-  autotraderExtractor,
-} = config;
+// const {
+//   autotraderExtractor,
+// } = config;
 
 
 module.exports = {
