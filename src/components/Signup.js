@@ -38,10 +38,10 @@ var styles = StyleSheet.create({
   },
 
   passwordInput: {
-   	height: 50,
+    height: 50,
     padding: 4,
     marginRight: 5,
-  	marginTop: 10,
+    marginTop: 10,
     fontSize: 23,
     borderWidth: 1,
     borderColor: '#48BBEC',
@@ -49,7 +49,7 @@ var styles = StyleSheet.create({
     borderRadius: 8,
     color: 'white'
   },
-
+  
   buttonText: {
     fontSize: 18,
     color: 'white',
@@ -67,37 +67,54 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
   },
   orText: {
-  	textAlign: 'center',
+    textAlign: 'center',
   },
-  // fbButton: {
-
-  // }
 });
 
+class Signup extends React.Component {
+  constructor(props) {
+    super(props)
 
-class Login extends React.Component {
-	constructor(props) {
-		super(props)
+    this.state = {
+      email: '',
+      password: '',
+      isLoading: false,
+      error: false,
+      isPassword: false
+    }
+  }
 
-		this.state = {
-			email: 'email',
-			password: 'password',
-			isLoading: false,
-			error: false
-		}
-	}
+  clearText(fieldName) {
+    this.refs[fieldName].setNativeProps({text: ''});
+  }
+
+  handleChangeEmail(event) {
+    this.setState({
+      email: event.nativeEvent.text,
+    });
+  }
+
+  handleChangePassword(event) {
+    this.setState({
+      password: event.nativeEvent.text, 
+      isPassword: true
+    });
+  }
+
+  handleSubmit(){
+    this.setState({value: ''});
+  }
 
   render() {
     return (
       <View style={styles.mainContainer}>
         <TextInput placeholder={'email'} onChange={this.handleChangeEmail.bind(this)} style={styles.emailInput}/>
         <TextInput placeholder={'password'} secureTextEntry={this.state.isPassword} onChange={this.handleChangePassword.bind(this)} style={styles.passwordInput}/>
-        <TouchableHighlight style={styles.button}><Text style={styles.buttonText}>Sign In</Text></TouchableHighlight>
-        <Text style={styles.orText}>Or</Text>
-        <Text style={styles.orText}>Do not have an account yet? Signup</Text>
+        <TouchableHighlight style={styles.button}><Text style={styles.buttonText}>Sign Up</Text></TouchableHighlight>
       </View>
     );
   }
 }
 
-module.exports = Login;
+module.exports = Signup;
+
