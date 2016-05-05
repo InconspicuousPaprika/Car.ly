@@ -94,8 +94,8 @@ class Login extends React.Component {
 				<TextInput value={this.state.password} style={styles.passwordInput}/>
 				<TouchableHighlight style={styles.button}><Text style={styles.buttonText}>Sign In</Text></TouchableHighlight>
 				<Text style={styles.orText}>Or</Text>
-        <Text style={styles.orText}>Don't have an account yet?
-        <TouchableHighlight>Signup</TouchableHighlight>
+        <Text style={styles.orText}>
+        Don't have an account yet?
         </Text>
 			</View>
 		);
