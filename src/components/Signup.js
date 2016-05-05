@@ -1,5 +1,6 @@
-import React from 'react-native';
-let {
+var React = require('react-native');
+
+var {
   View,
   Text,
   StyleSheet,
@@ -9,7 +10,7 @@ let {
   Image
 } = React;
 
-const styles = StyleSheet.create({
+var styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     padding: 30,
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     color: 'white'
   },
-
+  
   buttonText: {
     fontSize: 18,
     color: 'white',
@@ -70,9 +71,9 @@ const styles = StyleSheet.create({
   },
 });
 
-class Login extends React.Component {
+class Signup extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       email: '',
@@ -80,7 +81,11 @@ class Login extends React.Component {
       isLoading: false,
       error: false,
       isPassword: false
-    };
+    }
+  }
+
+  clearText(fieldName) {
+    this.refs[fieldName].setNativeProps({text: ''});
   }
 
   handleChangeEmail(event) {
@@ -91,34 +96,25 @@ class Login extends React.Component {
 
   handleChangePassword(event) {
     this.setState({
-      password: event.nativeEvent.text,
+      password: event.nativeEvent.text, 
       isPassword: true
     });
   }
 
-  handleSubmit() {
-    this.setState({ value: '' });
+  handleSubmit(){
+    this.setState({value: ''});
   }
 
   render() {
     return (
       <View style={styles.mainContainer}>
-        <TextInput placeholder={'email'}
-          onChange={this.handleChangeEmail.bind(this)}
-          style={styles.emailInput}
-        />
-        <TextInput placeholder={'password'}
-          secureTextEntry={this.state.isPassword}
-          onChange={this.handleChangePassword.bind(this)}
-          style={styles.passwordInput}
-        />
-        <TouchableHighlight style={styles.button}>
-        <Text style={styles.buttonText}>Sign In</Text></TouchableHighlight>
-        <Text style={styles.orText}>Or</Text>
-        <Text style={styles.orText}>
-        Don't have an account yet? Signup</Text>
+        <TextInput placeholder={'email'} onChange={this.handleChangeEmail.bind(this)} style={styles.emailInput}/>
+        <TextInput placeholder={'password'} secureTextEntry={this.state.isPassword} onChange={this.handleChangePassword.bind(this)} style={styles.passwordInput}/>
+        <TouchableHighlight style={styles.button}><Text style={styles.buttonText}>Sign Up</Text></TouchableHighlight>
       </View>
     );
   }
 }
-module.exports = Login;
+
+module.exports = Signup;
+
