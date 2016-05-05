@@ -1,6 +1,3 @@
-//
+export const SIGN_UP = 'SIGN_UP';
+export const SIGN_IN = 'SIGN_IN';
 
-//Actions:
-// Login without Oauth
-// login with facebook
-// login with google
