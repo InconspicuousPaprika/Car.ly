@@ -29,6 +29,10 @@ describe('actions', () => {
     expect(dispatch.callCount).to.equal(0);
   });
 
+
+  it('Search button should send a search query to api', () => {
+  
+  })
   // There's no nice way to test this at the moment...
   it('incrementAsync', (done) => {
     const fn = actions.incrementAsync(1);
