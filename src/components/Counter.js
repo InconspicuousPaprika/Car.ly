@@ -9,6 +9,7 @@ import React, {
   PickerIOS,
   Slider,
 } from 'react-native';
+import searchActions from '../actions/searchActions.js'
 import backend from '../service/backend.js'
 import MultiSlider from 'react-native-multi-slider';
 import Immutable from 'immutable';
@@ -18,6 +19,13 @@ import {
   MKRangeSlider,
   setTheme,
 } from 'react-native-material-kit';
+import { connect } from 'react-redux';
+
+function select(state){
+  return {
+    query: state.query
+  };
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -104,13 +112,15 @@ const CAR_MAKES_AND_MODELS = {
   },
 };
 
+@connect(select)
 export default class Counter extends Component {
   static propTypes = {
     increment: PropTypes.func.isRequired,
     incrementIfOdd: PropTypes.func.isRequired,
     incrementAsync: PropTypes.func.isRequired,
     decrement: PropTypes.func.isRequired,
-    counter: PropTypes.instanceOf(Immutable.Map).isRequired
+    counter: PropTypes.instanceOf(Immutable.Map).isRequired,
+    dispatch: React.PropTypes.func.isRequired
   };
 
   constructor(props) {
@@ -143,7 +153,11 @@ export default class Counter extends Component {
     let object = this.state;
     console.log(this.state.carMake);
     console.log('going');
-    backend.getCarData(object);
+    console.log(this.props);
+    //TODO: change state data to store
+    //backend.getCarData(object);
+    // this.props.dispatch(searchActions(this.props.query));
+
   }
 
   render() {

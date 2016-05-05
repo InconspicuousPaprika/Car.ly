@@ -1,6 +1,5 @@
-var React = require('react-native');
-
-var {
+import React from 'react-native';
+let {
   View,
   Text,
   StyleSheet,
@@ -10,7 +9,7 @@ var {
   Image
 } = React;
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     padding: 30,
@@ -49,7 +48,7 @@ var styles = StyleSheet.create({
     borderRadius: 8,
     color: 'white'
   },
-  
+
   buttonText: {
     fontSize: 18,
     color: 'white',
@@ -73,7 +72,7 @@ var styles = StyleSheet.create({
 
 class Login extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       email: '',
@@ -81,7 +80,7 @@ class Login extends React.Component {
       isLoading: false,
       error: false,
       isPassword: false
-    }
+    };
   }
 
   handleChangeEmail(event) {
@@ -92,30 +91,34 @@ class Login extends React.Component {
 
   handleChangePassword(event) {
     this.setState({
-      password: event.nativeEvent.text, 
+      password: event.nativeEvent.text,
       isPassword: true
     });
   }
 
-  handleSubmit(){
-    this.setState({value: ''});
+  handleSubmit() {
+    this.setState({ value: '' });
   }
 
   render() {
     return (
       <View style={styles.mainContainer}>
-        <TextInput placeholder={'email'} onChange={this.handleChangeEmail.bind(this)} style={styles.emailInput}/>
-        <TextInput placeholder={'password'} secureTextEntry={this.state.isPassword} onChange={this.handleChangePassword.bind(this)} style={styles.passwordInput}/>
-        <TouchableHighlight style={styles.button}><Text style={styles.buttonText}>Sign In</Text></TouchableHighlight>
+        <TextInput placeholder={'email'}
+          onChange={this.handleChangeEmail.bind(this)}
+          style={styles.emailInput}
+        />
+        <TextInput placeholder={'password'}
+          secureTextEntry={this.state.isPassword}
+          onChange={this.handleChangePassword.bind(this)}
+          style={styles.passwordInput}
+        />
+        <TouchableHighlight style={styles.button}>
+        <Text style={styles.buttonText}>Sign In</Text></TouchableHighlight>
         <Text style={styles.orText}>Or</Text>
-        <Text style={styles.orText}>Don't have an account yet? Signup</Text>
+        <Text style={styles.orText}>
+        Don't have an account yet? Signup</Text>
       </View>
     );
   }
 }
-
 module.exports = Login;
-
-
-
-
