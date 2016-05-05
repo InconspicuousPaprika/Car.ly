@@ -109,6 +109,7 @@ class Login extends React.Component {
         <TouchableHighlight style={styles.button}><Text style={styles.buttonText}>Sign In</Text></TouchableHighlight>
         <Text style={styles.orText}>Or</Text>
         <Text style={styles.orText}>Don't have an account yet? Signup</Text>
+      </View>
     );
   }
 }
