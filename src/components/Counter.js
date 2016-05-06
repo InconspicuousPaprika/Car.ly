@@ -13,19 +13,7 @@ import searchActions from '../actions/searchActions.js'
 import backend from '../service/backend.js'
 import MultiSlider from 'react-native-multi-slider';
 import Immutable from 'immutable';
-import {
-  MKColor,
-  MKSlider,
-  MKRangeSlider,
-  setTheme,
-} from 'react-native-material-kit';
 import { connect } from 'react-redux';
-
-function select(state){
-  return {
-    query: state.query
-  };
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -112,56 +100,40 @@ const CAR_MAKES_AND_MODELS = {
   },
 };
 
-@connect(select)
+
+
+@connect(state => ({
+  query: state.search.query
+}))
 export default class Counter extends Component {
   static propTypes = {
-    increment: PropTypes.func.isRequired,
-    incrementIfOdd: PropTypes.func.isRequired,
-    incrementAsync: PropTypes.func.isRequired,
-    decrement: PropTypes.func.isRequired,
-    counter: PropTypes.instanceOf(Immutable.Map).isRequired,
-    dispatch: React.PropTypes.func.isRequired
+    dispatch: React.PropTypes.func.isRequired,
+    query: React.PropTypes.object.isRequired
   };
 
   constructor(props) {
     super(props);
     const { incrementAsync } = props;
     this.incrementAsync = () => incrementAsync();
-    this.state = {
-      carMake: 'cadillac',
-      modelIndex: 3,
-      value: 0,
-      sliderLeft:1990,
-      sliderRight:2017,
-      payload:'',
-      minPrice:1000,
-      maxPrice:150000,
-      zipcode:'',
-      model: ''
 
-    };
   }
 
   sliderChange(values) {
-    this.setState({
-      sliderLeft: values[0],
-      sliderRight: values[1],
-    });
+    this.props.dispatch(setQueryAction({startYear:values[0]}))
+    this.props.dispatch(setQueryAction({endYear:values[1]}))
+
   }
 
   goToResults() {
-    let object = this.state;
-    console.log(this.state.carMake);
     console.log('going');
     console.log(this.props);
     //TODO: change state data to store
     //backend.getCarData(object);
-    // this.props.dispatch(searchActions(this.props.query));
-
+    this.props.dispatch(searchActions(this.props));
   }
 
   render() {
-    // const { increment, incrementIfOdd, decrement, counter } = this.props;
+    const { increment, incrementIfOdd, decrement, counter, query } = this.props;
 
     const make = CAR_MAKES_AND_MODELS[this.state.carMake];
       // <View style={styles.container}>
