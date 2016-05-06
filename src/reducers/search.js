@@ -28,5 +28,6 @@ export default handleActions({
     maxPrice: payload.maxPrice || 150000,
     zipcode: payload.zipcode || '',
     model: payload.model || ''
-  })
+  }),
+  SET_QUERY: (state, { payload }) => ({ ...state, ...payload })
 }, initialState);
