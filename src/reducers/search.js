@@ -3,14 +3,13 @@ import { handleActions } from 'redux-actions';
 const initialState = {
   query: {
     carMake: 'cadillac',
-    modelIndex: 3,
     value: 0,
-    sliderLeft:1990,
-    sliderRight:2017,
+    startYear:1990,
+    endYear:2017,
     minPrice:1000,
     maxPrice:150000,
     zipcode:'',
-    model: ''
+    model: false
   },
   loading: true,
 };
@@ -19,15 +18,14 @@ const initialState = {
 export default handleActions({
   GET_CARDATA: (state, { payload }) => ({
     ...state,
-    carMake: payload.carmake || 'cadillac',
-    modelIndex: payload.modelIndex || 3,
-    value: payload.value || 0,
-    sliderLeft: payload.sliderLeft || 1990,
-    sliderRight: payload.sliderRight || 2017,
-    minPrice: payload.minPrice || 1000,
-    maxPrice: payload.maxPrice || 150000,
-    zipcode: payload.zipcode || '',
-    model: payload.model || ''
+    carMake: payload.carmake,
+    value: payload.value,
+    sliderLeft: payload.sliderLeft,
+    sliderRight: payload.sliderRight,
+    minPrice: payload.minPrice,
+    maxPrice: payload.maxPrice,
+    zipcode: payload.zipcode,
+    model: payload.model
   }),
-  SET_QUERY: (state, { payload }) => ({ ...state, ...payload })
+  SET_QUERY: (state, payload) => ({ ...state, query:Object.assign({}, state.query, payload.payload )})
 }, initialState);
