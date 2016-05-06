@@ -1,6 +1,3 @@
-exports const SIGN_UP_EMAIL: 'SIGN_UP_EMAIL',
-exports const SIGN_UP_PASSWORD: 'SIGN_UP_PASSWORD',
-exports const SIGN_IN_EMAIL: 'SIGN_IN_EMAIL',
-exports const SIGN_IN_PASSWORD: 'SIGN_IN_PASSWORD'
+import { createAction } from 'redux-actions';
 
-
+export default createAction('SIGN_IN', (signInFields) => signInFields);

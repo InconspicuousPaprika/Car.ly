@@ -1,5 +1,8 @@
-import React from 'react-native';
-let {
+import loginActions from '../actions/loginActions';
+import { connect } from 'react-redux';
+import React, {
+  Component,
+  PropTypes,
   View,
   Text,
   StyleSheet,
@@ -7,7 +10,7 @@ let {
   TouchableHighlight,
   ActivityIndicatorIOS,
   Image
-} = React;
+} from 'react-native';
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -70,27 +73,28 @@ const styles = StyleSheet.create({
   },
 });
 
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
+
+@connect(state => ({
+  login: state.login
+}))
+export default class Login extends Component {
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    login: PropTypes.object.isRequired
   }
 
   handleChangeEmail(event) {
-    this.setState({
-      email: event.nativeEvent.text,
-    });
+    let email = event.nativeEvent.text;
+    this.props.dispatch(loginActions({ email: email }));
   }
 
   handleChangePassword(event) {
-    this.setState({
-      password: event.nativeEvent.text,
-      isPassword: true
-    });
+    let password = event.nativeEvent.text;
+    let isPassword = true;
+    this.props.dispatch(loginActions({ password: password, isPassword: isPassword }));
   }
 
-  handleSubmit() {
-    this.setState({ value: '' });
-  }
+  handleSubmit(event) {}
 
   render() {
     return (
@@ -100,7 +104,7 @@ class Login extends React.Component {
           style={styles.emailInput}
         />
         <TextInput placeholder={'password'}
-          secureTextEntry={this.state.isPassword}
+          secureTextEntry={this.props.login.isPassword}
           onChange={this.handleChangePassword.bind(this)}
           style={styles.passwordInput}
         />
