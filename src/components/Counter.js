@@ -115,7 +115,19 @@ export default class Counter extends Component {
     super(props);
     const { incrementAsync } = props;
     this.incrementAsync = () => incrementAsync();
+    this.state = {
+      carMake: 'cadillac',
+      modelIndex: 3,
+      value: 0,
+      sliderLeft:1990,
+      sliderRight:2017,
+      payload:'',
+      minPrice:1000,
+      maxPrice:150000,
+      zipcode:'',
+      model: ''
 
+    };
   }
 
   sliderChange(values) {
