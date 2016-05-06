@@ -1,4 +1,5 @@
 var User = require ('../models/userModel.js');
+var jwt = require('jwt-simple');
 
 module.exports = {
   signup: function(req, res, next) {
@@ -21,7 +22,8 @@ module.exports = {
         if (results.length === 0) {
           res.json(404);
         } else {
-          res.json(results);
+          var token = jwt.encode(user, 'secret');
+          res.json({token: token, user: results});
         }
       } else {
         res.json(err);
