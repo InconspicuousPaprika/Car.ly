@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Counter from '../components/Counter';
-import * as CounterActions from '../actions/counter';
+import * as CounterActions from '../actions/searchActions';
 import Login from '../components/Login';
 
 @connect(
@@ -11,4 +11,4 @@ import Login from '../components/Login';
   }),
   dispatch => bindActionCreators(CounterActions, dispatch)
 )
-export default class App extends Login {}
+export default class App extends Counter {}
