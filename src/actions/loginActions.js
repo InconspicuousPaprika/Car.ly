@@ -1,6 +1,4 @@
-//
+import { createAction } from 'redux-actions';
 
-//Actions:
-// Login without Oauth
-// login with facebook
-// login with google
+export default createAction('SIGN_IN', (signInFields) => signInFields);
+

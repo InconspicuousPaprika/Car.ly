@@ -55,6 +55,7 @@ var styles = StyleSheet.create({
     color: 'white',
     alignSelf: 'center'
   },
+  
   button: {
     height: 50,
     flexDirection: 'row',
@@ -66,6 +67,11 @@ var styles = StyleSheet.create({
     alignSelf: 'stretch',
     justifyContent: 'center',
   },
+  
+  buttonSignUp: {
+    color: 'red'
+  },
+  
   orText: {
     textAlign: 'center',
   },
@@ -110,11 +116,15 @@ class Signup extends React.Component {
       <View style={styles.mainContainer}>
         <TextInput placeholder={'email'} onChange={this.handleChangeEmail.bind(this)} style={styles.emailInput}/>
         <TextInput placeholder={'password'} secureTextEntry={this.state.isPassword} onChange={this.handleChangePassword.bind(this)} style={styles.passwordInput}/>
-        <TouchableHighlight style={styles.button}><Text style={styles.buttonText}>Sign Up</Text></TouchableHighlight>
+        <TouchableHighlight style={styles.button} onPress={Actions.Signup}><Text style={styles.buttonText}>Sign Up</Text></TouchableHighlight>
       </View>
     );
   }
 }
 
+
+
 module.exports = Signup;
+
+
 

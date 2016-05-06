@@ -11,4 +11,4 @@ import Login from '../components/Login';
   }),
   dispatch => bindActionCreators(CounterActions, dispatch)
 )
-export default class App extends Counter {}
+export default class App extends Login {}
