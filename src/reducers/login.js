@@ -1,6 +1,5 @@
-import {SIGN_IN_EMAIL, SIGN_IN_PASSWORD, SIGN_UP_EMAIL, SIGN_UP_PASSWORD} from '../actions/loginActions.js';
 import { handleActions } from 'redux-actions';
-
+import {SIGN_UP, SIGN_IN} from '../actions/loginActions.js';
 
 const initialState = {
   email: '',
@@ -16,6 +15,7 @@ export default handleActions ({
     ...payload.payload
   })
 }, initialState);
+
 
 
 
