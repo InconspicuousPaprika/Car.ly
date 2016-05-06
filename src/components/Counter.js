@@ -9,8 +9,8 @@ import React, {
   PickerIOS,
   Slider,
 } from 'react-native';
-import searchActions from '../actions/searchActions.js'
-import backend from '../service/backend.js'
+import setQueryAction from '../actions/setQueryAction.js';
+import searchActions from '../actions/searchActions.js';
 import MultiSlider from 'react-native-multi-slider';
 import Immutable from 'immutable';
 import { connect } from 'react-redux';
@@ -131,9 +131,9 @@ export default class Counter extends Component {
   }
 
   sliderChange(values) {
-    this.props.dispatch(setQueryAction({startYear:values[0]}))
-    this.props.dispatch(setQueryAction({endYear:values[1]}))
-
+     let start = values[0];
+     let end = values[1]
+    this.props.dispatch(setQueryAction({ startYear:start, endYear:end }));
   }
 
   goToResults() {
