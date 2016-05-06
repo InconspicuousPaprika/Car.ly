@@ -73,14 +73,6 @@ const styles = StyleSheet.create({
 class Login extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      email: '',
-      password: '',
-      isLoading: false,
-      error: false,
-      isPassword: false
-    };
   }
 
   handleChangeEmail(event) {

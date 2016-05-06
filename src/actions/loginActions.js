@@ -1,3 +1,9 @@
-export const SIGN_UP = 'SIGN_UP';
-export const SIGN_IN = 'SIGN_IN';
+export const loginActions = {
+	
+	SIGN_UP_EMAIL: 'SIGN_UP_EMAIL',
+	SIGN_UP_PASSWORD: 'SIGN_UP_PASSWORD',
+	SIGN_IN_EMAIL: 'SIGN_IN_EMAIL',
+	SIGN_IN_PASSWORD: 'SIGN_IN_PASSWORD'
+}
+
 
