@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import Counter from '../components/Counter';
 import * as CounterActions from '../actions/searchActions';
 import Login from '../components/Login';
+import Signup from '../components/Signup';
 
 @connect(
   state => ({
   	login: state.login,
+    signup: state.signup,
     counter: state.counter
   }),
   dispatch => bindActionCreators(CounterActions, dispatch)
 )
-export default class App extends Login {}
+export default class App extends Signup {}
