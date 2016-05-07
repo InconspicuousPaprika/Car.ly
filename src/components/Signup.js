@@ -1,4 +1,5 @@
 import signupSubmitAction from '../actions/signupSubmitAction.js';
+import signupAction from '../actions/signupActions.js';
 import { connect } from 'react-redux';
 
 import React, {
@@ -93,13 +94,13 @@ export default class Signup extends Component {
 
   handleChangeEmail(event) {
     let email = event.nativeEvent.text;
-    this.props.dispatch(signupSubmitAction({ email: email }));
+    this.props.dispatch(signupAction({ email: email }));
   }
 
   handleChangePassword(event) {
     let password = event.nativeEvent.text;
     let isPassword = true;
-    this.props.dispatch(signupSubmitAction({ password: password, isPassword: isPassword }));
+    this.props.dispatch(signupAction({ password: password, isPassword: isPassword }));
   }
 
   handleSubmit() {
@@ -110,8 +111,8 @@ export default class Signup extends Component {
   render() {
     return (
       <View style={styles.mainContainer}>
-        <TextInput placeholder={'email'} onBlur={this.handleChangeEmail.bind(this)} style={styles.emailInput}/>
-        <TextInput placeholder={'password'} secureTextEntry={this.props.signup.isPassword} onBlur={this.handleChangePassword.bind(this)} style={styles.passwordInput}/>
+        <TextInput placeholder={'email'} onChange={this.handleChangeEmail.bind(this)} style={styles.emailInput}/>
+        <TextInput placeholder={'password'} secureTextEntry={this.props.signup.isPassword} onChange={this.handleChangePassword.bind(this)} style={styles.passwordInput}/>
         <TouchableHighlight style={styles.button} onPress={this.handleSubmit.bind(this)}><Text style={styles.buttonText}>Sign Up</Text></TouchableHighlight>
       </View>
     );

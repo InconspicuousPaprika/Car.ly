@@ -15,10 +15,8 @@ export default handleActions ({
   SIGN_UP: (state, payload) => ({
     ...state,
     ...payload.payload
-  })
-}, initialState);
+  }),
 
-export default handleActions ({
   SIGN_UP_SUBMIT: (state, payload) => ({
     ...state,
     ...payload.payload

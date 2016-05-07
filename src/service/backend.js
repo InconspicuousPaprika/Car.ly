@@ -32,7 +32,7 @@ module.exports = {
         password: emailAndPassword.password,
       })
     }).then ((response) => {
-      console.log('THE FUCKING RESPONSE');
+      console.log('THE FUCKING RESPONSE', response.json());
       return response.json();
     }).catch((err) => {
       console.log('Error', err);
