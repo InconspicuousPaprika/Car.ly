@@ -6,4 +6,3 @@ export default createAction(
   'GET_CARDATA',
    async (searchQuery) => await backend.getCarData(searchQuery)
 );
-
