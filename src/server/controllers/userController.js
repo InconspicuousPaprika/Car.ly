@@ -1,31 +1,44 @@
 var User = require ('../models/userModel.js');
+var jwt = require('jwt-simple');
 
 module.exports = {
-  signup: function(req, res, next) {
+  createOne: function(req, res) {
     var user = req.body;
-    User.users.post(user, function(err, results) {
-      if(!err) {
-        res.json(201); 
-      } else {
-        res.json(err);
+    User.post(user, function(err, createdUser) {
+      if(err) {
+        return res.json(err);
       }
+      res.status(201).json(createdUser);
     });
   },
 
-  login: function(req, res, next) {
+  verifyLogin: function(req, res, next) {
     var user = req.body;
     console.log('BODY', user);
-    User.users.get(user, function(err, results) {
-      if (!err) {
-        console.log('Login results', results);
-        if (results.length === 0) {
-          res.json(404);
-        } else {
-          res.json(results);
-        }
-      } else {
-        res.json(err);
+    User.post(user, function(err, foundUser) {
+      // If err
+      // If foundUser.length 0
+
+      // default: send token and user
+
+      if(err) {
+        return res.json(err);
+      } 
+      if (foundUser.length === 0) {
+        res.sendStatus(404);
       }
+      var token = jwt.encode(user, 'secret');
+      res.json({token: token, user: foundUser});
+      // if (!err) {
+      //   if (foundUser.length === 0) {
+      //     res.sendStatus(404);
+      //   } else {
+      //     var token = jwt.encode(user, 'secret');
+      //     res.json({token: token, user: foundUser});
+      //   }
+      // } else {
+      //   res.json(err);
+      // }
     });
   }
 }

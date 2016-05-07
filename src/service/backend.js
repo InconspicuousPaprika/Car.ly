@@ -18,5 +18,26 @@ module.exports = {
     }).catch((err)=> {
       console.log('Error ', err);
     });
-    }
-    };
+  },
+
+  submitUserData(emailAndPassword) {
+    return fetch('http://localhost:3000/api/carly/users', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: emailAndPassword.email,
+        password: emailAndPassword.password,
+      })
+    }).then ((response) => {
+      console.log('THE FUCKING RESPONSE', response.json());
+      return response.json();
+    }).catch((err) => {
+      console.log('Error', err);
+    })
+  }
+};
+
+

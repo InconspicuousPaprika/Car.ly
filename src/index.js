@@ -11,7 +11,6 @@ const store = configureStore();
 
 const Carly = () => (
   <Provider store={store}>
-
     <App />
   </Provider>
 );

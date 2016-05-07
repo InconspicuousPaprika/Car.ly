@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import {SIGN_UP, SIGN_IN} from '../actions/loginActions.js';
+import {SIGN_IN} from '../actions/loginActions.js';
 
 const initialState = {
   email: '',

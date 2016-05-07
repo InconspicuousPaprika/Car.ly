@@ -1,6 +1,10 @@
-var React = require('react-native');
+import signupSubmitAction from '../actions/signupSubmitAction.js';
+import signupAction from '../actions/signupActions.js';
+import { connect } from 'react-redux';
 
-var {
+import React, {
+  Component,
+  PropTypes,
   View,
   Text,
   StyleSheet,
@@ -8,9 +12,9 @@ var {
   TouchableHighlight,
   ActivityIndicatorIOS,
   Image
-} = React;
+} from 'react-native';
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     padding: 30,
@@ -77,52 +81,43 @@ var styles = StyleSheet.create({
   },
 });
 
-class Signup extends React.Component {
-  constructor(props) {
-    super(props)
+@connect(state => ({
+  signup: state.signup
+}))
 
-    this.state = {
-      email: '',
-      password: '',
-      isLoading: false,
-      error: false,
-      isPassword: false
-    }
-  }
+export default class Signup extends Component {
 
-  clearText(fieldName) {
-    this.refs[fieldName].setNativeProps({text: ''});
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    signup: PropTypes.object.isRequired
   }
 
   handleChangeEmail(event) {
-    this.setState({
-      email: event.nativeEvent.text,
-    });
+    let email = event.nativeEvent.text;
+    this.props.dispatch(signupAction({ email: email }));
   }
 
   handleChangePassword(event) {
-    this.setState({
-      password: event.nativeEvent.text, 
-      isPassword: true
-    });
+    let password = event.nativeEvent.text;
+    let isPassword = true;
+    this.props.dispatch(signupAction({ password: password, isPassword: isPassword }));
   }
 
-  handleSubmit(){
-    this.setState({value: ''});
+  handleSubmit() {
+    let isSignedUp = true;
+    this.props.dispatch(signupSubmitAction({email: this.props.signup.email, password: this.props.signup.password, signedUp: isSignedUp}));
   }
 
   render() {
     return (
       <View style={styles.mainContainer}>
         <TextInput placeholder={'email'} onChange={this.handleChangeEmail.bind(this)} style={styles.emailInput}/>
-        <TextInput placeholder={'password'} secureTextEntry={this.state.isPassword} onChange={this.handleChangePassword.bind(this)} style={styles.passwordInput}/>
-        <TouchableHighlight style={styles.button} onPress={Actions.Signup}><Text style={styles.buttonText}>Sign Up</Text></TouchableHighlight>
+        <TextInput placeholder={'password'} secureTextEntry={this.props.signup.isPassword} onChange={this.handleChangePassword.bind(this)} style={styles.passwordInput}/>
+        <TouchableHighlight style={styles.button} onPress={this.handleSubmit.bind(this)}><Text style={styles.buttonText}>Sign Up</Text></TouchableHighlight>
       </View>
     );
   }
 }
-
-
 
 module.exports = Signup;
 
