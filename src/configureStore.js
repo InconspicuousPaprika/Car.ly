@@ -28,6 +28,7 @@ export default function configureStore(initialState) {
   const store = createStore(reducer, initialState, enhancer);
   if (module.hot) {
     module.hot.accept(() => {
+      // combines all the reducers in the file and attaches it to
       store.replaceReducer(require('./reducers'));
     });
   }
