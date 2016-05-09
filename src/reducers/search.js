@@ -52,15 +52,15 @@ const initialState = {
       'Corvair', 'Corvette', 'Cruze', 'Nova', 'SS', 'Vega', 'Volt'],
     }
   }
-
 };
 
 
 export default handleActions({
-  GET_CARDATA: (state, { payload }) => ({
-    ...state,
-    ...payload.payload
-  }),
+  // GET_CARDATA: (state, { payload }) => ({
+  //   ...state,
+  //   ...payload.payload
+  // }),
+  GET_CARDATA: (state, payload ) => ({ ...state, searchResults:Object.assign({}, state.searchResults, payload )}),
   SET_QUERY: (state, payload) => ({
     ...state,
     ...payload.payload })
