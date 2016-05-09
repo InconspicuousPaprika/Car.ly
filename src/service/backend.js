@@ -1,8 +1,16 @@
 // import config from '../../config.js';
 import Search from '../components/Search.js';
+// import fetch from 'node-fetch';
+// require('es6-promise').polyfill();
+// require('isomorphic-fetch');
+// if (typeof global !== 'undefined') {
+//   var self = global.self;
+// }
+import Search from '../components/Counter.js';
 // const {
 //   autotraderExtractor,
 // } = config;
+
 
 
 module.exports = {
