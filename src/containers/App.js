@@ -4,6 +4,7 @@ import Search from '../components/Search';
 import * as CounterActions from '../actions/searchActions';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
+import Results from '../components/Results';
 
 @connect(
   state => ({
@@ -14,5 +15,5 @@ import Signup from '../components/Signup';
   dispatch => bindActionCreators(CounterActions, dispatch)
 )
 
-export default class App extends Search {}
+export default class App extends Results {}
 
