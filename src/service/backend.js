@@ -6,7 +6,6 @@ import Search from '../components/Search.js';
 // if (typeof global !== 'undefined') {
 //   var self = global.self;
 // }
-import Search from '../components/Counter.js';
 // const {
 //   autotraderExtractor,
 // } = config;
