@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -24,6 +23,8 @@
 		29AF9A06BF724657BE49552B /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0ABAD11D5DC43C38936D5C0 /* libRCTActionSheet.a */; };
 		4C3562C1DB7F4BB9B095B440 /* libRCTMaterialKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB22D2CBFEEE4E8BA7FD2CFB /* libRCTMaterialKit.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		4C3562C1DB7F4BB9B095B440 /* libRCTMaterialKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB22D2CBFEEE4E8BA7FD2CFB /* libRCTMaterialKit.a */; };
+		29AF9A06BF724657BE49552B /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0ABAD11D5DC43C38936D5C0 /* libRCTActionSheet.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -669,6 +670,11 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Carly.app/Carly";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 			};
 			name = Debug;
 		};
@@ -691,6 +697,11 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Carly.app/Carly";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 			};
 			name = Release;
 		};
