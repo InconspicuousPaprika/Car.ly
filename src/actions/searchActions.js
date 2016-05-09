@@ -6,11 +6,4 @@ export default createAction(
   'GET_CARDATA',
    async (searchQuery) => await backend.getCarData(searchQuery)
 );
-// Actions:
-// Logout
-// Search with filters:
-    // Make
-    // Model
-    // Miles
-    // Year
-    // Used vs New
+

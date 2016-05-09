@@ -52,7 +52,6 @@ const initialState = {
       'Corvair', 'Corvette', 'Cruze', 'Nova', 'SS', 'Vega', 'Volt'],
     }
   }
-
 };
 
 
