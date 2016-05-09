@@ -15,3 +15,4 @@ import Signup from '../components/Signup';
 )
 
 export default class App extends Search {}
+
