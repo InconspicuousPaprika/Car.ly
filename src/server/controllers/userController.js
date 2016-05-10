@@ -18,9 +18,8 @@ module.exports = {
 
   verifyLogin: function(req, res, next) {
     var user = req.body;
-    console.log('BODY', user);
     var password = user.password;
-    User.post(user, function(err, foundUser) {
+    User.login(user, function(err, foundUser) {
       if(err) {
         return res.json(err);
       } 
