@@ -60,8 +60,8 @@ export default handleActions({
   //   ...state,
   //   ...payload.payload
   // }),
-  GET_CARDATA: (state, payload ) => ({ ...state, searchResults:Object.assign({}, state.searchResults, payload )}),
-  SET_QUERY: (state, payload) => ({
+  GET_CARDATA: (state, action ) => ({ ...state, searchResults:{...action.payload.extractorData.data[0].group}}),
+  SET_QUERY: (state, action) => ({
     ...state,
-    ...payload.payload })
+    ...action.payload })
 }, initialState);

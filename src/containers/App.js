@@ -16,4 +16,3 @@ import Results from '../components/Results';
 )
 
 export default class App extends Signup {}
-
