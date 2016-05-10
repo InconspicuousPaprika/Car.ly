@@ -1,26 +1,26 @@
 var User = require ('../models/userModel.js');
 var jwt = require('jwt-simple');
+var bcrypt = require('bcrypt');
+var salt = bcrypt.genSaltSync(10);
 
 module.exports = {
   createOne: function(req, res) {
     var user = req.body;
-    User.post(user, function(err, createdUser) {
-      if(err) {
-        return res.json(err);
-      }
-      res.status(201).json(createdUser);
+    var email = user.email;
+    var password = user.password;
+    User.post(user, function(err, person) {
+      if (person.affectedRows === 0) {
+        return res.status(409).send('That email already exists');
+      } 
+      res.status(201).send('Welcome!'); 
     });
   },
 
   verifyLogin: function(req, res, next) {
     var user = req.body;
     console.log('BODY', user);
+    var password = user.password;
     User.post(user, function(err, foundUser) {
-      // If err
-      // If foundUser.length 0
-
-      // default: send token and user
-
       if(err) {
         return res.json(err);
       } 
@@ -42,3 +42,12 @@ module.exports = {
     });
   }
 }
+
+
+
+
+
+
+
+
+
