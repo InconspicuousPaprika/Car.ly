@@ -4,7 +4,7 @@ const {
   StyleSheet,
 } = React;
 
-import globalVariables from '../globalVariables.js';
+import globalVariables from './globalVariables.js';
 
 const styles = StyleSheet.create({
   container: {
