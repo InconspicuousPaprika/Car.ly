@@ -11,9 +11,8 @@ import globalVariables from '../styles/globalVariables.js'
 
 const CarConditionPickerButton = (props) => ({
 
-return
   render() {
-    const isActive = this.props.value === this.props.current;
+    // const isActive = this.props.value === this.props.current;
 
 
     return (
@@ -21,9 +20,8 @@ return
         <View style={styles.tapAreaView}>
           <Image
             style={styles.icon}
-            source={icon}
           />
-          <Text style={[styles.text, isActive && styles.active]}>{this.props.text}</Text>
+          <Text style={[styles.active]}>{this.props.text}</Text>
         </View>
       </TouchableOpacity>
     );
