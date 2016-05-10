@@ -9,8 +9,9 @@ CREATE TABLE Users (
   PRIMARY KEY (ID)
 );
 
-CREATE TABLE Cars (
+CREATE TABLE Favorites (
   id int NOT NULL AUTO_INCREMENT,
+  user_id int NOT NULL,
   image varchar(255) NOT NULL,
   purchase_url varchar(255) NOT NULL,
   make varchar(30) NOT NULL,
@@ -18,16 +19,7 @@ CREATE TABLE Cars (
   year int,
   price varchar(10),
   vin varchar(50),
-  PRIMARY KEY (ID)
-);
-
-CREATE TABLE Favorites (
-  id int NOT NULL AUTO_INCREMENT,
-  user_id int NOT NULL,
-  car_id int NOT NULL,
   PRIMARY KEY (ID),
   FOREIGN KEY (user_id)
-  REFERENCES Users(id),
-  FOREIGN KEY (car_id)
-  REFERENCES Cars(id)
+    REFERENCES Users(id)
 );
