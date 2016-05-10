@@ -15,4 +15,4 @@ import Results from '../components/Results';
   dispatch => bindActionCreators(CounterActions, dispatch)
 )
 
-export default class App extends Search {}
+export default class App extends Signup {}
