@@ -35,11 +35,18 @@ export default class PhotoList extends Component {
         {
           this.props.photos.map((item, index) => {
             return (
-              <Image
-                key={`PhotoItem_${item['VEHICLETITLE LINK'].title}_${index}`}
-                style={styles.image}
-                source={{uri: this.convertScale(item.image[0].src)}}
-              />
+              <TouchableHighlight onPress={this.props.actions.savePhoto.bind(index)}>
+                <View>
+                <Image
+                  key={`PhotoItem_${item["VEHICLETITLE LINK"][0].title}_${index}`}
+                  style={styles.image}
+                  source={{uri: this.convertScale(item.image[0].src)}}
+                />
+                <Text>Item</Text>
+                <Text>{item.image[0].src}</Text>
+                <Text>{item["VEHICLETITLE LINK"][0].title}</Text>
+                </View>
+              </TouchableHighlight>
             );
           })
         }

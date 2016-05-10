@@ -35,3 +35,13 @@ export function searchPhotoAction(keyword, page = 1) {
     searchWithPhotoAPI(keyword, page, dispatch);
   };
 }
+
+export function savePhoto(index) {
+  // event.preventDefault();
+  console.log("test message");
+  console.log('entryData', index);
+  // dispatch({
+  //   type: types.SEARCH_SAVE,
+  //   entry: entryData
+  // });
+}
