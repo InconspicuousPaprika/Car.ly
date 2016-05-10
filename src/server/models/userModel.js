@@ -15,7 +15,10 @@ module.exports = {
           return console.error(err)
         }
         user.password = hash;
-        var checkIfUserExists = 'Insert into Users (email, password) select * from (select "' + user.email +'", "' + user.password + '") AS temp where not exists(select id from Users where email = "' + user.email +'") LIMIT 1';
+        var checkIfUserExists = 'Insert into Users (email, password) select * from (select "' +
+         user.email +'", "' +
+         user.password + '") AS temp where not exists(select id from Users where email = "' + 
+         user.email +'") LIMIT 1';
         db.query(checkIfUserExists, function(err, person) {
           callback(err, person);
         })
