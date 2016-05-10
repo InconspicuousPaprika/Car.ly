@@ -27,7 +27,7 @@ CREATE TABLE Favorites (
   car_id int NOT NULL,
   PRIMARY KEY (ID),
   FOREIGN KEY (user_id)
-      REFERENCES Users(id),
+  REFERENCES Users(id),
   FOREIGN KEY (car_id)
-      REFERENCES Cars(id)
+  REFERENCES Cars(id)
 );

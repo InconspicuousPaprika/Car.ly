@@ -23,8 +23,13 @@
 		29AF9A06BF724657BE49552B /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0ABAD11D5DC43C38936D5C0 /* libRCTActionSheet.a */; };
 		4C3562C1DB7F4BB9B095B440 /* libRCTMaterialKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB22D2CBFEEE4E8BA7FD2CFB /* libRCTMaterialKit.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+<<<<<<< 2f16922038ef9b02feb8fb45690b056816be0687
 		4C3562C1DB7F4BB9B095B440 /* libRCTMaterialKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB22D2CBFEEE4E8BA7FD2CFB /* libRCTMaterialKit.a */; };
 		29AF9A06BF724657BE49552B /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0ABAD11D5DC43C38936D5C0 /* libRCTActionSheet.a */; };
+=======
+		D8E889F0B6D44FE8B3436D9A /* libRCTMaterialKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB1334F584A046758376486B /* libRCTMaterialKit.a */; };
+		71F1FA77C8594731A1E54420 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EC18ECF27F041B587E64CD9 /* libRCTActionSheet.a */; };
+>>>>>>> salted passwords
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +152,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Carly/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Carly/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Carly/main.m; sourceTree = "<group>"; };
+<<<<<<< 2f16922038ef9b02feb8fb45690b056816be0687
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		1B10A31EC0B340DBA309AE14 /* RCTMaterialKit.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTMaterialKit.xcodeproj; path = "../node_modules/react-native-material-kit/iOS/RCTMaterialKit.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
@@ -154,6 +160,15 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		A0ABAD11D5DC43C38936D5C0 /* libRCTActionSheet.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTActionSheet.a; sourceTree = "<group>"; };
 		DB22D2CBFEEE4E8BA7FD2CFB /* libRCTMaterialKit.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTMaterialKit.a; sourceTree = "<group>"; };
+=======
+		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = ../node_modules/react-native/React/React.xcodeproj; sourceTree = "<group>"; };
+		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = ../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj; sourceTree = "<group>"; };
+		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = ../node_modules/react-native/Libraries/Text/RCTText.xcodeproj; sourceTree = "<group>"; };
+		2C611543A8274B99A8C2CCF6 /* RCTMaterialKit.xcodeproj */ = {isa = PBXFileReference; name = "RCTMaterialKit.xcodeproj"; path = "../node_modules/react-native-material-kit/iOS/RCTMaterialKit.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		FB1334F584A046758376486B /* libRCTMaterialKit.a */ = {isa = PBXFileReference; name = "libRCTMaterialKit.a"; path = "libRCTMaterialKit.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		C44B75E0948E408593E48E2B /* Slider.xcodeproj */ = {isa = PBXFileReference; name = "Slider.xcodeproj"; path = "../node_modules/react-native-multi-slider/iOS/Slider.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		2EC18ECF27F041B587E64CD9 /* libRCTActionSheet.a */ = {isa = PBXFileReference; name = "libRCTActionSheet.a"; path = "libRCTActionSheet.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+>>>>>>> salted passwords
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,8 +193,8 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				4C3562C1DB7F4BB9B095B440 /* libRCTMaterialKit.a in Frameworks */,
-				29AF9A06BF724657BE49552B /* libRCTActionSheet.a in Frameworks */,
+				D8E889F0B6D44FE8B3436D9A /* libRCTMaterialKit.a in Frameworks */,
+				71F1FA77C8594731A1E54420 /* libRCTActionSheet.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,8 +317,13 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
+<<<<<<< 2f16922038ef9b02feb8fb45690b056816be0687
 				1B10A31EC0B340DBA309AE14 /* RCTMaterialKit.xcodeproj */,
 				7CBC582AB63C4F2E984CFDAA /* Slider.xcodeproj */,
+=======
+				2C611543A8274B99A8C2CCF6 /* RCTMaterialKit.xcodeproj */,
+				C44B75E0948E408593E48E2B /* Slider.xcodeproj */,
+>>>>>>> salted passwords
 			);
 			name = Libraries;
 			sourceTree = "<group>";
