@@ -16,17 +16,18 @@
   },
   "dependencies": {
     "es6-promise": "^3.1.2",
+    "eslint-config-airbnb": "^7.0.0",
     "immutable": "^3.7.6",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.3.0",
     "react": "^0.14.7",
     "react-native": "^0.24.1",
-    "react-native-material-kit": "^0.3.1",
     "react-native-multi-slider": "^0.2.4",
     "react-native-router-flux": "^3.22.23",
     "react-redux": "^4.4.0",
     "redux": "^3.3.1",
     "redux-actions": "^0.9.1",
+    "redux-promise": "^0.5.3",
     "redux-thunk": "^2.0.1"
   },
   "devDependencies": {
@@ -38,7 +39,7 @@
     "babel-preset-react-native": "^1.4.0",
     "chai": "^3.5.0",
     "enzyme": "^2.0.0",
-    "eslint": "^2.8.0",
+    "eslint": "^2.9.0",
     "eslint-config-airbnb": "^7.0.0",
     "eslint-plugin-import": "^1.6.1",
     "eslint-plugin-jsx-a11y": "^0.6.2",
