@@ -98,7 +98,7 @@ export default class Signup extends Component {
   }
 
   handleChangePassword(event) {
-    let password = event.nativeEvent.text;
+    let password = event.nativeEvent.text.trim();
     let isPassword = true;
     this.props.dispatch(signupAction({ password: password, isPassword: isPassword }));
   }
@@ -111,8 +111,8 @@ export default class Signup extends Component {
   render() {
     return (
       <View style={styles.mainContainer}>
-        <TextInput placeholder={'email'} onChange={this.handleChangeEmail.bind(this)} style={styles.emailInput}/>
-        <TextInput placeholder={'password'} secureTextEntry={this.props.signup.isPassword} onChange={this.handleChangePassword.bind(this)} style={styles.passwordInput}/>
+        <TextInput placeholder={'email'} onChange={this.handleChangeEmail.bind(this)} autoCorrect={false} style={styles.emailInput}/>
+        <TextInput placeholder={'password'} secureTextEntry={true} autoCorrect={false} onChange={this.handleChangePassword.bind(this)} style={styles.passwordInput}/>
         <TouchableHighlight style={styles.button} onPress={this.handleSubmit.bind(this)}><Text style={styles.buttonText}>Sign Up</Text></TouchableHighlight>
       </View>
     );

@@ -5,7 +5,7 @@ USE carly;
 CREATE TABLE Users (
   id int NOT NULL AUTO_INCREMENT,
   email varchar(50) NOT NULL,
-  password varchar(20) NOT NULL,
+  password varchar(100) NOT NULL,
   PRIMARY KEY (ID)
 );
 
@@ -21,5 +21,5 @@ CREATE TABLE Favorites (
   vin varchar(50),
   PRIMARY KEY (ID),
   FOREIGN KEY (user_id)
-    REFERENCES Users(id)
+  REFERENCES Users(id)
 );
