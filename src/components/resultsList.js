@@ -6,7 +6,8 @@ import React, {
   Image,
   ListView,
   ScrollView,
-  TouchableHighlight
+  TouchableHighlight,
+  TouchableWithoutFeedback,
 } from 'react-native';
 
 export default class PhotoList extends Component {
@@ -35,18 +36,17 @@ export default class PhotoList extends Component {
         {
           this.props.photos.map((item, index) => {
             return (
-              <TouchableHighlight onPress={this.props.actions.savePhoto.bind(index)}>
+              <TouchableWithoutFeedback onPress={this.props.actions.savePhoto.bind(this, item, index)}>
                 <View>
                 <Image
                   key={`PhotoItem_${item["VEHICLETITLE LINK"][0].title}_${index}`}
                   style={styles.image}
                   source={{uri: this.convertScale(item.image[0].src)}}
                 />
-                <Text>Item</Text>
-                <Text>{item.image[0].src}</Text>
-                <Text>{item["VEHICLETITLE LINK"][0].title}</Text>
+                <Text>{item["VEHICLETITLE LINK"][0].text}</Text>
+                <Text>{item["PRIMARY PRICE"][0].text}</Text>
                 </View>
-              </TouchableHighlight>
+              </TouchableWithoutFeedback>
             );
           })
         }

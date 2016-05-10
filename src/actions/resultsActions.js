@@ -36,10 +36,13 @@ export function searchPhotoAction(keyword, page = 1) {
   };
 }
 
-export function savePhoto(index) {
+export function savePhoto(item, index) {
   // event.preventDefault();
   console.log("test message");
+  console.log('entryData', item);
   console.log('entryData', index);
+  const entry = getState().photos[index];
+  console.log(entry);
   // dispatch({
   //   type: types.SEARCH_SAVE,
   //   entry: entryData
