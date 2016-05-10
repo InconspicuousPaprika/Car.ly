@@ -10,11 +10,11 @@ const {
 import CarConditionPickerButton from './CarConditionPickerButton.js'
 import styles from '../styles/SearchGlobalStyles.js'
 
-const CarConditionPicker(props) => ({
+const CarConditionPicker = (props) => ({
 render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.label}>Propery Type</Text>
+        <Text style={styles.label}>Car Type</Text>
         <View style={styles.innerBox}>
           <CarConditionPickerButton
             text='Used'
@@ -35,7 +35,7 @@ render() {
   },
 
   handleChange(value) {
-    // this.props.onChange('propertyType', value);
+    //this.props.onChange('propertyType', value);
   }
 });
 
