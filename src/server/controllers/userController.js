@@ -19,26 +19,32 @@ module.exports = {
   verifyLogin: function(req, res, next) {
     var user = req.body;
     var password = user.password;
+    var token = jwt.encode(user, 'secret');
+
     User.login(user, function(err, foundUser) {
       if(err) {
         return res.json(err);
-      } 
-      if (foundUser.length === 0) {
-        res.sendStatus(404);
       }
-      var token = jwt.encode(user, 'secret');
-      res.json({token: token, user: foundUser});
-      // if (!err) {
-      //   if (foundUser.length === 0) {
-      //     res.sendStatus(404);
-      //   } else {
-      //     var token = jwt.encode(user, 'secret');
-      //     res.json({token: token, user: foundUser});
-      //   }
-      // } else {
-      //   res.json(err);
-      // }
+      
+      if(!foundUser) {
+        return res.status(403).send('Invalid email or password');
+      }
+
+      res.status(201).json({token: token, success: foundUser});
     });
+
+    //   res.json();
+    //   if (!err) {
+    //     if (foundUser.length === 0) {
+    //       res.sendStatus(404);
+    //     } else {
+    //       var token = jwt.encode(user, 'secret');
+    //       res.json({token: token, user: foundUser});
+    //     }
+    //   } else {
+    //     res.json(err);
+    //   }
+    // });
   }
 }
 

@@ -21,5 +21,5 @@ CREATE TABLE Favorites (
   vin varchar(50),
   PRIMARY KEY (ID),
   FOREIGN KEY (user_id)
-    REFERENCES Users(id)
+  REFERENCES Users(id)
 );
