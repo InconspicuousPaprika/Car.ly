@@ -3,6 +3,7 @@ import { Platform } from 'react-native';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducer from './reducers';
+import promiseMiddleware from 'redux-promise';
 
 const middlewares = [thunk];
 
@@ -13,7 +14,7 @@ if (__DEV__) {
 
   const devTools = require('remote-redux-devtools');
   enhancer = compose(
-    applyMiddleware(...middlewares),
+    applyMiddleware(...middlewares, promiseMiddleware),
     devTools({
       name: Platform.OS,
       hostname: 'localhost',
