@@ -15,9 +15,13 @@
     "postinstall": "npm run checkversion && rnpm link && npm run remotedev"
   },
   "dependencies": {
+    "bcrypt": "^0.8.6",
+    "bluebird": "^3.3.5",
     "eslint-config-airbnb": "^7.0.0",
     "immutable": "^3.7.6",
+    "jwt-simple": "^0.5.0",
     "lodash": "^4.3.0",
+    "mysql": "^2.10.2",
     "react": "^0.14.7",
     "react-native": "^0.24.1",
     "react-native-multi-slider": "^0.2.4",

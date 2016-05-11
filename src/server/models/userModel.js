@@ -1,50 +1,59 @@
 var db = require('../../db/index.js');
 var bcrypt = require('bcrypt');
-var salt = bcrypt.genSaltSync(10);
 
 module.exports = {
 
   post: function(user, callback) {
     var password = user.password;
-    bcrypt.genSalt(10, function(err, salt) {
-      if(err) {
-        return console.error(err);
-      }
-      bcrypt.hash(password, salt, function(err, hash) {
+    // bcrypt.genSalt(10, function(err, salt) {
+    //   if(err) {
+    //     return console.error(err);
+    //   }
+      bcrypt.hash(password, 10, function(err, hash) {
         if(err) {
           return console.error(err)
         }
         user.password = hash;
-        var checkIfUserExists = 'Insert into Users (email, password) select * from (select "' +
-         user.email +'", "' +
-         user.password + '") AS temp where not exists(select id from Users where email = "' + 
-         user.email +'") LIMIT 1';
+        var checkIfUserExists = 'Insert into Users (email, password) select * from (select "' + user.email +'", "' + user.password + '") AS temp where not exists(select id from Users where email = "' + user.email +'") LIMIT 1';
         db.query(checkIfUserExists, function(err, person) {
           callback(err, person);
         })
       });
-    });
-    
-    // db.query(checkIfUserExists, function(err, person) {
-    //  callback(err, person);
-    // });
-    // var queryUser = 'intonsert into Users (email, password) values ("'+ user.email +'", "'+ user.password +'")';
-    // db.query(queryUser, function(err, person) {
-    //   if (err) {
-    //     return callback(err)
-    //   }
-    //   callback(null, person);
-    // });
   },
-  get: function (user,callback) {
-    var query = 'Select email from Users where email = "'+ user.email +'" and password = "'+user.password+'"';
-    db.query(query, function(err, results) {
-      if (err) {
-        // do a bunch of other stuff if theres an error
-        // send an email to devops using nodemailer...
-        return callback(err);
+  login: function (user,callback) {
+
+    var queryUser = 'Select email, password from Users where email= "' + user.email + '"';
+  
+    db.query(queryUser, function(err, userData) {
+      console.log('USER', userData);
+      if(userData.length === 0) {
+        return callback(null, false);
       }
-      callback(null, results);
+        bcrypt.compare(user.password, userData[0].password, function(err, isMatch) {
+          if (err) {
+            callback(err);
+          } else if (isMatch) {
+              console.log('MATCHED', isMatch);
+              callback(null, isMatch);
+          } else {
+              console.log('password doesnt match');
+              callback(null, isMatch);
+            }
+        });
+    });
+  },
+  getID: function (user, callback) {
+    var Queryid = 'Select id from Users where email = "' + user.email + '"';
+    db.query(Queryid, function(err, id) {
+      console.log('USERS ID', id);
+      if (err) {
+        callback(err);
+      } else {
+        console.log('USERS packet', id);
+        console.log('USERS ID string', JSON.stringify(id));
+        console.log('parsed USERS ID string', JSON.parse(JSON.stringify(id))[0]);
+        callback(null, JSON.parse(JSON.stringify(id))[0]);
+      }
     });
   }
 }
