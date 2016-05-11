@@ -36,7 +36,7 @@ const CarMakePickerContainer = (props) => ({
 
 const styles = StyleSheet.create({
   divider: {
-    height: 20,
+    height: 15,
     width: 1,
     backgroundColor: '#ccc'
   },
