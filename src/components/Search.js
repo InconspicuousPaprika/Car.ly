@@ -11,7 +11,8 @@ import React, {
   Slider,
 } from 'react-native';
 import globalVariables from '../styles/globalVariables.js'
-
+import PricePickerContainer from './PricePickerContainer.js'
+import YearPickerContainer from './YearPickerContainer.js'
 import CarConditionPicker from './CarConditionPicker.js';
 import CarMakePickerContainer from './CarMakePickerContainer.js';
 import setQueryAction from '../actions/setQueryAction.js';
@@ -38,12 +39,7 @@ export default class Counter extends Component {
     super(props);
   }
 
-  sliderChange(values) {
-    console.log(this.props.CAR_MAKES_AND_MODELS)
-     let start = values[0];
-     let end = values[1];
-    this.props.dispatch(setQueryAction({ startYear:start, endYear:end }));
-  }
+
 
   goToResults() {
     console.log('going');
@@ -60,6 +56,8 @@ export default class Counter extends Component {
     <View style={styles.page}>
       <CarConditionPicker />
       <CarMakePickerContainer />
+      <PricePickerContainer />
+      <YearPickerContainer />
 
     <TouchableHighlight
       underlayColor="#88D4F5"
@@ -67,24 +65,7 @@ export default class Counter extends Component {
     >
     <Text>Search </Text>
     </TouchableHighlight>
-    <Text>{`$${query.minPrice}-$${query.maxPrice}`}</Text>
-    <MultiSlider
-      values={[query.minPrice, query.maxPrice]}
-      min={1000}
-      max={150000}
-      step={1000}
-      onValuesChangeFinish={(value) => dispatch(setQueryAction({ minPrice:value[0], maxPrice:value[1] }))}
-      // onValuesChangeFinish={this.sliderChange.bind(this)}
-    />
 
-    <Text>{`${query.startYear}-${query.endYear}`}</Text>
-    <MultiSlider
-      values={[query.startYear, query.endYear]}
-      min={1990}
-      max={2017}
-      step={1}
-      onValuesChangeFinish={this.sliderChange.bind(this)}
-    />
     </View>
    </ScrollView>
 )

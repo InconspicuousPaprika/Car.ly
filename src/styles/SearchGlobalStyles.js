@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
 
   innerBox: {
     flex: 1,
-    padding: 20,
+    paddingTop: 20,
+    paddingBottom:0,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
