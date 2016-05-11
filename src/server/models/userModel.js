@@ -21,19 +21,24 @@ module.exports = {
       });
   },
   login: function (user,callback) {
-    var Querypassword = 'Select password from Users where email = "' + user.email + '"';
-    db.query(Querypassword, function(err, password) {
-      console.log('USERS HASHED PASSWORD', password);
-      bcrypt.compare(user.password, password[0].password, function(err, isMatch) {
-        if (err) {
-          callback(err);
-        } else if (isMatch) {
-            console.log('MATCHED', isMatch);
-            callback(null, isMatch);
-        } else {
-            console.log('password doesnt match');
-            callback(null, isMatch);
-          }
+
+    var queryUser = 'Select email, password from Users where email= "' + user.email + '"';
+  
+    db.query(queryUser, function(err, userData) {
+      console.log('USER', userData);
+      if(userData.length === 0) {
+        return callback(null, false);
+      }
+        bcrypt.compare(user.password, userData[0].password, function(err, isMatch) {
+          if (err) {
+            callback(err);
+          } else if (isMatch) {
+              console.log('MATCHED', isMatch);
+              callback(null, isMatch);
+          } else {
+              console.log('password doesnt match');
+              callback(null, isMatch);
+            }
         });
     });
   }
