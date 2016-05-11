@@ -8,17 +8,16 @@ const {
 } = React;
 
 import globalStyles from '../styles/SearchGlobalStyles.js';
-import CarMakePicker from './CarMakePicker.js';
-import CarModelPicker from './CarModelPicker.js';
+import PricePicker from './PricePicker.js';
 
-const CarMakePickerContainer = (props) => ({
+const PricePickerContainer = (props) => ({
   render(){
     return (
       <View style={globalStyles.container}>
-        <Text style={globalStyles.label}>Chose your car</Text>
+        <Text style={globalStyles.label}>Price Range</Text>
         <View style={globalStyles.innerBox}>
-          <CarMakePicker label='Make' />
-          <CarModelPicker label='Model' />
+          <PricePicker label='Price Range' />
+
         </View>
       </View>
     );
@@ -42,6 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
-
-
-export default CarMakePickerContainer;
+export default PricePickerContainer;
