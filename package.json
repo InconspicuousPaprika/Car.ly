@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "bcrypt": "^0.8.6",
+    "bluebird": "^3.3.5",
     "eslint-config-airbnb": "^7.0.0",
     "immutable": "^3.7.6",
     "jwt-simple": "^0.5.0",
