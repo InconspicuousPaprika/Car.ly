@@ -45,7 +45,24 @@ module.exports = {
     //     res.json(err);
     //   }
     // });
-  }
+  },
+
+  getUserID: function(req, res, next) {
+    var user = req.body;
+    var email = user.email;
+
+    User.getID(user, function(err, foundUser) {
+      if(err) {
+        return res.json(err);
+      }
+      
+      if(!foundUser) {
+        return res.status(403).send('Invalid email or password');
+      }
+      console.log("foundUser", foundUser.id);
+      res.status(201).json({id: foundUser.id});
+    });
+  },
 }
 
 

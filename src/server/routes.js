@@ -12,4 +12,7 @@ carRouter.route('/users')
 carRouter.route('/users/login')
   .post(userController.verifyLogin)
 
+carRouter.route('/users/getID')
+  .post(userController.getUserID)
+
 module.exports = carRouter;

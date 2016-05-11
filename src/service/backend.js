@@ -1,4 +1,4 @@
-import config from '../../config.js';
+// import config from '../../config.js';
 import Search from '../components/Search.js';
 import getResponse from '../utils/getResponse';
 
@@ -41,4 +41,22 @@ module.exports = {
       console.log('Error', err);
     })
   }
+
+  // obtainUserData(email) {
+  //   return fetch('http://localhost:3000/api/carly/users/getID', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       email: email
+  //     })
+  //   }).then ((response) => {
+  //     console.log('THE FUCKING RESPONSE', response.json());
+  //     return response.json();
+  //   }).catch((err) => {
+  //     console.log('Error', err);
+  //   })
+  // }
 };

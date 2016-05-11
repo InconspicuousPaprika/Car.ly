@@ -36,7 +36,7 @@ export default class PhotoList extends Component {
         {
           this.props.photos.map((item, index) => {
             return (
-              <TouchableWithoutFeedback onPress={this.props.actions.savePhoto.bind(this, item, index)}>
+              <TouchableWithoutFeedback onPress={this.props.actions.saveFavorite.bind(this, item, index)}>
                 <View>
                 <Image
                   key={`PhotoItem_${item["VEHICLETITLE LINK"][0].title}_${index}`}
