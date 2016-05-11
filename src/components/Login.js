@@ -1,5 +1,6 @@
 import loginActions from '../actions/loginActions';
 import { connect } from 'react-redux';
+import loginPost from '../actions/sendPostDataLoginAction';
 import React, {
   Component,
   PropTypes,
@@ -94,21 +95,26 @@ export default class Login extends Component {
     this.props.dispatch(loginActions({ password: password, isPassword: isPassword }));
   }
 
-  handleSubmit(event) {}
+  handleSubmit() {
+    this.props.dispatch(loginPost({email: this.props.login.email, password: this.props.login.password}));
+  }
 
   render() {
     return (
       <View style={styles.mainContainer}>
         <TextInput placeholder={'email'}
+          autoCapitalize={'none'}
           onChange={this.handleChangeEmail.bind(this)}
+          autoCorrect={false}
           style={styles.emailInput}
         />
         <TextInput placeholder={'password'}
-          secureTextEntry={this.props.login.isPassword}
+          secureTextEntry={true}
+          autoCorrect={false}
           onChange={this.handleChangePassword.bind(this)}
           style={styles.passwordInput}
         />
-        <TouchableHighlight style={styles.button}>
+        <TouchableHighlight style={styles.button} onPress={this.handleSubmit.bind(this)}>
         <Text style={styles.buttonText}>Sign In</Text></TouchableHighlight>
         <Text style={styles.orText}>Or</Text>
         <Text style={styles.orText}>
