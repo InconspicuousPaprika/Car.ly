@@ -36,6 +36,20 @@ module.exports = {
           }
         });
     });
+  },
+  getID: function (user, callback) {
+    var Queryid = 'Select id from Users where email = "' + user.email + '"';
+    db.query(Queryid, function(err, id) {
+      console.log('USERS ID', id);
+      if (err) {
+        callback(err);
+      } else {
+        console.log('USERS packet', id);
+        console.log('USERS ID string', JSON.stringify(id));
+        console.log('parsed USERS ID string', JSON.parse(JSON.stringify(id))[0]);
+        callback(null, JSON.parse(JSON.stringify(id))[0]);
+      }
+    });
   }
 }
 
