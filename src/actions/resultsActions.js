@@ -5,17 +5,22 @@ import photoSearch from '../api/photoSearch';
 import Promise from 'bluebird';
 
   function submitCarData(carData) {
-    return fetch('http://localhost:3000/api/carly/users', {
+    console.log('in submitCarData', carData);
+    return fetch('http://localhost:3000/api/carly/favorites', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        email: emailAndPassword.email,
-        password: emailAndPassword.password,
+        user_id: carData.user_id,
+        image: carData.image,
+        purchase_url: carData.purchase_url,
+        make: carData.make,
+        model: carData.model,
       })
-    }).then(getResponse)
+    })
+      // .then(getResponse)
   }
 
 
@@ -23,8 +28,15 @@ function sendtoDB(response) {
  return Promise.resolve(response.json())
   .then((res) => {
     console.log("insendtoDB", res['id']);
-    return res['id'];
-
+    // const entry = getState().photos.photos[index];
+    const carFields = {
+      user_id: res['id'],
+      image: 'entry.image[0].src',
+      purchase_url:  'www.cars.com',
+      make:  'Ford',
+      model:  'Explorer',
+    }; 
+    submitCarData(carFields);
   })
 }
 
