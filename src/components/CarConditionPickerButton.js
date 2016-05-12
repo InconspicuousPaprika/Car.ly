@@ -13,8 +13,6 @@ const CarConditionPickerButton = (props) => ({
 
   render() {
     // const isActive = this.props.value === this.props.current;
-
-
     return (
       <TouchableOpacity onPress={this.handlePress}>
         <View style={styles.tapAreaView}>
