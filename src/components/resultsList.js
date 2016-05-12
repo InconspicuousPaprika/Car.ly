@@ -9,6 +9,17 @@ import React, {
   TouchableHighlight,
   TouchableWithoutFeedback,
 } from 'react-native';
+import Immutable from 'immutable';
+import { connect } from 'react-redux';
+import _ from 'underscore';
+
+@connect(state => ({
+  query: state.search,
+  results: state.search.searchResults,
+  login: state.login,
+  signup: state.signup,
+  CAR_MAKES_AND_MODELS: state.search.allCars
+}))
 
 export default class PhotoList extends Component {
 
@@ -17,50 +28,30 @@ export default class PhotoList extends Component {
 
   }
 
-  convertScale(url) {
-    // let newurl = url.replace(new RegExp('scaler\/\d\d\d\/\d\d\d'), "scaler/100/75"); ReGex is not happening
-    let newurl = 'http://images.autotrader.com/scaler/400/300/'+url.slice(42);
-    // console.log(newurl);
-    console.log('begin printing this.props');
-    console.log(this.props);
-    console.log('done printing this.props');
-    return newurl;
-
-  }
-
   render() {
+    console.log("results");
+    console.log(this.props.results);
     return (
       // <View>
       // <Text>words</Text>
       <ScrollView>
         {
-          this.props.photos.map((item, index) => {
+          _.map(this.props.results, function(item) {
             return (
-              <TouchableWithoutFeedback onPress={this.props.actions.saveFavorite.bind(this, item, index)}>
+              <TouchableWithoutFeedback>
                 <View>
                 <Image
-                  key={`PhotoItem_${item["VEHICLETITLE LINK"][0].title}_${index}`}
+                  key={`PhotoItem_${item["VEHICLETITLE LINK"]["0"].title}`}
                   style={styles.image}
-                  source={{uri: this.convertScale(item.image[0].src)}}
+                  source={{uri: item.image["0"].src}}
                 />
-                <Text>{item["VEHICLETITLE LINK"][0].text}</Text>
-                <Text>{item["PRIMARY PRICE"][0].text}</Text>
+                <Text>{item["VEHICLETITLE LINK"]["0"].text}</Text>
+                <Text>{item["PRIMARY PRICE"]["0"].text}</Text>
                 </View>
               </TouchableWithoutFeedback>
             );
           })
         }
-        {
-         (() => {
-           if (this.props.status === 'DONE') {
-             return (
-               <TouchableHighlight style={styles.button} onPress={this.props.actions.searchNextPageAction}>
-                <Text style={styles.buttonText}>Load More</Text>
-              </TouchableHighlight>
-             );
-           }
-         })()
-       }
       </ScrollView>
       // </View>
     )
