@@ -27,10 +27,10 @@ module.exports = {
       }
       
       if(!foundUser) {
-        return res.status(403).send('Invalid email or password');
+        return res.status(403).statusText('verifyLogin').send('Invalid email or password');
       }
 
-      res.status(201).json({token: token, success: foundUser});
+      res.status(201).statusText('verifyLogin').json({token: token, success: foundUser});
     });
 
     //   res.json();

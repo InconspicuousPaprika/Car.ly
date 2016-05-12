@@ -1,6 +1,34 @@
+import { createAction } from 'redux-actions';
 import * as types from '../constants/searchActionTypes';
 import photoSearch from '../api/photoSearch';
 // import backend from '../service/backend.js';
+import Promise from 'bluebird';
+
+  function submitCarData(carData) {
+    return fetch('http://localhost:3000/api/carly/users', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: emailAndPassword.email,
+        password: emailAndPassword.password,
+      })
+    }).then(getResponse)
+  }
+
+
+function sendtoDB(response) {
+ return Promise.resolve(response.json())
+  .then((res) => {
+    console.log("insendtoDB", res['id']);
+    return res['id'];
+
+  })
+}
+
+export default createAction('SIGN_IN', (signInFields) => signInFields);
 
 function searchWithPhotoAPI(keyword, page, dispatch) {
   if (page >= 2) {
@@ -33,13 +61,7 @@ function obtainUserData(email) {
       body: JSON.stringify({
         email: email
       })
-    }).then ((response) => {
-      console.log('response', response);
-      console.log('response.json', response.json());
-      return response.json();
-    }).catch((err) => {
-      console.log('Error', err);
-    })
+    }).then(sendtoDB)
   }
 
 export function searchNextPageAction() {
@@ -65,8 +87,11 @@ export function saveFavorite(item, index) {
     const email = getState().signup.email || getState().login.email || "Test2";
     console.log(entry);
     console.log(email);
-    console.log(obtainUserData(email));
-    // dispatch({
+    obtainUserData(email);
+    // console.log('id in saveFavorite', id);
+  //   Promise.resolve(response.json())
+  // .then((res) => console.log(res, (typeof res)))
+        // dispatch({
     //   type: types.SEARCH_SAVE,
     //   entry: entryData
     // });
