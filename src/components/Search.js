@@ -15,6 +15,7 @@ import PricePickerContainer from './PricePickerContainer.js'
 import YearPickerContainer from './YearPickerContainer.js'
 import CarConditionPicker from './CarConditionPicker.js';
 import CarMakePickerContainer from './CarMakePickerContainer.js';
+import ZipCodeContainer from './ZipCodeContainer.js';
 import setQueryAction from '../actions/setQueryAction.js';
 import searchActions from '../actions/searchActions.js';
 import MultiSlider from 'react-native-multi-slider';
@@ -58,6 +59,7 @@ export default class Counter extends Component {
       <CarMakePickerContainer />
       <PricePickerContainer />
       <YearPickerContainer />
+      <ZipCodeContainer />
 
     <TouchableHighlight
       underlayColor="#88D4F5"
