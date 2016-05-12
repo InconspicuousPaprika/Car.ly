@@ -19,17 +19,12 @@ import globalStyles from '../styles/SearchGlobalStyles.js'
 }))
 
 export default class ZipCodeInput extends Component {
-  getInitialState() {
-    return {
-      value: ''
-    };
-  },
-  getDefaultProps() {
-    return {
-      onAdd() {}
-    };
-  },
+  static propTypes = {
+    dispatch: React.PropTypes.func.isRequired,
+    query: React.PropTypes.object.isRequired
+  };
   render() {
+    const { query, dispatch, CAR_MAKES_AND_MODELS } = this.props;
     return (
       <View>
         <TextInput
@@ -38,21 +33,23 @@ export default class ZipCodeInput extends Component {
           placeholder={'zip code'}
           returnKeyType={'done'}
           clearButtonMode={'while-editing'}
-          value={this.state.value}
-          onChangeText={this.handleChange}
-          onEndEditing={this.handleTextDone}
+          value={query.zipcode}
+          onChangeText={(zipcode) => dispatch(setQueryAction({ zipcode }))}
+
         />
       </View>
     );
-  },
-
-  handleChange(value) {
-    this.setState({value});
-  },
-
-  handleTextDone(event) {
-    console.log('handleTextDone');
-    if (this.state.value) this.props.onAdd(this.state.value);
-    this.setState({value: ''});
   }
 };
+
+const styles = StyleSheet.create({
+  input: {
+    height: 40,
+    width: 200,
+    borderColor: '#E4E4E4',
+    borderWidth: 1,
+    padding: 5,
+    margin: 5,
+    color: globalVariables.green
+  },
+});
