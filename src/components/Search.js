@@ -9,6 +9,7 @@ import React, {
   TouchableHighlight,
   PickerIOS,
   Slider,
+  StatusBar
 } from 'react-native';
 import globalVariables from '../styles/globalVariables.js'
 import PricePickerContainer from './PricePickerContainer.js'
@@ -55,6 +56,7 @@ export default class Counter extends Component {
     return (
   <ScrollView style={styles.container}>
     <View style={styles.page}>
+      <StatusBar hidden={false} backgroundColor='blue'/> 
       <CarConditionPicker />
       <CarMakePickerContainer />
       <PricePickerContainer />
@@ -87,7 +89,7 @@ const styles = StyleSheet.create({
 
   searchButton: {
     padding: 14,
-    backgroundColor: globalVariables.green,
+    backgroundColor: globalVariables.green
   },
 
   searchButtonText: {

@@ -10,7 +10,7 @@ import React, {
   TextInput,
   TouchableHighlight,
   ActivityIndicatorIOS,
-  Image
+  Image,
 } from 'react-native';
 
 const styles = StyleSheet.create({
