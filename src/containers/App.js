@@ -52,7 +52,6 @@ const App = () => (
       icon={favoritesTab}
       selectedIcon={activeFav}>
     </TabBarIOS.Item>
-
   </TabBarIOS >
   </View>
  </View>
