@@ -2,22 +2,18 @@ var db = require('../../db/index.js');
 
 module.exports = {
 
-  post: function(user, callback) {
-    var password = user.password;
-    // bcrypt.genSalt(10, function(err, salt) {
-    //   if(err) {
-    //     return console.error(err);
-    //   }
-      bcrypt.hash(password, 10, function(err, hash) {
-        if(err) {
-          return console.error(err)
-        }
-        user.password = hash;
-        var checkIfUserExists = 'Insert into Users (email, password) select * from (select "' + user.email +'", "' + user.password + '") AS temp where not exists(select id from Users where email = "' + user.email +'") LIMIT 1';
-        db.query(checkIfUserExists, function(err, person) {
-          callback(err, person);
-        })
-      });
+  post: function(car, callback) {
+    var checkIfCarExists = 'Insert into Favorites (user_email, image, make, model, year, price) select * from (select "' + car.user_email + '", "' + car.image + '", "' + car.make + '", "' + car.model + '", "' + car.year + '", "' + car.price + '")';
+    db.query(checkIfCarExists, function(err, person) {
+      callback(err, person);
+    })
+  },
+
+  delete: function(car, callback) {
+    var checkIfUserExists = 'Insert into Favorites (user_email, image, make, model, year, price) select * from (select "' + car.user_email + '", "' + car.image + '", "' + car.make + '", "' + car.model + '", "' + car.year + '", "' + car.price + '")';
+    db.query(checkIfUserExists, function(err, person) {
+      callback(err, person);
+    })
   },
   login: function (user,callback) {
 

@@ -41,12 +41,21 @@ export default class ResultsList extends Component {
   }
 
   saveFavorite(item) {
+    const favorite = {
+      email: this.props.login.email,
+      image: item.image["0"].src,
+      make: this.props.query.carMake,
+      model: this.props.query.model,
+      year: this.props.query.endYear,
+      price: item["PRIMARY PRICE"]["0"].text
+    }
     console.log(this);
     console.log(this.props.query.carMake);
     console.log(this.props.query.endYear);
     console.log(this.props.query.model);
     console.log(this.props.login.email);
     console.log(item);
+    console.log(favorite);
   }
 
   render() {

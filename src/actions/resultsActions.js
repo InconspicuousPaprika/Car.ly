@@ -13,11 +13,12 @@ import Promise from 'bluebird';
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        user_id: carData.user_id,
+        user_email: carData.user_email,
         image: carData.image,
-        purchase_url: carData.purchase_url,
         make: carData.make,
         model: carData.model,
+        year: carData.model,
+        price: carData.model
       })
     })
       // .then(getResponse)

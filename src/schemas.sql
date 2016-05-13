@@ -6,12 +6,13 @@ CREATE TABLE Users (
   id int NOT NULL AUTO_INCREMENT,
   email varchar(50) NOT NULL,
   password varchar(100) NOT NULL,
+  UNIQUE (email),
   PRIMARY KEY (ID),
 );
 
 CREATE TABLE Favorites (
   id int NOT NULL AUTO_INCREMENT,
-  user_email int NOT NULL,
+  users_email int NOT NULL,
   image varchar(255) NOT NULL,
   purchase_url varchar(255),
   make varchar(30) NOT NULL,
@@ -20,6 +21,6 @@ CREATE TABLE Favorites (
   price varchar(10),
   vin varchar(50),
   PRIMARY KEY (ID),
-  FOREIGN KEY (user_email)
-  REFERENCES Users(email)
+  FOREIGN KEY (users_email)
+  REFERENCES Users (email)
 );

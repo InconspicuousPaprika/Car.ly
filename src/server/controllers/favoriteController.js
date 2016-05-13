@@ -12,6 +12,16 @@ module.exports = {
     });
   },
 
+  deleteOne: function(req, res) {
+    var car = req.body;
+    Favorite.remove(car, function(err, favorite) {
+      if (favorite.affectedRows === 0) {
+        return res.status(409).send('That favorite does not exist');
+      } 
+      res.status(201).send('Removed from favorites'); 
+    });
+  },
+
   verifyLogin: function(req, res, next) {
     var user = req.body;
     var password = user.password;
