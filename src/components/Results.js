@@ -7,12 +7,16 @@ import { connect } from 'react-redux';
 import SearchInput from '../components/resultsInput';
 import PhotoList from '../components/resultsList';
 import SwipeCards from 'react-native-swipe-cards';
+import ResultsList from '../components/resultsList';
+
 
 let Card = React.createClass({
   render() {
     return (
       <View style={[styles.card, {backgroundColor: this.props.backgroundColor}]}>
         <Text>{this.props.text}</Text>
+      <View style={{flex: 1, backgroundColor: '#f2f2f2'}}>
+        <ResultsList actions={actions} photos={this.props.photos} status={this.props.status}/>        
       </View>
     )
   }
