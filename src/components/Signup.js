@@ -1,5 +1,6 @@
-import signupSubmitAction from '../actions/signupSubmitAction.js';
+//import signupSubmitAction from '../actions/signupSubmitAction.js';
 import signupAction from '../actions/signupActions.js';
+import { validateSignup } from '../actions/signupSubmitAction';
 import { connect } from 'react-redux';
 import renderScene from '../index.js';
 import App from '../containers/App.js';
@@ -112,9 +113,8 @@ export default class Signup extends Component {
   }
 
   handleSubmit() {
-    this.props.signup.signedUp = true;
-    this.props.dispatch(signupSubmitAction({email: this.props.signup.email, password: this.props.signup.password, signedUp: this.props.signup.signedUp}));
-    this._navigate('Login');
+    this.props.dispatch(validateSignup({email: this.props.signup.email, password: this.props.signup.password}));
+    //this._navigate('Login');
   }
 
   render() {

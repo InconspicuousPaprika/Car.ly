@@ -16,7 +16,7 @@ export default handleActions ({
 
   SEND_POST_LOGIN: (state, payload) => ({
     ...state,
-    ...payload.payload
+    ...payload.loginFields
   }),
 
   VALID_USER: (state, payload) => ({
@@ -26,7 +26,7 @@ export default handleActions ({
 
   INVALID_USER: (state, payload) => ({
     ...state,
-    ...payload.payload
+    ...payload.validLogin
   }),
 }, initialState)
 

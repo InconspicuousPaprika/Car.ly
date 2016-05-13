@@ -22,8 +22,8 @@ import activeSearch from '../assets/images/TabBar-House-Icon-Active@3x.png'
 
 const scenes = Actions.create(
   <Scene key="root" >
-    <Scene type="replace" key="Login" initial={true} component={Login} />
-    <Scene type="replace" key="SignUp" direction="horizontal" component={Signup} />
+    <Scene type="replace" key="Signup" initial={true} component={Signup} />
+    <Scene type="replace" key="Login" direction="horizontal" component={Login} />
     <Scene type="replace" key="Favorites" component={Search}/>
     <Scene type="replace" key="Search" component={Search} />
   </Scene>

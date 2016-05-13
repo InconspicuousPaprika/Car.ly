@@ -95,6 +95,7 @@ export default class Login extends Component {
     this.props.dispatch(loginActions({ password: password }));
   }
 
+ 
   handleSubmit() {
     this.props.dispatch(validateLogin({email: this.props.login.email, password: this.props.login.password}));
   }
