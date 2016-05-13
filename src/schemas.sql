@@ -11,15 +11,15 @@ CREATE TABLE Users (
 
 CREATE TABLE Favorites (
   id int NOT NULL AUTO_INCREMENT,
-  user_id int NOT NULL,
+  user_email int NOT NULL,
   image varchar(255) NOT NULL,
-  purchase_url varchar(255) NOT NULL,
+  purchase_url varchar(255),
   make varchar(30) NOT NULL,
   model varchar(30) NOT NULL,
   year int,
   price varchar(10),
   vin varchar(50),
   PRIMARY KEY (ID),
-  FOREIGN KEY (user_id)
-  REFERENCES Users(id)
+  FOREIGN KEY (user_email)
+  REFERENCES Users(email)
 );

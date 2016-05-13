@@ -36,29 +36,27 @@ export default class ResultsList extends Component {
   // }
 
   convertScale(url) {
-    // let newurl = url.replace(new RegExp('scaler\/\d\d\d\/\d\d\d'), "scaler/100/75"); ReGex is not happening
     let newurl = 'http://images.autotrader.com/scaler/400/300/'+url.slice(42);
-    console.log(newurl);
-    // console.log('begin printing this.props');
-    // console.log(this.props);
-    // console.log('done printing this.props');
     return newurl;
+  }
+
+  saveFavorite(item) {
+    console.log(this);
+    console.log(this.props.query.carMake);
+    console.log(this.props.query.endYear);
+    console.log(this.props.query.model);
+    console.log(this.props.login.email);
+    console.log(item);
   }
 
   render() {
     const { query, convertScale, results, login, signup, dispatch, CAR_MAKES_AND_MODELS } = this.props;
-    console.log("results");
-    console.log(this.props.results);
-    console.log("this.props");
-    console.log(this.props);
     return (
-      // <View>
-      // <Text>words</Text>
       <ScrollView style={{flex: 1, backgroundColor: '#f2f2f2'}}>
         {
           _.map(this.props.results, function(item) {
             return (
-              <TouchableWithoutFeedback>
+              <TouchableWithoutFeedback onPress={this.saveFavorite.bind(this, item)}>
                 <View>
                 <Image
                   key={`PhotoItem_${item["VEHICLETITLE LINK"]["0"].title}`}
