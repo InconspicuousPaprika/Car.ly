@@ -2,12 +2,9 @@
 import signupAction from '../actions/signupActions.js';
 import { validateSignup } from '../actions/signupSubmitAction';
 import { connect } from 'react-redux';
-<<<<<<< c9a36a73bf2fa31766c208329191e1ed2d7c2399
 import renderScene from '../index.js';
 import App from '../containers/App.js';
-=======
 import { Scene, Router, Actions } from 'react-native-router-flux'
->>>>>>> testing actions
 
 import React, {
   Component,
