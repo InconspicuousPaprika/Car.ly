@@ -29,10 +29,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   title: {
-    marginBottom: 20,
+    marginBottom: 100,
     fontSize: 25,
     textAlign: 'center',
-    color: '#fff'
+    color: '#fff',
+    fontFamily: ''
   },
   emailInput: {
     height: 50,
@@ -40,12 +41,15 @@ const styles = StyleSheet.create({
     marginRight: 5,
     fontSize: 23,
     borderWidth: 1,
-    borderColor: '#48BBEC',
-    backgroundColor: '#48BBEC',
+    borderColor: '#2c3e50',
+    backgroundColor: '#fff',
     borderRadius: 8,
-    color: 'white'
+    color: '#e74c3c'
   },
-
+  image: {
+    alignSelf: 'center',
+    marginBottom: 40
+  },
   passwordInput: {
     height: 50,
     padding: 4,
@@ -53,10 +57,14 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 23,
     borderWidth: 1,
-    borderColor: '#48BBEC',
-    backgroundColor: '#48BBEC',
+    borderColor: '#2c3e50',
+    backgroundColor: '#fff',
     borderRadius: 8,
-    color: 'white'
+    color: '#e74c3c'
+  },
+
+  placeholder: {
+    color: '#e74c3c'
   },
 
   buttonText: {
@@ -68,7 +76,7 @@ const styles = StyleSheet.create({
   button: {
     height: 50,
     flexDirection: 'row',
-    backgroundColor: 'green',
+    backgroundColor: '#2c3e50',
     borderWidth: 1,
     borderRadius: 8,
     marginBottom: 10,
@@ -122,6 +130,10 @@ export default class Signup extends Component {
   render() {
     return (
       <View style={styles.mainContainer}>
+        <Image 
+          style={styles.image}
+          source={require('../assets/images/carly_logo.png')}
+        />
         <TextInput placeholder={'email'} onChange={this.handleChangeEmail.bind(this)} autoCorrect={false} style={styles.emailInput}/>
         <TextInput placeholder={'password'} secureTextEntry={true} autoCorrect={false} onChange={this.handleChangePassword.bind(this)} style={styles.passwordInput}/>
         <TouchableHighlight style={styles.button} onPress={this.handleSubmit.bind(this)}><Text style={styles.buttonText}>Sign Up</Text></TouchableHighlight>
