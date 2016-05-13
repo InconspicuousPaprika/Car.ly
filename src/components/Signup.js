@@ -1,6 +1,9 @@
-import signupSubmitAction from '../actions/signupSubmitAction.js';
+//import signupSubmitAction from '../actions/signupSubmitAction.js';
 import signupAction from '../actions/signupActions.js';
+import { validateSignup } from '../actions/signupSubmitAction';
 import { connect } from 'react-redux';
+import renderScene from '../index.js';
+import App from '../containers/App.js';
 
 import React, {
   Component,
@@ -11,7 +14,8 @@ import React, {
   TextInput,
   TouchableHighlight,
   ActivityIndicatorIOS,
-  Image
+  Image,
+  StatusBar
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -92,6 +96,12 @@ export default class Signup extends Component {
     signup: PropTypes.object.isRequired
   }
 
+  _navigate(name) {
+    this.props.navigator.push({
+      name: name
+    });
+  }
+
   handleChangeEmail(event) {
     let email = event.nativeEvent.text;
     this.props.dispatch(signupAction({ email: email }));
@@ -99,13 +109,12 @@ export default class Signup extends Component {
 
   handleChangePassword(event) {
     let password = event.nativeEvent.text.trim();
-    let isPassword = true;
-    this.props.dispatch(signupAction({ password: password, isPassword: isPassword }));
+    this.props.dispatch(signupAction({ password: password }));
   }
 
   handleSubmit() {
-    let isSignedUp = true;
-    this.props.dispatch(signupSubmitAction({email: this.props.signup.email, password: this.props.signup.password, signedUp: isSignedUp}));
+    this.props.dispatch(validateSignup({email: this.props.signup.email, password: this.props.signup.password}));
+    //this._navigate('Login');
   }
 
   render() {

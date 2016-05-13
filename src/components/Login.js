@@ -1,6 +1,7 @@
 import loginActions from '../actions/loginActions';
 import { connect } from 'react-redux';
-import loginPost from '../actions/sendPostDataLoginAction';
+//import loginPost from '../actions/sendPostDataLoginAction';
+import { validateLogin } from '../actions/sendPostDataLoginAction';
 import React, {
   Component,
   PropTypes,
@@ -10,7 +11,7 @@ import React, {
   TextInput,
   TouchableHighlight,
   ActivityIndicatorIOS,
-  Image
+  Image,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -91,12 +92,12 @@ export default class Login extends Component {
 
   handleChangePassword(event) {
     let password = event.nativeEvent.text;
-    let isPassword = true;
-    this.props.dispatch(loginActions({ password: password, isPassword: isPassword }));
+    this.props.dispatch(loginActions({ password: password }));
   }
 
+ 
   handleSubmit() {
-    this.props.dispatch(loginPost({email: this.props.login.email, password: this.props.login.password}));
+    this.props.dispatch(validateLogin({email: this.props.login.email, password: this.props.login.password}));
   }
 
   render() {
