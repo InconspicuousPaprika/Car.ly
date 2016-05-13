@@ -4,8 +4,33 @@ import photoSearch from '../api/photoSearch';
 // import backend from '../service/backend.js';
 import Promise from 'bluebird';
 
+
+export default function sendToDB(response) {
+  console.log("in send to db");
+ return Promise.resolve(response.json())
+  .then((res) => res);
+}
+
+  // sendtoDB(response, item) {
+  //   console.log("in send to db");
+  //  return Promise.resolve(response.json())
+  //   .then((res) => {
+  //     console.log("in send to DB", "id", res['id'], "item", item);
+  //     // const entry = getState().photos.photos[index];
+  //     const carFields = {
+  //       user_id: res['id'],
+  //       image: item.image["0"].src,
+  //       make:  this.props.query.carMake,
+  //       model:  this.props.query.model,
+  //       year: this.props.query.endYear,
+  //       price: item["price"]["0"].text
+  //     }; 
+  //     this.submitCarData(carFields);
+  //   })
+  // }
+
   function submitCarData(carData) {
-    console.log('in submitCarData', carData);
+    console.log('in submitCarData here', carData);
     return fetch('http://localhost:3000/api/carly/favorites', {
       method: 'POST',
       headers: {

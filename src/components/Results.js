@@ -2,7 +2,7 @@
 
 import React, { Component, StyleSheet, Text, View, Image } from 'react-native';
 import {bindActionCreators} from 'redux';
-import * as searchActions from '../actions/resultsActions';
+import * as Actions from '../actions/resultsActions';
 import { connect } from 'react-redux';
 import SearchInput from '../components/resultsInput';
 import PhotoList from '../components/resultsList';
@@ -10,7 +10,19 @@ import SwipeCards from 'react-native-swipe-cards';
 import ResultsList from '../components/resultsList';
 
 
+
 let Card = React.createClass({
+
+@connect(state => ({
+  query: state.search,
+  login: state.login,
+  signup: state.signup,
+  favorite: state.favorite,
+  CAR_MAKES_AND_MODELS: state.search.allCars
+}))
+
+class SearchApp extends Component {
+
   render() {
     return (
       <View style={[styles.card, {backgroundColor: this.props.backgroundColor}]}>

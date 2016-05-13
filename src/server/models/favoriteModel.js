@@ -3,16 +3,20 @@ var db = require('../../db/index.js');
 module.exports = {
 
   post: function(car, callback) {
-    var checkIfCarExists = 'Insert into Favorites (user_email, image, make, model, year, price) select * from (select "' + car.user_email + '", "' + car.image + '", "' + car.make + '", "' + car.model + '", "' + car.year + '", "' + car.price + '")';
-    db.query(checkIfCarExists, function(err, person) {
-      callback(err, person);
+    console.log("car", car);
+    var checkIfFavoriteExists = 'Insert into Favorites (user_id, image, make, model, year, price) select * from (select "' + car.user_email + '", "' + car.image + '", "' + car.make + '", "' + car.model + '", "' + car.year + '", "' + car.price + '")';
+    db.query(checkIfFavoriteExists, function(err, favorite) {
+      console.log("inside db.query, favorite check");
+      console.log(favorite);
+      console.log("err", err);
+      callback(err, favorite);
     })
   },
 
   delete: function(car, callback) {
-    var checkIfUserExists = 'Insert into Favorites (user_email, image, make, model, year, price) select * from (select "' + car.user_email + '", "' + car.image + '", "' + car.make + '", "' + car.model + '", "' + car.year + '", "' + car.price + '")';
-    db.query(checkIfUserExists, function(err, person) {
-      callback(err, person);
+    var checkIfFavoriteExists = 'Insert into Favorites (user_id, image, make, model, year, price) select * from (select "' + car.user_email + '", "' + car.image + '", "' + car.make + '", "' + car.model + '", "' + car.year + '", "' + car.price + '")';
+    db.query(checkIfFavoriteExists, function(err, favorite) {
+      callback(err, favorite);
     })
   },
   login: function (user,callback) {
