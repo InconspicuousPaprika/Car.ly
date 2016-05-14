@@ -28,11 +28,6 @@ const scenes = Actions.create(
     <Scene type="push" key="SignUp" component={Signup} direction='horizontal' duration={100} title='Signup' />
     <Scene type="push" key="Results" component={Results} direction='horizontal' duration={100} title='Results'backTitle="Search" panHandlers={null}/>
     <Scene type="push" key="Login"  direction='horizontal' component={Login} title='Login'backTitle="Signup" />
-    <Scene type="replace" key="Search" component={Search} />
-    <Scene type="replace" key="SignUp" direction="horizontal" component={Signup} />
-    <Scene type="replace" key="Results" component={Results}/>
-    <Scene type="replace" key="Favorites" component={Favorites}/>
-    <Scene type="replace" key="Login" initial={true} component={Login} />
   </Scene>
 );
 
@@ -65,18 +60,6 @@ const App = () => (
       icon={favoritesTab}
       selectedIcon={activeFav}>
     </TabBarIOS.Item>
-      <TabBarIOS.Item
-        title="Favorites"
-        onPress={()=> Actions.SignUp()}
-        icon={favoritesTab}
-        selectedIcon={activeFav}>
-      </TabBarIOS.Item>
-      <TabBarIOS.Item
-        title="Search"
-        onPress={()=> Actions.SignUp()}
-        icon={searchTab}
-        selectedIcon={activeSearch}>
-      </TabBarIOS.Item>
     </TabBarIOS >
 
   </View>
