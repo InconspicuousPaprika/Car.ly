@@ -13,7 +13,7 @@ import { Scene, Router, Actions } from 'react-native-router-flux'
 import Search from '../components/Search';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
-import Results from '../components/Results';
+// import Results from '../components/Results';
 import Results from '../components/resultsList';
 import Favorites from '../components/Favorite';
 import favoritesTab from '../assets/images/TabBar-Favorite-Icon@3x.png'
@@ -65,8 +65,6 @@ const App = () => (
       icon={favoritesTab}
       selectedIcon={activeFav}>
     </TabBarIOS.Item>
-
-    <TabBarIOS  style={{ flex:1 }}>
       <TabBarIOS.Item
         title="Favorites"
         onPress={()=> Actions.SignUp()}
