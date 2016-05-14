@@ -4,6 +4,7 @@ import { validateSignup } from '../actions/signupSubmitAction';
 import { connect } from 'react-redux';
 import renderScene from '../index.js';
 import App from '../containers/App.js';
+import { Scene, Router, Actions } from 'react-native-router-flux'
 
 import React, {
   Component,
@@ -57,13 +58,13 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     color: 'white'
   },
-  
+
   buttonText: {
     fontSize: 18,
     color: 'white',
     alignSelf: 'center'
   },
-  
+
   button: {
     height: 50,
     flexDirection: 'row',
@@ -75,11 +76,11 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     justifyContent: 'center',
   },
-  
+
   buttonSignUp: {
     color: 'red'
   },
-  
+
   orText: {
     textAlign: 'center',
   },
@@ -115,6 +116,7 @@ export default class Signup extends Component {
   handleSubmit() {
     this.props.dispatch(validateSignup({email: this.props.signup.email, password: this.props.signup.password}));
     //this._navigate('Login');
+    Actions.Favorites();
   }
 
   render() {
@@ -129,6 +131,3 @@ export default class Signup extends Component {
 }
 
 module.exports = Signup;
-
-
-
