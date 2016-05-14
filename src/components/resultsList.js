@@ -58,11 +58,11 @@ export default class ResultsList extends Component {
       },
       body: JSON.stringify({
         user_id: id.id,
-        image: favorites.image,
+        image: favorites.favorite.image,
         make: carQuery.carMake,
         model: carQuery.model,
         year: carQuery.endYear,
-        price: favorites.price
+        price: favorites.favorite.price
       })
     })
       // .then(getResponse)
@@ -83,7 +83,8 @@ export default class ResultsList extends Component {
       })
     }).then(res => res.json())
     .then(data => {
-      console.log("ID", data); 
+      console.log("favs", data);
+      newFavs = data; 
       return data;
     }).then(this.submitCarData)
         // dispatch({
@@ -91,6 +92,30 @@ export default class ResultsList extends Component {
     //   entry: entryData
     // });
   }
+
+  obtainUserFavorites() {
+    console.log("in obtain user Favorites");
+    console.log("userID", userID);
+    return fetch('http://localhost:3000/api/carly/favorites', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user_id: userID
+      })
+    }).then(res => res.json())
+    .then(data => {
+      console.log("favorites", data); 
+      return data;
+    }).then(this.submitCarData)
+        // dispatch({
+    //   type: types.SEARCH_SAVE,
+    //   entry: entryData
+    // });
+  }
+
   saveFavorite(item) {
     console.log("in save favorite", "item", item);
     const email = this.props.login.email
@@ -110,7 +135,7 @@ export default class ResultsList extends Component {
     console.log(this.props.login.email);
     console.log(item);
     console.log(favorite);
-    this.props.dispatch(resultsListActions(favorite));
+    this.props.dispatch(resultsListActions({favorite: favorite}));
     favorites = this.props.favorites;
     carQuery = this.props.query;
     console.log("this.props.favorites", this.props.favorites);

@@ -3,6 +3,7 @@ import {MAKE_FAVORITE} from '../actions/resultsListActions.js';
 
 const initialState = {
   favorite: '',
+  favorites: [],
   isLoading: false,
 }
 
