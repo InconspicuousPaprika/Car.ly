@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     marginTop: 65,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#e74c3c'
+    backgroundColor: '#fff'
   },
   title: {
     marginBottom: 20,
@@ -36,12 +36,15 @@ const styles = StyleSheet.create({
     marginRight: 5,
     fontSize: 23,
     borderWidth: 1,
-    borderColor: '#ecf0f1',
+    borderColor: '#2c3e50',
     backgroundColor: '#fff',
     borderRadius: 8,
-    color: 'black'
+    color: '#e74c3c'
   },
-
+  image: {
+    alignSelf: 'center',
+    marginBottom: 40
+  },
   passwordInput: {
     height: 50,
     padding: 4,
@@ -49,10 +52,10 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 23,
     borderWidth: 1,
-    borderColor: '#ecf0f1',
+    borderColor: '#2c3e50',
     backgroundColor: '#fff',
     borderRadius: 8,
-    color: 'black'
+    color: '#e74c3c'
   },
 
   buttonText: {
@@ -95,6 +98,10 @@ export default class Login extends Component {
     let password = event.nativeEvent.text;
     this.props.dispatch(loginActions({ password: password }));
   }
+
+  handleSignup() {
+    Actions.SignUp();
+  }
  
   handleSubmit() {
     this.props.dispatch(validateLogin({email: this.props.login.email, password: this.props.login.password}));
@@ -103,6 +110,10 @@ export default class Login extends Component {
   render() {
     return (
       <View style={styles.mainContainer}>
+        <Image 
+          style={styles.image}
+          source={require('../assets/images/carly_logo.png')}
+        />
         <TextInput placeholder={'email'}
           autoCapitalize={'none'}
           onChange={this.handleChangeEmail.bind(this)}
@@ -119,7 +130,9 @@ export default class Login extends Component {
         <Text style={styles.buttonText}>Sign In</Text></TouchableHighlight>
         <Text style={styles.orText}>Or</Text>
         <Text style={styles.orText}>
-        Don't have an account yet? Signup</Text>
+        Don't have an account yet?</Text> 
+        <TouchableHighlight onPress={this.handleSignup.bind(this)}>
+        <Text style={styles.orText}>Signup</Text></TouchableHighlight>
       </View>
     );
   }
