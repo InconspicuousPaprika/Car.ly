@@ -14,6 +14,8 @@ import Search from '../components/Search';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
 import Results from '../components/Results';
+import Results from '../components/resultsList';
+import Favorites from '../components/Favorite';
 import favoritesTab from '../assets/images/TabBar-Favorite-Icon@3x.png'
 import activeFav from '../assets/images/TabBar-Favorite-Icon-Active@3x.png'
 import searchTab from '../assets/images/TabBar-House-Icon@3x.png'
@@ -29,7 +31,7 @@ const scenes = Actions.create(
     <Scene type="replace" key="Search" component={Search} />
     <Scene type="replace" key="SignUp" direction="horizontal" component={Signup} />
     <Scene type="replace" key="Results" component={Results}/>
-    <Scene type="replace" key="Favorites" component={Search}/>
+    <Scene type="replace" key="Favorites" component={Favorites}/>
     <Scene type="replace" key="Login" initial={true} component={Login} />
   </Scene>
 );
@@ -59,7 +61,7 @@ const App = () => (
     </TabBarIOS.Item>
     <TabBarIOS.Item
       title="Favorites"
-      onPress={()=> Actions.Login()}
+      onPress={()=> Actions.Favorites()}
       icon={favoritesTab}
       selectedIcon={activeFav}>
     </TabBarIOS.Item>

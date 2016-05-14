@@ -22,7 +22,7 @@ import resultsListActions from '../actions/resultsListActions';
   results: state.search.searchResults,
   login: state.login,
   signup: state.signup,
-  favorites: state.favorites.favorites,
+  favorites: state.favorites.favoritesList,
   CAR_MAKES_AND_MODELS: state.search.allCars
 }))
 
@@ -91,31 +91,31 @@ export default class FavoritesList extends Component {
     //   entry: entryData
     // });
   }
-  saveFavorite(item) {
-    console.log("in save favorite", "item", item);
-    const email = this.props.login.email
-    console.log("email", email);
-    this.obtainUserData(email, item);
-    const favorite = {
-      image: item.image["0"].src,
-      make: this.props.query.carMake,
-      model: this.props.query.model,
-      year: this.props.query.endYear,
-      price: item["price"]["0"].text
-    }
-    console.log(this);
-    console.log(this.props.query.carMake);
-    console.log(this.props.query.endYear);
-    console.log(this.props.query.model);
-    console.log(this.props.login.email);
-    console.log(item);
-    console.log(favorite);
-    this.props.dispatch(resultsListActions(favorite));
-    favorites = this.props.favorites;
-    carQuery = this.props.query;
-    console.log("this.props.favorites", this.props.favorites);
-    console.log("favorites", favorites);
-    console.log("carQuery", carQuery);
+  deleteFavorite(item) {
+    console.log("in delete favorite", "item", item);
+    // const email = this.props.login.email
+    // console.log("email", email);
+    // this.obtainUserData(email, item);
+    // const favorite = {
+    //   image: item.image["0"].src,
+    //   make: this.props.query.carMake,
+    //   model: this.props.query.model,
+    //   year: this.props.query.endYear,
+    //   price: item["price"]["0"].text
+    // }
+    // console.log(this);
+    // console.log(this.props.query.carMake);
+    // console.log(this.props.query.endYear);
+    // console.log(this.props.query.model);
+    // console.log(this.props.login.email);
+    // console.log(item);
+    // console.log(favorite);
+    // this.props.dispatch(resultsListActions(favorite));
+    // favorites = this.props.favorites;
+    // carQuery = this.props.query;
+    // console.log("this.props.favorites", this.props.favorites);
+    // console.log("favorites", favorites);
+    // console.log("carQuery", carQuery);
   }
 
   render() {
@@ -126,14 +126,17 @@ export default class FavoritesList extends Component {
         {
           _.map(favorites, function(item, index) {
             return (
-              <TouchableWithoutFeedback onPress={this.saveFavorite.bind(this, item)}>
+              <TouchableWithoutFeedback onPress={this.deleteFavorite.bind(this, item)}>
                 <View>
                 <Image
-                  key={`PhotoItem_${item["vehicleTitle"]["0"].title}`}
+                  key={`PhotoItem_${item.id}`}
                   style={styles.image}
-                  source={{uri: this.convertScale(item.image["0"].src)}}
+                  source={{uri: this.convertScale(item.image)}}
                 />
-                <Text>{item["vehicleTitle"]["0"].text}</Text>
+                <Text>{item.make}</Text>
+                <Text>{item.model}</Text>
+                <Text>{item.year}</Text>
+                <Text>{item.price}</Text>
                 </View>
               </TouchableWithoutFeedback>
             );

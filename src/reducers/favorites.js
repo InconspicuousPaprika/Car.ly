@@ -4,7 +4,7 @@ import {MAKE_FAVORITES} from '../actions/favoritesActions.js';
 
 const initialState = {
   favorite: '',
-  favorites: [],
+  favoritesList: [],
   isLoading: false,
 }
 

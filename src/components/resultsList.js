@@ -78,8 +78,8 @@ export default class ResultsList extends Component {
         }
       }).then(res => res.json())
       .then(data => {
-        console.log("favorites", data); 
-        dispatch(favoritesActions({favorites: data}));
+        console.log("favorites", data.favorites); 
+        dispatch(favoritesActions({favoritesList: data.favorites}));
       })
     })       
   }
