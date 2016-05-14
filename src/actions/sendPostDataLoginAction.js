@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 import backend from '../service/backend.js';
+import { Actions } from 'react-native-router-flux';
 
 export const SEND_POST_LOGIN = 'SEND_POST_LOGIN';
 export const INVALID_USER = 'INVALID_USER';
@@ -41,7 +42,8 @@ export function validateLogin(emailAndPassword) {
       })
     }).then(function(response) {
     	if (response.status === 201) {
-    		dispatch(isValidUser({isValidLogin: true}))
+    		dispatch(isValidUser({isValidLogin: true}));
+        Actions.Search();
     	} else {
     		dispatch(InvalidUser({isValidLogin: false}))
     	}

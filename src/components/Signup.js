@@ -105,12 +105,6 @@ export default class Signup extends Component {
     signup: PropTypes.object.isRequired
   }
 
-  _navigate(name) {
-    this.props.navigator.push({
-      name: name
-    });
-  }
-
   handleChangeEmail(event) {
     let email = event.nativeEvent.text;
     this.props.dispatch(signupAction({ email: email }));
@@ -123,8 +117,6 @@ export default class Signup extends Component {
 
   handleSubmit() {
     this.props.dispatch(validateSignup({email: this.props.signup.email, password: this.props.signup.password}));
-    //this._navigate('Login');
-    Actions.Favorites();
   }
 
   render() {

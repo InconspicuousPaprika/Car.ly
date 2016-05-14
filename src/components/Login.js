@@ -95,16 +95,9 @@ export default class Login extends Component {
     let password = event.nativeEvent.text;
     this.props.dispatch(loginActions({ password: password }));
   }
-
-  navigateToSearch() {
-    if (this.props.login.isValidLogin) {
-      scene: Actions.Search
-    }
-  }
  
   handleSubmit() {
     this.props.dispatch(validateLogin({email: this.props.login.email, password: this.props.login.password}));
-    setTimeout(this.navigateToSearch , 3000);
   }
 
   render() {
