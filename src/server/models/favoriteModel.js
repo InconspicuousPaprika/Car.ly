@@ -4,7 +4,7 @@ module.exports = {
 
   post: function(car, callback) {
     console.log("inside post, car: ", car);
-    var checkIfFavoriteExists = 'Insert into Favorites (users_id, image, make, model, year, price) VALUES ("' + car.user_id + '", "' + car.image + '", "' + car.make + '", "' + car.model + '", "' + car.year + '", "' + car.price + '")';
+    var checkIfFavoriteExists = 'Insert IGNORE into Favorites (users_id, image, make, model, year, price) VALUES ("' + car.user_id + '", "' + car.image + '", "' + car.make + '", "' + car.model + '", "' + car.year + '", "' + car.price + '")';
     db.query(checkIfFavoriteExists, function(err, favorite) {
       console.log("inside db.query, favorite check");
       console.log(favorite);

@@ -20,6 +20,7 @@ CREATE TABLE Favorites (
   year int,
   price varchar(10),
   vin varchar(50),
+  UNIQUE (image),
   PRIMARY KEY (ID),
   FOREIGN KEY (users_id)
   REFERENCES Users (id)
