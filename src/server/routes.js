@@ -19,4 +19,10 @@ carRouter.route('/users/getID')
 carRouter.route('/favorites')
   .post(favoriteController.createOne)
 
+carRouter.route('/favorites')
+  .delete(favoriteController.deleteOne)
+
+carRouter.route('/favorites/:id')
+  .get(favoriteController.fetchFavorites)
+
 module.exports = carRouter;

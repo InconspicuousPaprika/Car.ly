@@ -22,53 +22,22 @@ module.exports = {
     });
   },
 
-  verifyLogin: function(req, res, next) {
-    var user = req.body;
-    var password = user.password;
-    var token = jwt.encode(user, 'secret');
+  fetchFavorites: function(req, res, next) {
+    var user_id = req.params.id;
+    console.log("req.params in fetchFavorites", req.params.id);
 
-    User.login(user, function(err, foundUser) {
+    Favorite.retrieve(user_id, function(err, foundFavorites) {
       if(err) {
         return res.json(err);
       }
       
-      if(!foundUser) {
-        return res.status(403).statusText('verifyLogin').send('Invalid email or password');
+      if(!foundFavorites) {
+        return res.status(403).send('Invalid ID');
       }
 
-      res.status(201).statusText('verifyLogin').json({token: token, success: foundUser});
+      res.status(201).json({favorites: foundFavorites});
     });
-
-    //   res.json();
-    //   if (!err) {
-    //     if (foundUser.length === 0) {
-    //       res.sendStatus(404);
-    //     } else {
-    //       var token = jwt.encode(user, 'secret');
-    //       res.json({token: token, user: foundUser});
-    //     }
-    //   } else {
-    //     res.json(err);
-    //   }
-    // });
-  },
-
-  getUserID: function(req, res, next) {
-    var user = req.body;
-    var email = user.email;
-
-    User.getID(user, function(err, foundUser) {
-      if(err) {
-        return res.json(err);
-      }
-      
-      if(!foundUser) {
-        return res.status(403).send('Invalid email or password');
-      }
-      console.log("foundUser", foundUser.id);
-      res.status(201).json({id: foundUser.id});
-    });
-  },
+  }
 }
 
 

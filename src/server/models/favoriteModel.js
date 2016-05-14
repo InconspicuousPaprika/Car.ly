@@ -19,6 +19,19 @@ module.exports = {
       callback(err, favorite);
     })
   },
+
+  retrieve: function(user_id, callback) {
+    console.log("inside retrieve, user_id: ", user_id);
+    var findUserFavorites = 'Select id, users_id, image, make, model, year, price from Favorites where users_id = "'+ user_id + '"';
+    db.query(findUserFavorites, function(err, favorites) {
+      console.log("inside db.query, favorites retrieve");
+      console.log(favorites);
+      console.log("err", err);
+      callback(err, favorites);
+    })
+  },
+
+
   login: function (user,callback) {
 
     var queryUser = 'Select email, password from Users where email= "' + user.email + '"';

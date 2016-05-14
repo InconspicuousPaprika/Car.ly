@@ -29,25 +29,25 @@ export default function sendToDB(response) {
   //   })
   // }
 
-  function submitCarData(carData) {
-    console.log('in submitCarData here', carData);
-    return fetch('http://localhost:3000/api/carly/favorites', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        user_email: carData.user_email,
-        image: carData.image,
-        make: carData.make,
-        model: carData.model,
-        year: carData.model,
-        price: carData.model
-      })
-    })
-      // .then(getResponse)
-  }
+  // function submitCarData(carData) {
+  //   console.log('in submitCarData here', carData);
+  //   return fetch('http://localhost:3000/api/carly/favorites', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       user_email: carData.user_email,
+  //       image: carData.image,
+  //       make: carData.make,
+  //       model: carData.model,
+  //       year: carData.model,
+  //       price: carData.model
+  //     })
+  //   })
+  //     // .then(getResponse)
+  // }
 
 
 function sendtoDB(response) {
@@ -89,18 +89,18 @@ function searchWithPhotoAPI(keyword, page, dispatch) {
   });
 }
 
-function obtainUserData(email) {
-    fetch('http://localhost:3000/api/carly/users/getID', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: email
-      })
-    }).then(sendtoDB)
-  }
+// function obtainUserData(email) {
+//     fetch('http://localhost:3000/api/carly/users/getID', {
+//       method: 'POST',
+//       headers: {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({
+//         email: email
+//       })
+//     }).then(sendtoDB)
+//   }
 
 export function searchNextPageAction() {
   return (dispatch, getState) =>{

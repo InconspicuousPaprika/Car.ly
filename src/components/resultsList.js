@@ -14,8 +14,7 @@ import _ from 'underscore';
 import { connect } from 'react-redux';
 import sendtoDB from '../actions/resultsActions';
 import resultsListActions from '../actions/resultsListActions';
-
-
+import favoritesActions from '../actions/favoritesActions';
 
 @connect(state => ({
   query: state.search,
@@ -35,11 +34,12 @@ export default class ResultsList extends Component {
     signup: React.PropTypes.object.isRequired,
     favorites: React.PropTypes.object.isRequired
   };
-
   // constructor(props){
   //   super(props);
   // }
   // 
+
+  dispatch = this.props.dispatch;
 
   convertScale(url) {
     let newurl = 'http://images.autotrader.com/scaler/400/300/'+url.slice(42);
@@ -64,8 +64,24 @@ export default class ResultsList extends Component {
         year: carQuery.endYear,
         price: favorites.favorite.price
       })
-    })
-      // .then(getResponse)
+    }).then(res => {
+      console.log("response from SCD: ", res);
+      console.log("fn", this.obtainUserFavorites);
+      console.log("in obtain user Favorites, sort of");
+      console.log("res", res);
+      console.log("userID", userID);
+      return fetch('http://localhost:3000/api/carly/favorites/'+userID, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }).then(res => res.json())
+      .then(data => {
+        console.log("favorites", data); 
+        dispatch(favoritesActions({favorites: data}));
+      })
+    })       
   }
 
   obtainUserData(email, item) {
@@ -82,19 +98,17 @@ export default class ResultsList extends Component {
         email: email
       })
     }).then(res => res.json())
-    .then(data => {
-      console.log("favs", data);
-      newFavs = data; 
-      return data;
+    .then(id => {
+      console.log("favs", id);
+      userID = id.id; 
+      console.log("fn", this.submitCarData);
+      return id;
     }).then(this.submitCarData)
-        // dispatch({
-    //   type: types.SEARCH_SAVE,
-    //   entry: entryData
-    // });
   }
 
-  obtainUserFavorites() {
+  obtainUserFavorites(res) {
     console.log("in obtain user Favorites");
+    console.log("res", res);
     console.log("userID", userID);
     return fetch('http://localhost:3000/api/carly/favorites', {
       method: 'GET',
@@ -109,11 +123,11 @@ export default class ResultsList extends Component {
     .then(data => {
       console.log("favorites", data); 
       return data;
-    }).then(this.submitCarData)
-        // dispatch({
-    //   type: types.SEARCH_SAVE,
-    //   entry: entryData
-    // });
+    }).then(this.favoritesToState)
+  }
+
+  favoritesToState(data){
+    this.props.dispatch(favoritesActions({favorites: data}));
   }
 
   saveFavorite(item) {
@@ -138,6 +152,7 @@ export default class ResultsList extends Component {
     this.props.dispatch(resultsListActions({favorite: favorite}));
     favorites = this.props.favorites;
     carQuery = this.props.query;
+    dispatch = this.props.dispatch;
     console.log("this.props.favorites", this.props.favorites);
     console.log("favorites", favorites);
     console.log("carQuery", carQuery);
