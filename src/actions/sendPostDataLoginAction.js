@@ -40,14 +40,17 @@ export function validateLogin(emailAndPassword) {
         email: emailAndPassword.email,
         password: emailAndPassword.password,
       })
-    }).then(function(response) {
-    	if (response.status === 201) {
-    		dispatch(isValidUser({isValidLogin: true}));
-        Actions.Search();
-    	} else {
-    		dispatch(InvalidUser({isValidLogin: false}))
-    	}
-    })
+    }).then((response) => response.json())
+      .then((responseData) => {
+        console.log(responseData);
+        if (responseData.success) {
+          dispatch(isValidUser({isValidLogin: true}));
+          Actions.Search();
+      	} else {
+      		dispatch(InvalidUser({isValidLogin: false}))
+      	}
+      })
+      .done();
   }
 }
 

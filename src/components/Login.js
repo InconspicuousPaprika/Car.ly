@@ -76,13 +76,29 @@ const styles = StyleSheet.create({
   },
   orText: {
     textAlign: 'center',
-  },
+  }
 });
 
 
 @connect(state => ({
   login: state.login
 }))
+
+// class Alert extends Component {
+//   handleAlert() {
+//     if (!this.props.login.isValidLogin) {
+
+//     }
+//   }
+
+//   render() {
+//     return (  
+//       <Text style={styles.alert}>Invalid email or password!</Text>
+//     )
+//   }
+// }
+
+
 export default class Login extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -95,7 +111,7 @@ export default class Login extends Component {
   }
 
   handleChangePassword(event) {
-    let password = event.nativeEvent.text;
+    let password = event.nativeEvent.text.trim();
     this.props.dispatch(loginActions({ password: password }));
   }
 
