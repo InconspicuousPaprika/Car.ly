@@ -1,7 +1,8 @@
 import loginActions from '../actions/loginActions';
 import { connect } from 'react-redux';
-//import loginPost from '../actions/sendPostDataLoginAction';
 import { validateLogin } from '../actions/sendPostDataLoginAction';
+import { Actions } from 'react-native-router-flux';
+
 import React, {
   Component,
   PropTypes,
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     borderColor: '#ecf0f1',
     backgroundColor: '#fff',
     borderRadius: 8,
-    color: 'white'
+    color: 'black'
   },
 
   passwordInput: {
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     borderColor: '#ecf0f1',
     backgroundColor: '#fff',
     borderRadius: 8,
-    color: 'white'
+    color: 'black'
   },
 
   buttonText: {
@@ -95,9 +96,15 @@ export default class Login extends Component {
     this.props.dispatch(loginActions({ password: password }));
   }
 
+  navigateToSearch() {
+    if (this.props.login.isValidLogin) {
+      scene: Actions.Search
+    }
+  }
  
   handleSubmit() {
     this.props.dispatch(validateLogin({email: this.props.login.email, password: this.props.login.password}));
+    setTimeout(this.navigateToSearch , 3000);
   }
 
   render() {
