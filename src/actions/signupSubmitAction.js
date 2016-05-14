@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 import backend from '../service/backend.js';
+import { Actions } from 'react-native-router-flux';
 
 export const VALID_SIGNUP = 'VALID_SIGNUP';
 export const INVALID_SIGNUP = 'INVALID_SIGNUP';
@@ -41,7 +42,8 @@ export function validateSignup(signupField) {
       })
     }).then(function(response) {
     	if (response.status === 201) {
-    		dispatch(newUser({validSignup: true}))
+    		dispatch(newUser({validSignup: true}));
+        Actions.Search();
     	} else {
     		dispatch(userAlreadyExists({validSignup: false}))
     	}

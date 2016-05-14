@@ -1,7 +1,8 @@
 import loginActions from '../actions/loginActions';
 import { connect } from 'react-redux';
-//import loginPost from '../actions/sendPostDataLoginAction';
 import { validateLogin } from '../actions/sendPostDataLoginAction';
+import { Actions } from 'react-native-router-flux';
+
 import React, {
   Component,
   PropTypes,
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
     marginTop: 65,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#fff'
+    backgroundColor: '#e74c3c'
   },
   title: {
     marginBottom: 20,
@@ -35,10 +36,10 @@ const styles = StyleSheet.create({
     marginRight: 5,
     fontSize: 23,
     borderWidth: 1,
-    borderColor: '#48BBEC',
-    backgroundColor: '#48BBEC',
+    borderColor: '#ecf0f1',
+    backgroundColor: '#fff',
     borderRadius: 8,
-    color: 'white'
+    color: 'black'
   },
 
   passwordInput: {
@@ -48,10 +49,10 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 23,
     borderWidth: 1,
-    borderColor: '#48BBEC',
-    backgroundColor: '#48BBEC',
+    borderColor: '#ecf0f1',
+    backgroundColor: '#fff',
     borderRadius: 8,
-    color: 'white'
+    color: 'black'
   },
 
   buttonText: {
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
   button: {
     height: 50,
     flexDirection: 'row',
-    backgroundColor: 'green',
+    backgroundColor: '#2c3e50',
     borderWidth: 1,
     borderRadius: 8,
     marginBottom: 10,
@@ -94,7 +95,6 @@ export default class Login extends Component {
     let password = event.nativeEvent.text;
     this.props.dispatch(loginActions({ password: password }));
   }
-
  
   handleSubmit() {
     this.props.dispatch(validateLogin({email: this.props.login.email, password: this.props.login.password}));
