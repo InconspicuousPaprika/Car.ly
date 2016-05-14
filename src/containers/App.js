@@ -27,6 +27,7 @@ const scenes = Actions.create(
     <Scene type="push" key="Search" component={Search} />
     <Scene type="push" key="SignUp" component={Signup} direction='horizontal' duration={100} title='Signup' />
     <Scene type="push" key="Results" component={Results} direction='horizontal' duration={100} title='Results'backTitle="Search" panHandlers={null}/>
+    <Scene type="push" key="Favorites" component={Favorites} direction='horizontal' duration={100} title='Favorites'backTitle="Results" panHandlers={null}/>
     <Scene type="push" key="Login"  direction='horizontal' component={Login} title='Login'backTitle="Signup" />
   </Scene>
 );
