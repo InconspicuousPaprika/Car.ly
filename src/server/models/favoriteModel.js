@@ -3,8 +3,8 @@ var db = require('../../db/index.js');
 module.exports = {
 
   post: function(car, callback) {
-    console.log("car", car);
-    var checkIfFavoriteExists = 'Insert into Favorites (user_id, image, make, model, year, price) select * from (select "' + car.user_email + '", "' + car.image + '", "' + car.make + '", "' + car.model + '", "' + car.year + '", "' + car.price + '")';
+    console.log("inside post, car: ", car);
+    var checkIfFavoriteExists = 'Insert into Favorites (users_id, image, make, model, year, price) VALUES ("' + car.user_id + '", "' + car.image + '", "' + car.make + '", "' + car.model + '", "' + car.year + '", "' + car.price + '")';
     db.query(checkIfFavoriteExists, function(err, favorite) {
       console.log("inside db.query, favorite check");
       console.log(favorite);
@@ -14,7 +14,7 @@ module.exports = {
   },
 
   delete: function(car, callback) {
-    var checkIfFavoriteExists = 'Insert into Favorites (user_id, image, make, model, year, price) select * from (select "' + car.user_email + '", "' + car.image + '", "' + car.make + '", "' + car.model + '", "' + car.year + '", "' + car.price + '")';
+    var checkIfFavoriteExists = 'Insert into Favorites (user_id, image, make, model, year, price) select * from (select "' + car.user_id + '", "' + car.image + '", "' + car.make + '", "' + car.model + '", "' + car.year + '", "' + car.price + '")';
     db.query(checkIfFavoriteExists, function(err, favorite) {
       callback(err, favorite);
     })

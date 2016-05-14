@@ -59,7 +59,7 @@ export default class ResultsList extends Component {
       body: JSON.stringify({
         user_id: id.id,
         image: favorites.image,
-        make: carQuery.make,
+        make: carQuery.carMake,
         model: carQuery.model,
         year: carQuery.endYear,
         price: favorites.price
