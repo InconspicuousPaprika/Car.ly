@@ -47,7 +47,7 @@ module.exports = {
         email: emailAndPassword.email,
         password: emailAndPassword.password,
       })
-    }).then(getResponse);
+    }).then(getResponse)
   }
 
   // obtainUserData(email) {

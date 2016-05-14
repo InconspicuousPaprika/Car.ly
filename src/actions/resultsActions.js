@@ -1,6 +1,72 @@
+import { createAction } from 'redux-actions';
 import * as types from '../constants/searchActionTypes';
 import photoSearch from '../api/photoSearch';
 // import backend from '../service/backend.js';
+import Promise from 'bluebird';
+
+
+export default function sendToDB(response) {
+  console.log("in send to db");
+ return Promise.resolve(response.json())
+  .then((res) => res);
+}
+
+  // sendtoDB(response, item) {
+  //   console.log("in send to db");
+  //  return Promise.resolve(response.json())
+  //   .then((res) => {
+  //     console.log("in send to DB", "id", res['id'], "item", item);
+  //     // const entry = getState().photos.photos[index];
+  //     const carFields = {
+  //       user_id: res['id'],
+  //       image: item.image["0"].src,
+  //       make:  this.props.query.carMake,
+  //       model:  this.props.query.model,
+  //       year: this.props.query.endYear,
+  //       price: item["price"]["0"].text
+  //     }; 
+  //     this.submitCarData(carFields);
+  //   })
+  // }
+
+  // function submitCarData(carData) {
+  //   console.log('in submitCarData here', carData);
+  //   return fetch('http://localhost:3000/api/carly/favorites', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       user_email: carData.user_email,
+  //       image: carData.image,
+  //       make: carData.make,
+  //       model: carData.model,
+  //       year: carData.model,
+  //       price: carData.model
+  //     })
+  //   })
+  //     // .then(getResponse)
+  // }
+
+
+function sendtoDB(response) {
+ return Promise.resolve(response.json())
+  .then((res) => {
+    console.log("insendtoDB", res['id']);
+    // const entry = getState().photos.photos[index];
+    const carFields = {
+      user_id: res['id'],
+      image: 'entry.image[0].src',
+      purchase_url:  'www.cars.com',
+      make:  'Ford',
+      model:  'Explorer',
+    }; 
+    submitCarData(carFields);
+  })
+}
+
+export default createAction('SIGN_IN', (signInFields) => signInFields);
 
 function searchWithPhotoAPI(keyword, page, dispatch) {
   if (page >= 2) {
@@ -23,24 +89,18 @@ function searchWithPhotoAPI(keyword, page, dispatch) {
   });
 }
 
-function obtainUserData(email) {
-    fetch('http://localhost:3000/api/carly/users/getID', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: email
-      })
-    }).then ((response) => {
-      console.log('response', response);
-      console.log('response.json', response.json());
-      return response.json();
-    }).catch((err) => {
-      console.log('Error', err);
-    })
-  }
+// function obtainUserData(email) {
+//     fetch('http://localhost:3000/api/carly/users/getID', {
+//       method: 'POST',
+//       headers: {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({
+//         email: email
+//       })
+//     }).then(sendtoDB)
+//   }
 
 export function searchNextPageAction() {
   return (dispatch, getState) =>{
@@ -65,8 +125,11 @@ export function saveFavorite(item, index) {
     const email = getState().signup.email || getState().login.email || "Test2";
     console.log(entry);
     console.log(email);
-    console.log(obtainUserData(email));
-    // dispatch({
+    obtainUserData(email);
+    // console.log('id in saveFavorite', id);
+  //   Promise.resolve(response.json())
+  // .then((res) => console.log(res, (typeof res)))
+        // dispatch({
     //   type: types.SEARCH_SAVE,
     //   entry: entryData
     // });
