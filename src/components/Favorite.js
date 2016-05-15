@@ -91,32 +91,23 @@ export default class FavoritesList extends Component {
     //   entry: entryData
     // });
   }
+
   deleteFavorite(item) {
-    console.log("in delete favorite", "item", item);
-    // const email = this.props.login.email
-    // console.log("email", email);
-    // this.obtainUserData(email, item);
-    // const favorite = {
-    //   image: item.image["0"].src,
-    //   make: this.props.query.carMake,
-    //   model: this.props.query.model,
-    //   year: this.props.query.endYear,
-    //   price: item["price"]["0"].text
-    // }
-    // console.log(this);
-    // console.log(this.props.query.carMake);
-    // console.log(this.props.query.endYear);
-    // console.log(this.props.query.model);
-    // console.log(this.props.login.email);
-    // console.log(item);
-    // console.log(favorite);
-    // this.props.dispatch(resultsListActions(favorite));
-    // favorites = this.props.favorites;
-    // carQuery = this.props.query;
-    // console.log("this.props.favorites", this.props.favorites);
-    // console.log("favorites", favorites);
-    // console.log("carQuery", carQuery);
-  }
+    console.log('in deleteFavorite', "item", item);
+    favorite = this.props.favorites;
+    dispatch = this.props.dispatch;
+    console.log("favorites", favorites);
+    console.log("carQuery", dispatch);
+    return fetch('http://localhost:3000/api/carly/favorites', {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: item.id
+      })
+    }).then(getResponse)
 
   render() {
     console.log(favorites);
