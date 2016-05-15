@@ -124,7 +124,7 @@ export default class Signup extends Component {
       <View style={styles.mainContainer}>
         <Image 
           style={styles.image}
-          source={require('../assets/images/carly_logo.png')}
+          source={require('../assets/images/carly_logo_transparent.png')}
         />
         <TextInput placeholder={'email'} onChange={this.handleChangeEmail.bind(this)} autoCorrect={false} style={styles.emailInput}/>
         <TextInput placeholder={'password'} secureTextEntry={true} autoCorrect={false} onChange={this.handleChangePassword.bind(this)} style={styles.passwordInput}/>

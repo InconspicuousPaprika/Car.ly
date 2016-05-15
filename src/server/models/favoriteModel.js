@@ -4,7 +4,7 @@ module.exports = {
 
   post: function(car, callback) {
     console.log("inside post, car: ", car);
-    var checkIfFavoriteExists = 'Insert IGNORE into Favorites (users_id, image, make, model, year, price) VALUES ("' + car.user_id + '", "' + car.image + '", "' + car.make + '", "' + car.model + '", "' + car.year + '", "' + car.price + '")';
+    var checkIfFavoriteExists = 'Insert IGNORE into Favorites (users_email, image, make, model, year, price) VALUES ("' + car.users_email + '", "' + car.image + '", "' + car.make + '", "' + car.model + '", "' + car.year + '", "' + car.price + '")';
     db.query(checkIfFavoriteExists, function(err, favorite) {
       console.log("inside db.query, favorite check");
       console.log(favorite);
@@ -14,15 +14,17 @@ module.exports = {
   },
 
   delete: function(car, callback) {
-    var checkIfFavoriteExists = 'Insert into Favorites (user_id, image, make, model, year, price) select * from (select "' + car.user_id + '", "' + car.image + '", "' + car.make + '", "' + car.model + '", "' + car.year + '", "' + car.price + '")';
-    db.query(checkIfFavoriteExists, function(err, favorite) {
+    console.log(car.id);
+    var deleteFavorite = 'DELETE FROM Favorites WHERE id = ' + car.id;
+    console.log(deleteFavorite);
+    db.query(deleteFavorite, function(err, favorite) {
       callback(err, favorite);
     })
   },
 
-  retrieve: function(user_id, callback) {
-    console.log("inside retrieve, user_id: ", user_id);
-    var findUserFavorites = 'Select id, users_id, image, make, model, year, price from Favorites where users_id = "'+ user_id + '"';
+  retrieve: function(users_email, callback) {
+    console.log("inside retrieve, users_email: ", users_email);
+    var findUserFavorites = 'Select id, users_email, image, make, model, year, price from Favorites where users_email = "'+ users_email + '"';
     db.query(findUserFavorites, function(err, favorites) {
       console.log("inside db.query, favorites retrieve");
       console.log(favorites);

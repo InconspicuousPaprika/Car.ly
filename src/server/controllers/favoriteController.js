@@ -14,19 +14,19 @@ module.exports = {
 
   deleteOne: function(req, res) {
     var car = req.body;
-    Favorite.remove(car, function(err, favorite) {
-      if (favorite.affectedRows === 0) {
-        return res.status(409).send('That favorite does not exist');
-      } 
+    Favorite.delete(car, function(err, favorite) {
+      // if (favorite.affectedRows === 0) {
+      //   return res.status(409).send('That favorite does not exist');
+      // } 
       res.status(201).send('Removed from favorites'); 
     });
   },
 
   fetchFavorites: function(req, res, next) {
-    var user_id = req.params.id;
-    console.log("req.params in fetchFavorites", req.params.id);
+    var users_email = req.params.users_email;
+    console.log("req.params in fetchFavorites", req.params.users_email);
 
-    Favorite.retrieve(user_id, function(err, foundFavorites) {
+    Favorite.retrieve(users_email, function(err, foundFavorites) {
       if(err) {
         return res.json(err);
       }

@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     marginTop: 65,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#fff'
+    backgroundColor: '#583759'
   },
   title: {
     marginBottom: 20,
@@ -128,7 +128,7 @@ export default class Login extends Component {
       <View style={styles.mainContainer}>
         <Image 
           style={styles.image}
-          source={require('../assets/images/carly_logo.png')}
+          source={require('../assets/images/carly_logo_transparent.png')}
         />
         <TextInput placeholder={'email'}
           autoCapitalize={'none'}

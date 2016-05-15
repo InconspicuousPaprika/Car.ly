@@ -14,6 +14,7 @@ import _ from 'underscore';
 import { connect } from 'react-redux';
 import sendtoDB from '../actions/resultsActions';
 import resultsListActions from '../actions/resultsListActions';
+import favoritesActions from '../actions/favoritesActions';
 
 
 
@@ -96,8 +97,6 @@ export default class FavoritesList extends Component {
     console.log('in deleteFavorite', "item", item);
     favorite = this.props.favorites;
     dispatch = this.props.dispatch;
-    console.log("favorites", favorites);
-    console.log("carQuery", dispatch);
     return fetch('http://localhost:3000/api/carly/favorites', {
       method: 'DELETE',
       headers: {
@@ -107,7 +106,22 @@ export default class FavoritesList extends Component {
       body: JSON.stringify({
         id: item.id
       })
-    }).then(getResponse)
+    }).then(res => {
+      console.log("response from SF: ", res);
+      console.log("email", this.props.login.email);
+      console.log("global email", userEmail);
+      return fetch('http://localhost:3000/api/carly/favorites/'+userEmail, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }).then(res => res.json())
+      .then(data => {
+        console.log("favorites", data.favorites); 
+        dispatch(favoritesActions({favoritesList: data.favorites}));
+      })
+    })
   }
 
   render() {
