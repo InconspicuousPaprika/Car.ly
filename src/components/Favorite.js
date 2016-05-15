@@ -108,6 +108,7 @@ export default class FavoritesList extends Component {
         id: item.id
       })
     }).then(getResponse)
+  }
 
   render() {
     console.log(favorites);
