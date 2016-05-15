@@ -49,6 +49,7 @@ module.exports = {
   getUserID: function(req, res, next) {
     var user = req.body;
     var email = user.email;
+    console.log("in getUserID, email: ", email);
 
     User.getID(user, function(err, foundUser) {
       if(err) {

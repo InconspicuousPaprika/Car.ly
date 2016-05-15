@@ -1,5 +1,3 @@
-//import { createAction } from 'redux-actions';
+import { createAction } from 'redux-actions';
 
- // Actions:
-// View favorite
-// Delete favorite
+export default createAction('MAKE_FAVORITES', (favorites) => favorites);
