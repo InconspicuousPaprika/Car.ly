@@ -1,4 +1,5 @@
 import loginActions from '../actions/loginActions';
+import favoritesActions from '../actions/favoritesActions';
 import { connect } from 'react-redux';
 import { validateLogin } from '../actions/sendPostDataLoginAction';
 import { Actions } from 'react-native-router-flux';
@@ -81,7 +82,8 @@ const styles = StyleSheet.create({
 
 
 @connect(state => ({
-  login: state.login
+  login: state.login,
+  favorites: state.favorites
 }))
 
 // class Alert extends Component {
@@ -121,6 +123,25 @@ export default class Login extends Component {
  
   handleSubmit() {
     this.props.dispatch(validateLogin({email: this.props.login.email, password: this.props.login.password}));
+    this.retrieveFavorites();
+  }
+
+  retrieveFavorites() {
+    favorite = this.props.favorites;
+    dispatch = this.props.dispatch;
+    userEmail = this.props.login.email;
+    console.log('in retrieveFavorites', "email", userEmail);
+    return fetch('http://localhost:3000/api/carly/favorites/'+userEmail, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
+    .then(data => {
+      console.log("favorites", data.favorites); 
+      dispatch(favoritesActions({favoritesList: data.favorites}));
+    })
   }
 
   render() {
