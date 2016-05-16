@@ -22,8 +22,6 @@ import searchActions from '../actions/searchActions.js';
 import MultiSlider from 'react-native-multi-slider';
 import Immutable from 'immutable';
 import { connect } from 'react-redux';
-import backend from '../service/backend.js';
-
 
 
 let PickerItemIOS = PickerIOS.Item;
@@ -45,8 +43,6 @@ export default class Counter extends Component {
   goToResults() {
     console.log('going');
     console.log(this.props.query);
-    //TODO: change state data to store
-    //backend.getCarData(object);
     this.props.dispatch(searchActions(this.props.query));
   }
 
