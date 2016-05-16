@@ -60,7 +60,7 @@ export default handleActions({
   //   ...state,
   //   ...payload.payload
   // }),
-  GET_CARDATA: (state, action ) => ({ ...state, searchResults:[action.payload]}),
+  GET_CARDATA: (state, action ) => ({ ...state, searchResults:action.payload}),
   SET_QUERY: (state, action) => ({
     ...state,
     ...action.payload })

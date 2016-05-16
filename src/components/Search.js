@@ -22,6 +22,7 @@ import searchActions from '../actions/searchActions.js';
 import MultiSlider from 'react-native-multi-slider';
 import Immutable from 'immutable';
 import { connect } from 'react-redux';
+import backend from '../service/backend.js';
 
 
 
@@ -41,7 +42,14 @@ export default class Counter extends Component {
     super(props);
   }
 
-
+  async goToResultsNow() {
+    const searchQuery = this.props.query;
+    console.log('in goToResults', 'query parameters', searchQuery);
+    var rawResults = await Promise.all([backend.getCarData(searchQuery), backend.getTrueCarData(searchQuery)]);
+    var combinedResults = rawResults.reduce((a,b)=>a.extractorData.data[0].group.concat(b.extractorData.data[0].group));
+    console.log(rawResults);
+    console.log(combinedResults);      
+  }
 
   goToResults() {
     console.log('going');
