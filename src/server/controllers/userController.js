@@ -19,7 +19,6 @@ module.exports = {
   verifyLogin: function(req, res, next) {
     var user = req.body;
     var password = user.password;
-    var token = jwt.encode(user, 'secret');
 
     User.login(user, function(err, foundUser) {
       if(err) {
@@ -27,9 +26,9 @@ module.exports = {
       }
       
       if(!foundUser) {
-        return res.status(403).send('Invalid email or password');
+        return res.status(403).send({success: foundUser, message: 'Invalid email or password'});
       }
-
+      var token = jwt.encode(user, 'secret');
       res.status(201).json({token: token, success: foundUser});
     });
 

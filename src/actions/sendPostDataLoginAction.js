@@ -1,6 +1,9 @@
 import { createAction } from 'redux-actions';
 import backend from '../service/backend.js';
 import { Actions } from 'react-native-router-flux';
+import React, {
+  AsyncStorage,
+} from 'react-native';
 
 export const SEND_POST_LOGIN = 'SEND_POST_LOGIN';
 export const INVALID_USER = 'INVALID_USER';
@@ -40,14 +43,18 @@ export function validateLogin(emailAndPassword) {
         email: emailAndPassword.email,
         password: emailAndPassword.password,
       })
-    }).then(function(response) {
-    	if (response.status === 201) {
-    		dispatch(isValidUser({isValidLogin: true}));
-        Actions.Search();
-    	} else {
-    		dispatch(InvalidUser({isValidLogin: false}))
-    	}
-    })
+    }).then((response) => response.json())
+      .then((responseData) => {
+        console.log(JSON.stringify(responseData.token));
+        if (responseData.success) {
+          dispatch(isValidUser({isValidLogin: true}));
+          AsyncStorage.setItem('key', JSON.stringify(responseData.token));
+          Actions.Search();
+      	} else {
+      		dispatch(InvalidUser({isValidLogin: false}))
+      	}
+      })
+      .done();
   }
 }
 
