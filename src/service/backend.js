@@ -1,5 +1,6 @@
 import Search from '../components/Search.js';
 import getResponse from '../utils/getResponse';
+import getResponseJSON from '../utils/getResponse';
 import Promise from 'bluebird';
 import React, { 
   AsyncStorage
@@ -27,7 +28,7 @@ module.exports = {
       `${searchQuery.zipcode}%3FendYear%3D`+
       `${searchQuery.endYear}`,{
         method:'GET',
-      }).then(getResponse);
+      }).then(getResponseJSON);
   },
 
   submitUserData(emailAndPassword) {
