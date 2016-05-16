@@ -46,31 +46,32 @@ export default class ResultsList extends Component {
     return newurl;
   }
 
-  submitCarData(id) {
-    console.log('in submitCarData', "id.id", id.id);
-    console.log("favorites", favorites);
-    console.log("carQuery", carQuery);
+  saveFavorite(item) {
+    console.log('in submitCarData', "item", item);
+    console.log('email', this.props.login.email);
+    userEmail = this.props.login.email;
+    dispatch = this.props.dispatch;
+    const newFavorite = {
+        users_email: this.props.login.email,
+        image: item.image[0].src,
+        make: this.props.query.carMake,
+        model: this.props.query.model,
+        year: this.props.query.endYear,
+        price: item.price[0].text
+    };
+    console.log(newFavorite);
     return fetch('http://localhost:3000/api/carly/favorites', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        user_id: id.id,
-        image: favorites.favorite.image,
-        make: carQuery.carMake,
-        model: carQuery.model,
-        year: carQuery.endYear,
-        price: favorites.favorite.price
-      })
+      body: JSON.stringify(newFavorite)
     }).then(res => {
-      console.log("response from SCD: ", res);
-      console.log("fn", this.obtainUserFavorites);
-      console.log("in obtain user Favorites, sort of");
-      console.log("res", res);
-      console.log("userID", userID);
-      return fetch('http://localhost:3000/api/carly/favorites/'+userID, {
+      console.log("response from SF: ", res);
+      console.log("email", this.props.login.email);
+      console.log("global email", userEmail);
+      return fetch('http://localhost:3000/api/carly/favorites/'+userEmail, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -130,33 +131,33 @@ export default class ResultsList extends Component {
     this.props.dispatch(favoritesActions({favorites: data}));
   }
 
-  saveFavorite(item) {
-    console.log("in save favorite", "item", item);
-    const email = this.props.login.email
-    console.log("email", email);
-    this.obtainUserData(email, item);
-    const favorite = {
-      image: item.image["0"].src,
-      make: this.props.query.carMake,
-      model: this.props.query.model,
-      year: this.props.query.endYear,
-      price: item["price"]["0"].text
-    }
-    console.log(this);
-    console.log(this.props.query.carMake);
-    console.log(this.props.query.endYear);
-    console.log(this.props.query.model);
-    console.log(this.props.login.email);
-    console.log(item);
-    console.log(favorite);
-    this.props.dispatch(resultsListActions({favorite: favorite}));
-    favorites = this.props.favorites;
-    carQuery = this.props.query;
-    dispatch = this.props.dispatch;
-    console.log("this.props.favorites", this.props.favorites);
-    console.log("favorites", favorites);
-    console.log("carQuery", carQuery);
-  }
+  // saveFavorite(item) {
+  //   console.log("in save favorite", "item", item);
+  //   const email = this.props.login.email
+  //   console.log("email", email);
+  //   this.obtainUserData(email, item);
+  //   const favorite = {
+  //     image: item.image["0"].src,
+  //     make: this.props.query.carMake,
+  //     model: this.props.query.model,
+  //     year: this.props.query.endYear,
+  //     price: item["price"]["0"].text
+  //   }
+  //   console.log(this);
+  //   console.log(this.props.query.carMake);
+  //   console.log(this.props.query.endYear);
+  //   console.log(this.props.query.model);
+  //   console.log(this.props.login.email);
+  //   console.log(item);
+  //   console.log(favorite);
+  //   this.props.dispatch(resultsListActions({favorite: favorite}));
+  //   favorites = this.props.favorites;
+  //   carQuery = this.props.query;
+  //   dispatch = this.props.dispatch;
+  //   console.log("this.props.favorites", this.props.favorites);
+  //   console.log("favorites", favorites);
+  //   console.log("carQuery", carQuery);
+  // }
 
   render() {
     console.log(this.props.results);

@@ -1,5 +1,6 @@
 import Search from '../components/Search.js';
 import getResponse from '../utils/getResponse';
+import getResponseJSON from '../utils/getResponse';
 import Promise from 'bluebird';
 import React, { 
   AsyncStorage
@@ -14,14 +15,20 @@ module.exports = {
 
   getCarData(searchQuery) {
     searchQuery.zipcode = 30022
+    console.log(autotraderExtractor+
+      `&url=http%3A%2F%2Fwww.autotrader.com%2Fcars-for-sale%2FUsed%2BCars%2F`+
+      `${searchQuery.carMake}%2F`+
+      `${searchQuery.model}%2F`+
+      `${searchQuery.zipcode}%3FendYear%3D`+
+      `${searchQuery.endYear}`);
     return fetch(autotraderExtractor+
       `&url=http%3A%2F%2Fwww.autotrader.com%2Fcars-for-sale%2FUsed%2BCars%2F`+
       `${searchQuery.carMake}%2F`+
       `${searchQuery.model}%2F`+
       `${searchQuery.zipcode}%3FendYear%3D`+
-      `${searchQuery.endYear}%26`,{
+      `${searchQuery.endYear}`,{
         method:'GET',
-      }).then(getResponse);
+      }).then(getResponseJSON);
   },
 
   submitUserData(emailAndPassword) {

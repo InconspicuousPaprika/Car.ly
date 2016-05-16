@@ -22,7 +22,7 @@ carRouter.route('/favorites')
 carRouter.route('/favorites')
   .delete(favoriteController.deleteOne)
 
-carRouter.route('/favorites/:id')
+carRouter.route('/favorites/:users_email')
   .get(favoriteController.fetchFavorites)
 
 module.exports = carRouter;

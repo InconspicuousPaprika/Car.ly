@@ -11,7 +11,7 @@ const initialState = {
   model: 'Fleetwood',
   loading: false,
   modelIndex: 3,
-  searchResults:{},
+  searchResults:[],
   allCars: {
     amc: {
       name: 'AMC',
@@ -60,7 +60,7 @@ export default handleActions({
   //   ...state,
   //   ...payload.payload
   // }),
-  GET_CARDATA: (state, action ) => ({ ...state, searchResults:{...action.payload.extractorData.data[0].group}}),
+  GET_CARDATA: (state, action ) => ({ ...state, searchResults:[...action.payload.extractorData.data[0].group]}),
   SET_QUERY: (state, action) => ({
     ...state,
     ...action.payload })

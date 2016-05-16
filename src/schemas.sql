@@ -7,12 +7,12 @@ CREATE TABLE Users (
   email varchar(50) NOT NULL,
   password varchar(100) NOT NULL,
   UNIQUE (email),
-  PRIMARY KEY (ID),
+  PRIMARY KEY (ID)
 );
 
 CREATE TABLE Favorites (
   id int NOT NULL AUTO_INCREMENT,
-  users_id int NOT NULL,
+  users_email varchar(50) NOT NULL,
   image varchar(255) NOT NULL,
   purchase_url varchar(255),
   make varchar(30) NOT NULL,
@@ -22,6 +22,7 @@ CREATE TABLE Favorites (
   vin varchar(50),
   UNIQUE (image),
   PRIMARY KEY (ID),
-  FOREIGN KEY (users_id)
-  REFERENCES Users (id)
+  INDEX (users_email),
+  FOREIGN KEY (users_email)
+  REFERENCES Users (email)
 );
