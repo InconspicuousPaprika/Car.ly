@@ -136,6 +136,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderWidth: 1,
     elevation: 1,
+    width: 900,
+    height: 1200,
   },
   thumbnail: {
     flex: 1,
