@@ -24,7 +24,6 @@ import Immutable from 'immutable';
 import { connect } from 'react-redux';
 
 
-
 let PickerItemIOS = PickerIOS.Item;
 
 @connect(state => ({
@@ -41,13 +40,9 @@ export default class Counter extends Component {
     super(props);
   }
 
-
-
   goToResults() {
     console.log('going');
     console.log(this.props.query);
-    //TODO: change state data to store
-    //backend.getCarData(object);
     this.props.dispatch(searchActions(this.props.query));
   }
 

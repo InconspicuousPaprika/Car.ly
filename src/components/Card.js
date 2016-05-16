@@ -33,14 +33,22 @@ import favoritesActions from '../actions/favoritesActions';
 let Card = React.createClass({
 
   convertScale(url) {
-    let newurl = 'http://images.autotrader.com/scaler/400/300/'+url.slice(42);
-    return newurl;
+    if(url.includes('autotrader')) {
+      url = 'http://images.autotrader.com/scaler/400/300/'+url.slice(42);
+    } 
+    // else if (url.includes('ebay')){
+    //   url = ''
+    // }
+    return url;
   },
   render() {
     return (
       <View style={styles.card}>
         <Image style={styles.thumbnail} source={{uri: this.convertScale(this.props.image[0].src)}} />
         <Text style={styles.text}>This is card {this.props.vehicleTitle[0].text}</Text>
+        <Text style={styles.text}>This is more information {this.props.price[0].text}</Text>
+        <Text style={styles.text}>This is even more information {this.props.miles[0].text}</Text>
+
       </View>
     )
   }
@@ -58,7 +66,7 @@ const styles = StyleSheet.create({
   },
   thumbnail: {
     flex: 1,
-    width: 300,
+    width: 400,
     height: 300,
   },
   text: {
