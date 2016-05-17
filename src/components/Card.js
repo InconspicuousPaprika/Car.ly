@@ -45,9 +45,9 @@ let Card = React.createClass({
     return (
       <View style={styles.card}>
         <Image style={styles.thumbnail} source={{uri: this.convertScale(this.props.image[0].src)}} />
-        <Text style={styles.text}>This is card {this.props.vehicleTitle[0].text}</Text>
-        <Text style={styles.text}>This is more information {this.props.price[0].text}</Text>
-        <Text style={styles.text}>This is even more information {this.props.miles[0].text}</Text>
+        <Text style={styles.text}>{this.props.vehicleTitle[0].text}</Text>
+        <Text style={styles.text}>Price: {this.props.price[0].text}</Text>
+        <Text style={styles.text}>Miles: {this.props.miles[0].text}</Text>
 
       </View>
     )
@@ -60,9 +60,9 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     overflow: 'hidden',
     borderColor: 'grey',
-    backgroundColor: 'white',
+    backgroundColor: 'rgba(44, 62, 80, 0.5)',
     borderWidth: 1,
-    elevation: 1,
+    elevation: 1
   },
   thumbnail: {
     flex: 1,

@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
   thumbnail: {
     flex: 1,
     width: 300,
-    height: 300,
+    height: 300
   },
   text: {
     fontSize: 20,
