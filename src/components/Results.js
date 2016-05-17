@@ -20,6 +20,7 @@ import resultsListActions from '../actions/resultsListActions';
 import favoritesActions from '../actions/favoritesActions';
 import Card from './Card';
 import NoMoreCards from './NoMoreCards';
+import globalVariables from '../styles/globalVariables.js'
 
 
 
@@ -130,11 +131,8 @@ export default class Results extends Component{
 const styles = StyleSheet.create({
   card: {
     alignItems: 'center',
-    borderRadius: 5,
     overflow: 'hidden',
-    borderColor: 'grey',
-    backgroundColor: 'white',
-    borderWidth: 1,
+    backgroundColor: globalVariables.background,
     elevation: 1,
     width: 900,
     height: 1200,
