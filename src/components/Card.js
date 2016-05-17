@@ -46,8 +46,7 @@ let Card = React.createClass({
       <View style={styles.card}>
         <Image style={styles.thumbnail} source={{uri: this.convertScale(this.props.image[0].src)}} />
         <Text style={styles.text}>{this.props.vehicleTitle[0].text}</Text>
-        <Text style={styles.text}>Price: {this.props.price[0].text}</Text>
-        <Text style={styles.text}>Miles: {this.props.miles[0].text}</Text>
+
 
       </View>
     )

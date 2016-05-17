@@ -7,5 +7,9 @@ export default function getResponse(response) {
 
 export default function getResponseJSON(response) {
   return Promise.resolve(response.json())
-    .then((res) => res);
+    .then((res) => {
+    	console.log('getResponseJSON');
+    	console.log(res);
+    	return res;
+    })
 }
