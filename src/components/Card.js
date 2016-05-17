@@ -18,6 +18,7 @@ import { connect } from 'react-redux';
 import sendtoDB from '../actions/resultsActions';
 import resultsListActions from '../actions/resultsListActions';
 import favoritesActions from '../actions/favoritesActions';
+import globalVariables from '../styles/globalVariables.js'
 
 
 
@@ -67,11 +68,8 @@ let Card = React.createClass({
 const styles = StyleSheet.create({
   card: {
     alignItems: 'center',
-    borderRadius: 5,
     overflow: 'hidden',
-    borderColor: 'grey',
-    backgroundColor: 'rgba(44, 62, 80, 0.5)',
-    borderWidth: 1,
+    backgroundColor: globalVariables.background,
     elevation: 1
   },
   thumbnail: {
