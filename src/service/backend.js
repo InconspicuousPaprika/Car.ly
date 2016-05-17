@@ -9,8 +9,9 @@ import React, {
 
 const autotraderExtractor = 'https://extraction.import.io/query/extractor/10caeb52-8a7c-45e9-9b87-b7082e199bce?_apikey=b8fa373b0b434ad58fe76cdba905bacd23afd0851eb1106f7091d985439eb6b540f6fa1a812be1cc126dd8ff85787b589fd469e76783efb262c7a2ca47170e594a3e0ee1e9a4176ea435e6c4c5050b65'
 
-
 const trueCarExtractor = 'https://extraction.import.io/query/extractor/61a0b22e-1197-438a-a49f-708c96696255?_apikey=b8fa373b0b434ad58fe76cdba905bacd23afd0851eb1106f7091d985439eb6b540f6fa1a812be1cc126dd8ff85787b589fd469e76783efb262c7a2ca47170e594a3e0ee1e9a4176ea435e6c4c5050b65'
+
+const autoTempestExtractor = 'https://extraction.import.io/query/extractor/7a187e3b-9866-4a06-9bc9-69aeaef41f6e?_apikey=1a5572df59da4a00b33882c4ddd3fea53d9fb3033ae4ef5acd816c003c4988faa31e4f8d8359fdf2fc90fa779e8dbe76adc576eefcabfa2f66d52df4fe1f0a6cd610915ef3b0f81f1772133575adbbcc'
 
 module.exports = {
 
@@ -30,6 +31,31 @@ module.exports = {
       `${searchQuery.model}%2F`+
       `${searchQuery.zipcode}%3FendYear%3D`+
       `${searchQuery.endYear}`,{
+        method:'GET',
+      }).then(getResponseJSON);
+  },
+
+  getAutoTempestData(searchQuery) {
+   searchQuery.zipcode = 30022;
+   console.log('inside autoTempestExtractor');
+   console.log(autoTempestExtractor+
+`&url=http%3A%2F%2Fwww.autotempest.com%2Fresults%2F%3Fmake%3D`+
+`${searchQuery.carMake}%26model%3D`+
+`${searchQuery.model}%26radius%3D300%26zip%3D`+
+`${searchQuery.zipcode}%26keywords%3D%26minyear%3D`+
+`${searchQuery.startYear}%26maxyear%3D`+
+`${searchQuery.endYear}%26domesticonly%3D1%26minprice%3D`+
+`${searchQuery.minPrice}%26maxprice%3D`+
+`${searchQuery.maxPrice}%26minmiles%3D%26maxmiles%3D%26transmission%3Dany%26bodystyle%3Dany%26saleby%3Dany`);
+   return fetch(autoTempestExtractor+
+`&url=http%3A%2F%2Fwww.autotempest.com%2Fresults%2F%3Fmake%3D`+
+`${searchQuery.carMake}%26model%3D`+
+`${searchQuery.model}%26radius%3D300%26zip%3D`+
+`${searchQuery.zipcode}%26keywords%3D%26minyear%3D`+
+`${searchQuery.startYear}%26maxyear%3D`+
+`${searchQuery.endYear}%26domesticonly%3D1%26minprice%3D`+
+`${searchQuery.minPrice}%26maxprice%3D`+
+`${searchQuery.maxPrice}%26minmiles%3D%26maxmiles%3D%26transmission%3Dany%26bodystyle%3Dany%26saleby%3Dany`,{
         method:'GET',
       }).then(getResponseJSON);
   },
