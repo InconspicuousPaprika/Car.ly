@@ -42,14 +42,25 @@ let Card = React.createClass({
     return url;
   },
   render() {
-    return (
-      <View style={styles.card}>
-        <Image style={styles.thumbnail} source={{uri: this.convertScale(this.props.image[0].src)}} />
-        <Text style={styles.text}>{this.props.vehicleTitle[0].text}</Text>
-
-
-      </View>
-    )
+    if ( this.props.miles ) {
+      return (
+        <View style={styles.card}>
+          <Image style={styles.thumbnail} source={{uri: this.convertScale(this.props.image[0].src)}} />
+          <Text style={styles.text}>{this.props.vehicleTitle[0].text}</Text>
+          <Text style={styles.text}>This is more information {this.props.price[0].text}</Text>
+          <Text style={styles.text}>This is even more information {this.props.miles[0].text}</Text>
+        </View>
+      )
+    } else if (this.props.miles === undefined) {
+      return (
+        <View style={styles.card}>
+          <Image style={styles.thumbnail} source={{uri: this.convertScale(this.props.image[0].src)}} />
+          <Text style={styles.text}>{this.props.vehicleTitle[0].text}</Text>
+          <Text style={styles.text}>This is more information {this.props.price[0].text}</Text>
+          <Text style={styles.text}>This is even more information {'N/A'}</Text>
+        </View>
+      )
+    }
   }
 })
 
