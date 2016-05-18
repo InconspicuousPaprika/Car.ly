@@ -1,8 +1,15 @@
 import loginActions from '../actions/loginActions';
+import faceBookAction from '../actions/faceBookAction';
 import favoritesActions from '../actions/favoritesActions';
 import { connect } from 'react-redux';
 import { validateLogin } from '../actions/sendPostDataLoginAction';
 import { Actions } from 'react-native-router-flux';
+import FBLogin from './fbLogin';
+// var FBLogin = require('react-native-facebook-login');
+// var FBLoginManager = require('NativeModules').FBLoginManager;
+// var RCTDeviceEventEmitter = require('RCTDeviceEventEmitter');
+// import FBLogin from './FBL.js';
+
 
 import React, {
   Component,
@@ -79,6 +86,11 @@ const styles = StyleSheet.create({
   },
   orText: {
     textAlign: 'center',
+  },
+
+  alertText: {
+    textAlign: 'center',
+    color: 'red'
   }
 });
 
@@ -88,26 +100,14 @@ const styles = StyleSheet.create({
   favorites: state.favorites
 }))
 
-// class Alert extends Component {
-//   handleAlert() {
-//     if (!this.props.login.isValidLogin) {
-
-//     }
-//   }
-
-//   render() {
-//     return (  
-//       <Text style={styles.alert}>Invalid email or password!</Text>
-//     )
-//   }
-// }
-
 
 export default class Login extends Component {
+
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     login: PropTypes.object.isRequired
   }
+
 
   handleChangeEmail(event) {
     let email = event.nativeEvent.text;
@@ -147,12 +147,14 @@ export default class Login extends Component {
   }
 
   render() {
+    var text = this.props.login.isValidLogin ? null : 'Invalid email or password';
     return (
       <View style={styles.mainContainer}>
         <Image 
           style={styles.image}
           source={require('../assets/images/carlylogo.png')}
         />
+        <Text style={[this.props.login.isValidLogin ? null : styles.alertText]}>{text}</Text>
         <TextInput placeholder={'email'}
           autoCapitalize={'none'}
           onChange={this.handleChangeEmail.bind(this)}
@@ -168,6 +170,7 @@ export default class Login extends Component {
         <TouchableHighlight style={styles.button} onPress={this.handleSubmit.bind(this)}>
         <Text style={styles.buttonText}>Sign In</Text></TouchableHighlight>
         <Text style={styles.orText}>Or</Text>
+        <FBLogin />
         <Text style={styles.orText}>
         Don't have an account yet?</Text> 
         <TouchableHighlight onPress={this.handleSignup.bind(this)}>

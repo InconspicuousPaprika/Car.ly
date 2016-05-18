@@ -18,6 +18,7 @@ import { connect } from 'react-redux';
 import sendtoDB from '../actions/resultsActions';
 import resultsListActions from '../actions/resultsListActions';
 import favoritesActions from '../actions/favoritesActions';
+import globalVariables from '../styles/globalVariables.js'
 
 
 
@@ -42,27 +43,34 @@ let Card = React.createClass({
     return url;
   },
   render() {
-    return (
-      <View style={styles.card}>
-        <Image style={styles.thumbnail} source={{uri: this.convertScale(this.props.image[0].src)}} />
-        <Text style={styles.text}>This is card {this.props.vehicleTitle[0].text}</Text>
-        <Text style={styles.text}>This is more information {this.props.price[0].text}</Text>
-        <Text style={styles.text}>This is even more information {this.props.miles[0].text}</Text>
-
-      </View>
-    )
+    if ( this.props.miles ) {
+      return (
+        <View style={styles.card}>
+          <Image style={styles.thumbnail} source={{uri: this.convertScale(this.props.image[0].src)}} />
+          <Text style={styles.text}>{this.props.vehicleTitle[0].text}</Text>
+          <Text style={styles.text}>This is more information {this.props.price[0].text}</Text>
+          <Text style={styles.text}>This is even more information {this.props.miles[0].text}</Text>
+        </View>
+      )
+    } else if (this.props.miles === undefined) {
+      return (
+        <View style={styles.card}>
+          <Image style={styles.thumbnail} source={{uri: this.convertScale(this.props.image[0].src)}} />
+          <Text style={styles.text}>{this.props.vehicleTitle[0].text}</Text>
+          <Text style={styles.text}>This is more information {this.props.price[0].text}</Text>
+          <Text style={styles.text}>This is even more information {'N/A'}</Text>
+        </View>
+      )
+    }
   }
 })
 
 const styles = StyleSheet.create({
   card: {
     alignItems: 'center',
-    borderRadius: 5,
     overflow: 'hidden',
-    borderColor: 'grey',
-    backgroundColor: 'white',
-    borderWidth: 1,
-    elevation: 1,
+    backgroundColor: globalVariables.background,
+    elevation: 1
   },
   thumbnail: {
     flex: 1,
