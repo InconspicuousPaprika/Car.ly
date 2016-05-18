@@ -8,7 +8,7 @@ export default createAction(
     var rawResults = await Promise.all([backend.getCarData(searchQuery), backend.getTrueCarData(searchQuery)]);
     var combinedResults = rawResults.reduce((a,b)=>a.extractorData.data[0].group.concat(b.extractorData.data[0].group));
     console.log(rawResults);
-    console.log(combinedResults); 
+    console.log(combinedResults);
     return combinedResults;
 }
 );
