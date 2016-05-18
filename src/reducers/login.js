@@ -7,7 +7,7 @@ const initialState = {
   email: '',
   password: '',
   user: null,
-  isValidLogin: false,
+  isValidLogin: 'test',
   facebookId: null,
   signedInWithFacebook: null
 }

@@ -86,6 +86,11 @@ const styles = StyleSheet.create({
   },
   orText: {
     textAlign: 'center',
+  },
+
+  alertText: {
+    textAlign: 'center',
+    color: 'red'
   }
 });
 
@@ -102,38 +107,6 @@ export default class Login extends Component {
     dispatch: PropTypes.func.isRequired,
     login: PropTypes.object.isRequired
   }
-
-  // listenFB() {
-  //   RCTDeviceEventEmitter.addListener(
-  //   FBLoginManager.Events["Login"],
-  //   (eventData) => {
-  //   console.log("[Login] ", eventData);
-  //   }
-  // );
-  // }()
-
-// componentWillReceiveProps() {
-//     FBLoginManager.getCredentials(function (error, data) {
-//         console.log(error, data);
-//         if (!error) {
-//             this.dispatch(faceBookAction({signedInWithFacebook: true}));
-//             Actions.Search();
-//         } else {
-//           this.dispatch(faceBookAction({signedInWithFacebook: data}));
-//         }
-//     });
-// }
-
-  // FB.getLoginStatus(function(response) {
-  //   console.log('RESPONSE', response);
-  // });
-
-// FBLogin.Event.subscribe('auth.login', function(response) {
-//   console.log("login_event");
-//   console.log(response.status);
-//   console.log(response);
-// }
-// )
 
 
   handleChangeEmail(event) {
@@ -174,12 +147,14 @@ export default class Login extends Component {
   }
 
   render() {
+    var text = this.props.login.isValidLogin ? null : 'Invalid email or password';
     return (
       <View style={styles.mainContainer}>
         <Image 
           style={styles.image}
           source={require('../assets/images/carlylogo.png')}
         />
+        <Text style={[this.props.login.isValidLogin ? null : styles.alertText]}>{text}</Text>
         <TextInput placeholder={'email'}
           autoCapitalize={'none'}
           onChange={this.handleChangeEmail.bind(this)}
