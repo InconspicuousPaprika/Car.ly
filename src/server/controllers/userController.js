@@ -18,7 +18,13 @@ module.exports = {
 
   verifyFBLogin: function(req, res) {
     var userCredentials = req.body;
-    User.FBLogin(userCredentials)
+    console.log('BODY', userCredentials);
+    User.FBLogin(userCredentials, function(err, user) {
+      if (user.affectedRows === 0) {
+        return res.status(201).send({message: 'You already have an account'})
+      }
+      res.status(201).send({message: 'Thanks for signing up!'})
+    })
   },
 
   verifyLogin: function(req, res, next) {

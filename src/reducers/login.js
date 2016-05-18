@@ -6,10 +6,8 @@ import {FACEBOOK_SIGNIN, FACEBOOK_ID} from '../actions/faceBookAction.js';
 const initialState = {
   email: '',
   password: '',
-  user: null,
   isValidLogin: 'test',
-  facebookId: null,
-  signedInWithFacebook: null
+  facebookId: false
 }
 
 export default handleActions ({
@@ -40,7 +38,7 @@ export default handleActions ({
 
   FACEBOOK_SIGNIN: (state, payload) => ({
     ...state,
-    ...payload.user
+    ...payload.attemptedFBLogin
   })
 
 }, initialState)
