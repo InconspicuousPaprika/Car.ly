@@ -17,10 +17,14 @@ module.exports = {
     });
   },
 
-  FBLogin: function(user) {
-    var userId = user
-    var checkIfIDExists = 'Insert into FacebookUsers (userId) select * from (select "' + user.userId + '" ) AS temp where not exists(select id from FacebookUsers where userID = "' + user.userId +'") LIMIT 1';
-    console.log('USERID', user);
+  FBLogin: function(user, callback) {
+    var userId = user.userId;
+    var queryFBId = 'Insert into FacebookUsers (userId) select * from (select "' + userId + '") AS temp where not exists (select id from FacebookUsers where userId = "' + userId +'") LIMIT 1';
+    //var checkUserId = 'Select userId from FacebookUsers where userId = "' + user.userId + '"';
+    console.log("USER", userId);
+    db.query(queryFBId, function(err, userData) {
+      callback(err, userData);
+    });
   }, 
 
   login: function (user,callback) {
