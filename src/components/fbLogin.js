@@ -32,6 +32,7 @@ export default class FbLogin extends Component {
         Actions.Search();
       } else {
         _this.props.dispatch(facebookSignIn({ user : null }));
+        Actions.Login();
       }
     });
   }
