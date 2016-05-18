@@ -11,7 +11,6 @@ import React, {
   Slider,
   StatusBar
 } from 'react-native';
-import Actions from 'react-native-router-flux';
 import globalVariables from '../styles/globalVariables.js'
 import PricePickerContainer from './PricePickerContainer.js'
 import YearPickerContainer from './YearPickerContainer.js'
