@@ -16,6 +16,13 @@ module.exports = {
       })
     });
   },
+
+  FBLogin: function(user) {
+    var userId = user
+    var checkIfIDExists = 'Insert into FacebookUsers (userId) select * from (select "' + user.userId + '" ) AS temp where not exists(select id from FacebookUsers where userID = "' + user.userId +'") LIMIT 1';
+    console.log('USERID', user);
+  }, 
+
   login: function (user,callback) {
 
     var queryUser = 'Select email, password from Users where email= "' + user.email + '"';
