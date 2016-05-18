@@ -13,6 +13,9 @@ carRouter.route('/users')
 carRouter.route('/users/login')
   .post(userController.verifyLogin)
 
+carRouter.route('/users/FbLogin')
+  .post(userController.verifyFBLogin)  
+
 carRouter.route('/users/getID')
   .post(userController.getUserID)
 

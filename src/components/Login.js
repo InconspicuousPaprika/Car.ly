@@ -1,8 +1,15 @@
 import loginActions from '../actions/loginActions';
+import faceBookAction from '../actions/faceBookAction';
 import favoritesActions from '../actions/favoritesActions';
 import { connect } from 'react-redux';
 import { validateLogin } from '../actions/sendPostDataLoginAction';
 import { Actions } from 'react-native-router-flux';
+import FBLogin from './fbLogin';
+// var FBLogin = require('react-native-facebook-login');
+// var FBLoginManager = require('NativeModules').FBLoginManager;
+// var RCTDeviceEventEmitter = require('RCTDeviceEventEmitter');
+// import FBLogin from './FBL.js';
+
 
 import React, {
   Component,
@@ -88,26 +95,46 @@ const styles = StyleSheet.create({
   favorites: state.favorites
 }))
 
-// class Alert extends Component {
-//   handleAlert() {
-//     if (!this.props.login.isValidLogin) {
-
-//     }
-//   }
-
-//   render() {
-//     return (  
-//       <Text style={styles.alert}>Invalid email or password!</Text>
-//     )
-//   }
-// }
-
 
 export default class Login extends Component {
+
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     login: PropTypes.object.isRequired
   }
+
+  // listenFB() {
+  //   RCTDeviceEventEmitter.addListener(
+  //   FBLoginManager.Events["Login"],
+  //   (eventData) => {
+  //   console.log("[Login] ", eventData);
+  //   }
+  // );
+  // }()
+
+// componentWillReceiveProps() {
+//     FBLoginManager.getCredentials(function (error, data) {
+//         console.log(error, data);
+//         if (!error) {
+//             this.dispatch(faceBookAction({signedInWithFacebook: true}));
+//             Actions.Search();
+//         } else {
+//           this.dispatch(faceBookAction({signedInWithFacebook: data}));
+//         }
+//     });
+// }
+
+  // FB.getLoginStatus(function(response) {
+  //   console.log('RESPONSE', response);
+  // });
+
+// FBLogin.Event.subscribe('auth.login', function(response) {
+//   console.log("login_event");
+//   console.log(response.status);
+//   console.log(response);
+// }
+// )
+
 
   handleChangeEmail(event) {
     let email = event.nativeEvent.text;
@@ -168,6 +195,7 @@ export default class Login extends Component {
         <TouchableHighlight style={styles.button} onPress={this.handleSubmit.bind(this)}>
         <Text style={styles.buttonText}>Sign In</Text></TouchableHighlight>
         <Text style={styles.orText}>Or</Text>
+        <FBLogin />
         <Text style={styles.orText}>
         Don't have an account yet?</Text> 
         <TouchableHighlight onPress={this.handleSignup.bind(this)}>
