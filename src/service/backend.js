@@ -8,13 +8,8 @@ import React, {
 
 
 const autotraderExtractor = 'https://extraction.import.io/query/extractor/10caeb52-8a7c-45e9-9b87-b7082e199bce?_apikey=b8fa373b0b434ad58fe76cdba905bacd23afd0851eb1106f7091d985439eb6b540f6fa1a812be1cc126dd8ff85787b589fd469e76783efb262c7a2ca47170e594a3e0ee1e9a4176ea435e6c4c5050b65'
-<<<<<<< HEAD
 const ebayExtractor = 'https://extraction.import.io/query/extractor/a2661922-6b18-4d16-add1-69773936241c?_apikey=b8fa373b0b434ad58fe76cdba905bacd23afd0851eb1106f7091d985439eb6b540f6fa1a812be1cc126dd8ff85787b589fd469e76783efb262c7a2ca47170e594a3e0ee1e9a4176ea435e6c4c5050b65'
-=======
-
->>>>>>> bbad15cf1870f0f3745300633c294e1a7200a672
 const trueCarExtractor = 'https://extraction.import.io/query/extractor/61a0b22e-1197-438a-a49f-708c96696255?_apikey=b8fa373b0b434ad58fe76cdba905bacd23afd0851eb1106f7091d985439eb6b540f6fa1a812be1cc126dd8ff85787b589fd469e76783efb262c7a2ca47170e594a3e0ee1e9a4176ea435e6c4c5050b65'
-
 const autoTempestExtractor = 'https://extraction.import.io/query/extractor/7a187e3b-9866-4a06-9bc9-69aeaef41f6e?_apikey=1a5572df59da4a00b33882c4ddd3fea53d9fb3033ae4ef5acd816c003c4988faa31e4f8d8359fdf2fc90fa779e8dbe76adc576eefcabfa2f66d52df4fe1f0a6cd610915ef3b0f81f1772133575adbbcc'
 
 module.exports = {
@@ -29,8 +24,6 @@ module.exports = {
         method:'GET',
       }).then(getResponseJSON);
   },
-<<<<<<< HEAD
-=======
 
   getAutoTempestData(searchQuery) {
    searchQuery.zipcode = 30022;
@@ -57,7 +50,6 @@ module.exports = {
       }).then(getResponseJSON);
   },
 
->>>>>>> bbad15cf1870f0f3745300633c294e1a7200a672
   getTrueCarData(searchQuery) {
     searchQuery.zipcode = 30022;
     return fetch(trueCarExtractor+
@@ -70,6 +62,7 @@ module.exports = {
          method:'GET',
        }).then(getResponseJSON);
  },
+ 
  getEbayData(searchQuery){
    var year = '';
    for (var i = searchQuery.startYear; i < searchQuery.endYear; i+=1000) {

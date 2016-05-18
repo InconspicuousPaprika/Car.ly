@@ -27,7 +27,6 @@ import HeaderContainer from './common/HeaderContainer.js';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ListViewer from './common/ListViewer.js';
 import { Actions } from 'react-native-router-flux';
->>>>>>> bbad15cf1870f0f3745300633c294e1a7200a672
 
 let PickerItemIOS = PickerIOS.Item;
 
