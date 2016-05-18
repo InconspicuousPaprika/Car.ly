@@ -18,7 +18,13 @@ module.exports = {
 
   verifyFBLogin: function(req, res) {
     var userCredentials = req.body;
-    User.FBLogin(userCredentials)
+    console.log('BODY', userCredentials);
+    User.FBLogin(userCredentials, function(err, user) {
+      if (err) {
+        return res.status(409).send("INVALID");
+      }
+      res.status(201).send('Welcome!');
+    })
   },
 
   verifyLogin: function(req, res, next) {

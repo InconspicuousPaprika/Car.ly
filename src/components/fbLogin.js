@@ -1,7 +1,8 @@
 var FBLoginManager = require('NativeModules').FBLoginManager;
-import { getFacebookId, facebookSignIn} from '../actions/faceBookAction';
+import { getFacebookId, facebookSignIn, validateFBLogin} from '../actions/faceBookAction';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import { isValidUser } from '../actions/sendPostDataLoginAction';
 
 import React, {
   StyleSheet,
@@ -28,10 +29,8 @@ export default class FbLogin extends Component {
     var _this = this;
     FBLoginManager.getCredentials(function(error, data){
       if (!error) {
-        _this.props.dispatch(facebookSignIn({ user : data.credentials }));
         Actions.Search();
       } else {
-        _this.props.dispatch(facebookSignIn({ user : null }));
         Actions.Login();
       }
     });
@@ -42,7 +41,8 @@ export default class FbLogin extends Component {
     FBLoginManager.login(function(error, data){
       if (!error) {
         _this.updateView();
-        _this.props.dispatch(getFacebookId({user_id: data.credentials.userId}))
+        _this.props.dispatch(getFacebookId({facebookId: data.credentials.userId}));
+        _this.props.dispatch(validateFBLogin({userId: _this.props.fbLogin.facebookId}));
       } else {
         console.log(error, data);
       }
@@ -53,7 +53,7 @@ export default class FbLogin extends Component {
     var _this = this;
     FBLoginManager.logout(function(error, data){
       if (!error) {
-        _this.props.dispatch(facebookSignIn({user: null}))
+        _this.props.dispatch(facebookSignIn({facebookId: null}))
       } else {
         console.log(error, data);
       }
@@ -62,24 +62,15 @@ export default class FbLogin extends Component {
 
   onPress(){
     var _this = this;
-    _this.props.fbLogin.user
+    _this.props.fbLogin.facebookId
       ? this.handleLogout()
       : this.handleLogin();
 
     this.props.onPress && this.props.onPress();
   }
 
-  // componentWillMount(){
-  //   var _this = this;
-  //   FBLoginManager.getCredentials(function(error, data){
-  //     if (!error) {
-  //       _this.props.dispatch(getFacebookId({user_id: data}))
-  //     }
-  //   });
-  // }
-
   render() {
-    var text = this.props.fbLogin.user ? "Log out" : "Log in with Facebook";
+    var text = this.props.fbLogin.facebookId ? "Log out" : "Log in with Facebook";
     return (
       <View style={this.props.style}>
         <TouchableHighlight
@@ -88,7 +79,7 @@ export default class FbLogin extends Component {
         >
           <View style={styles.FBLoginButton}>
             <Image style={styles.FBLogo} source={require('../assets/images/FB-f-Logo__white_144.png')} />
-            <Text style={[styles.FBLoginButtonText, this.props.fbLogin.user ? styles.FBLoginButtonTextLoggedIn : styles.FBLoginButtonTextLoggedOut]}
+            <Text style={[styles.FBLoginButtonText, this.props.fbLogin.facebookId ? styles.FBLoginButtonTextLoggedIn : styles.FBLoginButtonTextLoggedOut]}
               numberOfLines={1}>{text}</Text>
           </View>
         </TouchableHighlight>
