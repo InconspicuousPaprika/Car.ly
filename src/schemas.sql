@@ -10,6 +10,12 @@ CREATE TABLE Users (
   PRIMARY KEY (ID)
 );
 
+CREATE TABLE FacebookUsers (
+  id int NOT NULL AUTO_INCREMENT,
+  userId int NOT NULL, 
+  PRIMARY KEY (ID)
+);
+
 CREATE TABLE Favorites (
   id int NOT NULL AUTO_INCREMENT,
   users_email varchar(50) NOT NULL,

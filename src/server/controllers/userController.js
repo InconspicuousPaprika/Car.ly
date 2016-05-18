@@ -16,6 +16,11 @@ module.exports = {
     });
   },
 
+  verifyFBLogin: function(req, res) {
+    var userCredentials = req.body;
+    User.FBLogin(userCredentials)
+  },
+
   verifyLogin: function(req, res, next) {
     var user = req.body;
     var password = user.password;
