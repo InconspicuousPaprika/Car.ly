@@ -22,6 +22,7 @@ import searchActions from '../actions/searchActions.js';
 import MultiSlider from 'react-native-multi-slider';
 import Immutable from 'immutable';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 
 
 let PickerItemIOS = PickerIOS.Item;
@@ -44,6 +45,7 @@ export default class Counter extends Component {
     console.log('going');
     console.log(this.props.query);
     this.props.dispatch(searchActions(this.props.query));
+    Actions.Results();
   }
 
   render() {
