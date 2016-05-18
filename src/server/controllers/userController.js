@@ -20,10 +20,10 @@ module.exports = {
     var userCredentials = req.body;
     console.log('BODY', userCredentials);
     User.FBLogin(userCredentials, function(err, user) {
-      if (err) {
-        return res.status(409).send("INVALID");
+      if (user.affectedRows === 0) {
+        return res.status(201).send({message: 'You already have an account'})
       }
-      res.status(201).send('Welcome!');
+      res.status(201).send({message: 'Thanks for signing up!'})
     })
   },
 

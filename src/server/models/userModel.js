@@ -23,10 +23,7 @@ module.exports = {
     //var checkUserId = 'Select userId from FacebookUsers where userId = "' + user.userId + '"';
     console.log("USER", userId);
     db.query(queryFBId, function(err, userData) {
-      if(err || userData === undefined) {
-        console.log('ERROR', err);
-      }
-      callback(null, userData);
+      callback(err, userData);
     });
   }, 
 
