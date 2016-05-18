@@ -11,6 +11,7 @@ import React, {
   Slider,
   StatusBar
 } from 'react-native';
+import Actions from 'react-native-router-flux';
 import globalVariables from '../styles/globalVariables.js'
 import PricePickerContainer from './PricePickerContainer.js'
 import YearPickerContainer from './YearPickerContainer.js'
@@ -22,7 +23,9 @@ import searchActions from '../actions/searchActions.js';
 import MultiSlider from 'react-native-multi-slider';
 import Immutable from 'immutable';
 import { connect } from 'react-redux';
-
+import HeaderContainer from './common/HeaderContainer.js';
+import Icon from 'react-native-vector-icons/Ionicons';
+import ListViewer from './common/ListViewer.js';
 
 let PickerItemIOS = PickerIOS.Item;
 
@@ -30,7 +33,7 @@ let PickerItemIOS = PickerIOS.Item;
   query: state.search,
   CAR_MAKES_AND_MODELS: state.search.allCars
 }))
-export default class Counter extends Component {
+export default class Search extends Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     query: React.PropTypes.object.isRequired
@@ -46,28 +49,59 @@ export default class Counter extends Component {
     this.props.dispatch(searchActions(this.props.query));
   }
 
+
   render() {
-    const { query, dispatch, CAR_MAKES_AND_MODELS } = this.props;
+    var action = Actions
+    const favorites =(<Icon name="ion-ios-heart" size={30} color="#900" />)
+    const rightItem = {
+      title: 'favorites',
+      icon: favorites,
+      onPress: 'Actions.Favorites.bind(this)'
+    };
+    const results = (<Icon name="ion-model-s" size={30} color="#900" />)
+    const leftItem = {
+      title: 'results',
+      icon: results,
+      onPress: 'Actions.Results.bind(this)'
+    }
     return (
-  <ScrollView style={styles.container}>
-    <View style={styles.page}>
-      <StatusBar hidden={false} backgroundColor='blue'/> 
-      <CarConditionPicker />
-      <CarMakePickerContainer />
-      <PricePickerContainer />
-      <YearPickerContainer />
-      <ZipCodeContainer />
+      <HeaderContainer
+        title="Search"
+        // parallaxContent={profilePicture}
+        backgroundImage={require('../assets/images/main-background.png')}
+        backgroundColor={'#A8D769'}
+        // onSegmentChange={this.handleSegmentChanged}
+        leftItem={leftItem}
+        rightItem={rightItem}>
+        <ListViewer
+        renderEmptyList={this.renderScrollView.bind(this)}
 
-    <TouchableHighlight
-      underlayColor="#88D4F5"
-      onPress={this.goToResults.bind(this)}
-    >
-    <Text>Search </Text>
-    </TouchableHighlight>
+        >
+        </ListViewer>
 
-    </View>
-   </ScrollView>
-)
+      </HeaderContainer>
+
+  )
+  }
+  renderScrollView(){
+    return (
+        <View >
+
+          <CarMakePickerContainer />
+          <PricePickerContainer />
+          <YearPickerContainer />
+          <ZipCodeContainer />
+          <CarConditionPicker />
+
+        <TouchableHighlight
+          underlayColor="#88D4F5"
+          onPress={this.goToResults.bind(this)}
+        >
+        <Text>Search </Text>
+        </TouchableHighlight>
+
+        </View>
+    )
   }
 }
 
