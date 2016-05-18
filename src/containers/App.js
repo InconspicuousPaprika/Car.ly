@@ -22,7 +22,7 @@ import searchTab from '../assets/images/TabBar-House-Icon@3x.png'
 import activeSearch from '../assets/images/TabBar-House-Icon-Active@3x.png'
 
 const scenes = Actions.create(
-  <Scene key="root" >
+  <Scene key="root" hideNavBar={true}>
     <Scene type="push" key="Login" initial={true} direction='horizontal' component={Login} duration={100} title='Login' />
     <Scene type="push" key="Search" component={Search} panHandlers={null} />
     <Scene type="push" key="SignUp" component={Signup} direction='horizontal' duration={100} title='Signup' />
@@ -36,9 +36,11 @@ const scenes = Actions.create(
 const App = () => (
  <View style={{ flex: 1 }}>
   <StatusBar
-    hidden={false}
+    translucent={true}
+    backgroundColor="rgba(0, 0, 0, 0.2)"
+    barStyle="light-content"
+    hidden={true}
     showHideTransition="slide"
-    animated={true}
   />
   <Router scenes={scenes} />
   <View style={styles.tabbar}>
