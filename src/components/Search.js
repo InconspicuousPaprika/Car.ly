@@ -53,16 +53,14 @@ export default class Search extends Component {
 
   render() {
     var action = Actions
-    const favorites =(<Icon name="ion-ios-heart" size={30} color="#900" />)
     const rightItem = {
-      title: 'favorites',
-      icon: favorites,
+      title: 'ios-heart',
+      icon: 'ios-heart',
       onPress: 'Actions.Favorites.bind(this)'
     };
-    const results = (<Icon name="ion-model-s" size={30} color="#900" />)
     const leftItem = {
-      title: 'results',
-      icon: results,
+      title: 'ios-car',
+      icon: 'ios-car',
       onPress: 'Actions.Results.bind(this)'
     }
     return (
@@ -86,8 +84,8 @@ export default class Search extends Component {
   }
   renderScrollView(){
     return (
-        <View >
-
+        <View style={styles.container} >
+          <View style={styles.page}>
           <CarMakePickerContainer />
           <PricePickerContainer />
           <YearPickerContainer />
@@ -100,7 +98,7 @@ export default class Search extends Component {
         >
         <Text>Search </Text>
         </TouchableHighlight>
-
+        </View>
         </View>
     )
   }
