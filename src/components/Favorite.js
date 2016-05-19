@@ -15,7 +15,9 @@ import { connect } from 'react-redux';
 import sendtoDB from '../actions/resultsActions';
 import resultsListActions from '../actions/resultsListActions';
 import favoritesActions from '../actions/favoritesActions';
-
+import HeaderContainer from './common/HeaderContainer.js';
+import Icon from 'react-native-vector-icons/Ionicons';
+import ListViewer from './common/ListViewer.js';
 
 
 @connect(state => ({
@@ -40,7 +42,7 @@ export default class FavoritesList extends Component {
   // constructor(props){
   //   super(props);
   // }
-  // 
+  //
 
   convertScale(url) {
     let newurl = 'http://images.autotrader.com/scaler/400/300/'+url.slice(42);
@@ -84,7 +86,7 @@ export default class FavoritesList extends Component {
       })
     }).then(res => res.json())
     .then(data => {
-      console.log("ID", data); 
+      console.log("ID", data);
       return data;
     }).then(this.submitCarData)
         // dispatch({
@@ -119,37 +121,57 @@ export default class FavoritesList extends Component {
         }
       }).then(res => res.json())
       .then(data => {
-        console.log("favorites", data.favorites); 
+        console.log("favorites", data.favorites);
         dispatch(favoritesActions({favoritesList: data.favorites}));
       })
     })
   }
+  renderFavorites(){
+    const { query, convertScale, results, login, signup, dispatch, favorites, CAR_MAKES_AND_MODELS } = this.props;
+    <View style={{flex: 1, backgroundColor: '#f2f2f2'}}>
+    {
+      _.map(favorites, function(item, index) {
+        return (
+          <TouchableWithoutFeedback onPress={this.deleteFavorite.bind(this, item)}>
+          <View>
+          <Image
+          key={`PhotoItem_${item.id}`}
+          style={styles.image}
+          source={{uri: this.convertScale(item.image)}}
+          />
+          <Text>{item.make}</Text>
+          <Text>{item.model}</Text>
+          <Text>{item.year}</Text>
+          <Text>{item.price}</Text>
+          </View>
+          </TouchableWithoutFeedback>
+        );
+      }, this)
+    }
+    </View>
+  }
 
   render() {
-    console.log(favorites);
-    const { query, convertScale, results, login, signup, dispatch, favorites, CAR_MAKES_AND_MODELS } = this.props;
+
+    const leftItem = {
+      title: 'ios-car',
+      icon: 'ios-car',
+    }
     return (
-      <ScrollView style={{flex: 1, backgroundColor: '#f2f2f2'}}>
-        {
-          _.map(favorites, function(item, index) {
-            return (
-              <TouchableWithoutFeedback onPress={this.deleteFavorite.bind(this, item)}>
-                <View>
-                <Image
-                  key={`PhotoItem_${item.id}`}
-                  style={styles.image}
-                  source={{uri: this.convertScale(item.image)}}
-                />
-                <Text>{item.make}</Text>
-                <Text>{item.model}</Text>
-                <Text>{item.year}</Text>
-                <Text>{item.price}</Text>
-                </View>
-              </TouchableWithoutFeedback>
-            );
-          }, this)
-        }
-      </ScrollView>
+      <HeaderContainer
+        title="Favorites"
+        // parallaxContent={profilePicture}
+        backgroundImage={require('../assets/images/main-background.png')}
+        backgroundColor={'#A8D769'}
+        // onSegmentChange={this.handleSegmentChanged}
+        leftItem={leftItem}>
+        <ListViewer
+        renderEmptyList={this.renderFavorites.bind(this)}
+
+        >
+        </ListViewer>
+
+      </HeaderContainer>
       // </View>
     )
   }
