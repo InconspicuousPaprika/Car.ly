@@ -5,6 +5,8 @@ var { Text } = require('../../styles/text.js');
 var TouchableOpacity = require('TouchableOpacity');
 var View = require('View');
 var Image = require('Image');
+import { Actions } from 'react-native-router-flux';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export type Layout =
     'default'      // Use platform defaults (icon on Android, text on iOS)
@@ -80,14 +82,20 @@ class ItemWrapperIOS extends React.Component {
     let content;
     const {title, icon, layout, onPress} = item;
 
+
     if (layout !== 'icon' && title) {
-      content = (
-        <Text style={[styles.itemText, {color}]}>
-          {title.toUpperCase()}
-        </Text>
-      );
+      if (title === 'ios-car') {
+          content = <Icon name="ios-car" size={30} color='white' onPress={Actions.Results}/>
+
+        } else if ( title === "ios-heart" ) {
+          content = <Icon name="ios-heart" size={30} color='white' onPress={Actions.Favorites}/>
+
+        } else {
+          content = <Icon name='ios-settings' size={30} color='white'/>
+        }
+
     } else if (icon) {
-      content = <Image source={icon} />;
+      content = <Image source={title} />;
     }
 
     return (

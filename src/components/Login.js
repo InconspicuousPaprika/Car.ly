@@ -24,13 +24,21 @@ import React, {
 } from 'react-native';
 
 const styles = StyleSheet.create({
+  container: {
+  flex: 1,
+  width: undefined,
+  height: undefined,
+  backgroundColor:'transparent',
+  justifyContent: 'center',
+  alignItems: 'center',
+},
   mainContainer: {
-    flex: 1,
-    padding: 30,
-    marginTop: 65,
+    flex: 2,
+    padding: 0,
+    width:300,
+    marginTop: 400,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#FFCC00'
   },
   title: {
     marginBottom: 20,
@@ -39,13 +47,13 @@ const styles = StyleSheet.create({
     color: '#fff'
   },
   emailInput: {
-    height: 50,
+    height: 35,
     padding: 4,
     marginRight: 5,
     fontSize: 23,
-    borderWidth: 1,
-    borderColor: '#2c3e50',
-    backgroundColor: '#fff',
+    borderWidth: 3,
+    borderColor: 'white',
+
     borderRadius: 8,
     color: '#e74c3c'
   },
@@ -56,14 +64,13 @@ const styles = StyleSheet.create({
 
   },
   passwordInput: {
-    height: 50,
+    height: 35,
     padding: 4,
     marginRight: 5,
     marginTop: 10,
     fontSize: 23,
-    borderWidth: 1,
-    borderColor: '#2c3e50',
-    backgroundColor: '#fff',
+    borderWidth: 3,
+    borderColor: 'white',
     borderRadius: 8,
     color: '#e74c3c'
   },
@@ -76,9 +83,9 @@ const styles = StyleSheet.create({
   button: {
     height: 50,
     flexDirection: 'row',
-    backgroundColor: '#2c3e50',
-    borderWidth: 1,
+    borderWidth: 3,
     borderRadius: 8,
+    borderColor:'white',
     marginBottom: 10,
     marginTop: 10,
     alignSelf: 'stretch',
@@ -122,7 +129,7 @@ export default class Login extends Component {
   handleSignup() {
     Actions.SignUp();
   }
- 
+
   handleSubmit() {
     this.props.dispatch(validateLogin({email: this.props.login.email, password: this.props.login.password}));
     this.retrieveFavorites();
@@ -141,7 +148,7 @@ export default class Login extends Component {
       }
     }).then(res => res.json())
     .then(data => {
-      console.log("favorites", data.favorites); 
+      console.log("favorites", data.favorites);
       dispatch(favoritesActions({favoritesList: data.favorites}));
     })
   }
@@ -149,33 +156,36 @@ export default class Login extends Component {
   render() {
     var text = this.props.login.isValidLogin ? null : 'Invalid email or password';
     return (
+      <Image
+      source={require('../assets/images/carlytrip.jpg')}
+      style={styles.container}
+      >
       <View style={styles.mainContainer}>
-        <Image 
-          style={styles.image}
-          source={require('../assets/images/carlylogo.png')}
-        />
-        <Text style={[this.props.login.isValidLogin ? null : styles.alertText]}>{text}</Text>
-        <TextInput placeholder={'email'}
-          autoCapitalize={'none'}
-          onChange={this.handleChangeEmail.bind(this)}
-          autoCorrect={false}
-          style={styles.emailInput}
-        />
-        <TextInput placeholder={'password'}
-          secureTextEntry={true}
-          autoCorrect={false}
-          onChange={this.handleChangePassword.bind(this)}
-          style={styles.passwordInput}
-        />
-        <TouchableHighlight style={styles.button} onPress={this.handleSubmit.bind(this)}>
-        <Text style={styles.buttonText}>Sign In</Text></TouchableHighlight>
-        <Text style={styles.orText}>Or</Text>
-        <FBLogin />
-        <Text style={styles.orText}>
-        Don't have an account yet?</Text> 
-        <TouchableHighlight onPress={this.handleSignup.bind(this)}>
-        <Text style={styles.orText}>Signup</Text></TouchableHighlight>
+      <Text style={[this.props.login.isValidLogin ? null : styles.alertText]}>{text}</Text>
+      <TextInput placeholder={'email'}
+      autoCapitalize={'none'}
+      onChange={this.handleChangeEmail.bind(this)}
+      autoCorrect={false}
+      style={styles.emailInput}
+      />
+      <TextInput placeholder={'password'}
+      secureTextEntry={true}
+      autoCorrect={false}
+      onChange={this.handleChangePassword.bind(this)}
+      style={styles.passwordInput}
+      />
+      <TouchableHighlight style={styles.button} onPress={this.handleSubmit.bind(this)}>
+      <Text style={styles.buttonText}>Sign In</Text></TouchableHighlight>
+      <Text style={styles.orText}>Or</Text>
+      <FBLogin />
+      <Text style={styles.orText}>
+      Don't have an account yet?</Text>
+      <TouchableHighlight onPress={this.handleSignup.bind(this)}>
+      <Text style={styles.orText}>Signup</Text></TouchableHighlight>
       </View>
+    </Image>
+
+
     );
   }
 }

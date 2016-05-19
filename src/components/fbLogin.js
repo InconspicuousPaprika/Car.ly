@@ -19,7 +19,7 @@ import React, {
 }))
 
 export default class FbLogin extends Component {
- 
+
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     fbLogin: PropTypes.object.isRequired,
