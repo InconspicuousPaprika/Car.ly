@@ -49,6 +49,9 @@ export default class Search extends Component {
     this.props.dispatch(searchActions(this.props.query));
   }
 
+  handleLogout() {
+    Actions.Login();
+  }
 
   render() {
     var action = Actions
@@ -97,6 +100,8 @@ export default class Search extends Component {
         >
         <Text>Search </Text>
         </TouchableHighlight>
+        <TouchableHighlight onPress={this.handleLogout.bind(this)}>
+        <Text style={styles.loginText}>Logout</Text></TouchableHighlight>
         </View>
         </View>
     )
@@ -123,5 +128,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'white',
     textAlign: 'center'
+  },
+
+  loginText: {
+    textAlign: 'center',
+    color: 'black',
+    marginBottom: 5,
+    textDecorationLine: 'underline'
   }
 });
