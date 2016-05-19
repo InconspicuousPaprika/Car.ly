@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   divider: {
     height: 15,
     width: 1,
-    backgroundColor: '#ccc'
+    backgroundColor: '#ccc',
   },
 });
 

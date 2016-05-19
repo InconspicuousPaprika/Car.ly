@@ -21,6 +21,12 @@ import favoritesActions from '../actions/favoritesActions';
 import Card from './Card';
 import NoMoreCards from './NoMoreCards';
 import globalVariables from '../styles/globalVariables.js'
+import ListViewer from './common/ListViewer.js';
+import HeaderContainer from './common/HeaderContainer.js';
+import Icon from 'react-native-vector-icons/Ionicons';
+import fakeData from '../assets/fakeData.js';
+var Header = require('./common/Header');
+var ParallaxBackground = require('./common/ParallaxBackground');
 
 
 
@@ -42,7 +48,7 @@ export default class Results extends Component{
   //   signup: React.PropTypes.object.isRequired,
   //   favorites: React.PropTypes.array.isRequired,
   // };
-  // 
+  //
   constructor(props) {
     super(props);
   }
@@ -82,10 +88,10 @@ export default class Results extends Component{
         }
       }).then(res => res.json())
       .then(data => {
-        console.log("favorites", data.favorites); 
+        console.log("favorites", data.favorites);
         dispatch(favoritesActions({favoritesList: data.favorites}));
       })
-    })       
+    })
   }
   handleNope (card) {
     console.log("nope")
@@ -110,23 +116,53 @@ export default class Results extends Component{
     // }
 
   }
-  render() {
+  renderCards(){
     return (
       <SwipeCards
-        cards={this.props.cards}
-        loop={false}
+      cards={fakeData}
+      loop={false}
 
-        renderCard={(cardData) => <Card {...cardData} />}
-        renderNoMoreCards={() => <NoMoreCards />}
-        showYup={true}
-        showNope={true}
+      renderCard={(cardData) => <Card {...cardData} />}
+      renderNoMoreCards={() => <NoMoreCards />}
+      showYup={true}
+      showNope={true}
 
-        handleYup={this.handleYup.bind(this)}
-        handleNope={this.handleNope}
-        cardRemoved={this.cardRemoved}/>
+      handleYup={this.handleYup.bind(this)}
+      handleNope={this.handleNope}
+      cardRemoved={this.cardRemoved}/>
+    )
+  }
+  render() {
+    const rightItem = {
+      title: 'ios-heart',
+      icon: 'ios-heart',
+      onPress: 'Actions.Favorites.bind(this)'
+    };
+    const leftItem = {
+      title: 'ios-settings',
+      icon: 'ios-sett',
+      onPress: 'Actions.Results.bind(this)'
+    }
+    return (
+      <HeaderContainer
+
+        title="Results"
+        // parallaxContent={profilePicture}
+        backgroundImage={require('../assets/images/main-background.png')}
+        backgroundColor={'#A8D769'}
+        // onSegmentChange={this.handleSegmentChanged}
+        leftItem={leftItem}
+        rightItem={rightItem}>
+        <ListViewer
+        renderEmptyList={this.renderCards.bind(this)}
+        >
+        </ListViewer>
+
+      </HeaderContainer>
     )
   }
 }
+
 
 const styles = StyleSheet.create({
   card: {
