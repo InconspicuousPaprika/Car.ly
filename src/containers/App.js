@@ -43,29 +43,7 @@ const App = () => (
     showHideTransition="slide"
   />
   <Router scenes={scenes} />
-  <View style={styles.tabbar}>
-  <TabBarIOS  style={{ flex:1 }}>
-  <TabBarIOS.Item
-    title="Search"
-    onPress={()=> Actions.Search()}
-    icon={searchTab}
-    selectedIcon={activeSearch}>
-  </TabBarIOS.Item>
-    <TabBarIOS.Item
-      title="Results"
-      onPress={()=> Actions.Results()}
-      icon={favoritesTab}
-      selectedIcon={activeFav}>
-    </TabBarIOS.Item>
-    <TabBarIOS.Item
-      title="Favorites"
-      onPress={()=> Actions.Favorites()}
-      icon={favoritesTab}
-      selectedIcon={activeFav}>
-    </TabBarIOS.Item>
-    </TabBarIOS >
 
-  </View>
  </View>
 )
 
