@@ -91,7 +91,7 @@ class ItemWrapperIOS extends React.Component {
           content = <Icon name="ios-heart" size={30} color='white' onPress={Actions.Favorites}/>
 
         } else {
-          content = <Icon name='ios-settings' size={30} color='white'/>
+          content = <Icon name='ios-settings' size={30} color='white' onPress={Actions.Search}/>
         }
 
     } else if (icon) {
