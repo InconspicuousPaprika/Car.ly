@@ -47,7 +47,6 @@ export default class Search extends Component {
     console.log('going');
     console.log(this.props.query);
     this.props.dispatch(searchActions(this.props.query));
-    Actions.Results();
   }
 
 

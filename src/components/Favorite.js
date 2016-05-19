@@ -45,8 +45,13 @@ export default class FavoritesList extends Component {
   //
 
   convertScale(url) {
-    let newurl = 'http://images.autotrader.com/scaler/400/300/'+url.slice(42);
-    return newurl;
+    if(url.includes('autotrader')) {
+      url = 'http://images.autotrader.com/scaler/400/300/'+url.slice(42);
+    } 
+    // else if (url.includes('ebay')){
+    //   url = ''
+    // }
+    return url;
   }
 
   submitCarData(id) {

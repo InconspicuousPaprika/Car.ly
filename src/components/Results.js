@@ -57,7 +57,7 @@ export default class Results extends Component{
 
   handleYup(item) {
     console.log('in submitCarData', "item", item);
-    var userEmail = this.props.login.email || this.props.login.facebookId;
+    var userEmail = this.props.login.email || this.props.signup.email || this.props.login.facebookId;
     var dispatch = this.props.dispatch;
     const newFavorite = {
         users_email: userEmail,
