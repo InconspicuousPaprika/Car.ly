@@ -1,6 +1,5 @@
 import Search from '../components/Search.js';
-import getResponse from '../utils/getResponse';
-import getResponseJSON from '../utils/getResponse';
+import util from '../utils/getResponse';
 import Promise from 'bluebird';
 import React, {
   AsyncStorage
@@ -22,7 +21,7 @@ module.exports = {
       `${searchQuery.zipcode}%3FendYear%3D`+
       `${searchQuery.endYear}`,{
         method:'GET',
-      }).then(getResponseJSON);
+      }).then(util.getResponseJSON);
   },
 
   getAutoTempestData(searchQuery) {
@@ -47,7 +46,7 @@ module.exports = {
 `${searchQuery.minPrice}%26maxprice%3D`+
 `${searchQuery.maxPrice}%26minmiles%3D%26maxmiles%3D%26transmission%3Dany%26bodystyle%3Dany%26saleby%3Dany`,{
         method:'GET',
-      }).then(getResponseJSON);
+      }).then(util.getResponseJSON);
   },
 
   getTrueCarData(searchQuery) {
@@ -60,7 +59,7 @@ module.exports = {
        `${searchQuery.zipcode}%2Fprice-`+
        `${searchQuery.minPrice}-${searchQuery.maxPrice}`,{
          method:'GET',
-       }).then(getResponseJSON);
+       }).then(util.getResponseJSON);
  },
  
  getEbayData(searchQuery){
@@ -80,7 +79,7 @@ module.exports = {
      `${searchQuery.carMake}%2520`+
      `${searchQuery.model}%26LH_PrefLoc%3D99%26_pppn%3Dr1%26scp%3Dce0`, {
        method:'GET',
-     }).then(getResponseJSON)
+     }).then(util.getResponseJSON)
  },
 submitUserData(emailAndPassword) {
     return fetch('http://localhost:3000/api/carly/users', {
@@ -93,7 +92,7 @@ submitUserData(emailAndPassword) {
         email: emailAndPassword.email,
         password: emailAndPassword.password,
       })
-    }).then(getResponse)
+    }).then(util.getResponse)
   },
 login(emailAndPassword) {
     return fetch('http://localhost:3000/api/carly/users/login', {
@@ -106,7 +105,7 @@ login(emailAndPassword) {
         email: emailAndPassword.email,
         password: emailAndPassword.password,
       })
-    }).then(getResponse)
+    }).then(util.getResponse)
   }
 
   // obtainUserData(email) {

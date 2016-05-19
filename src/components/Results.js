@@ -51,11 +51,10 @@ export default class Results extends Component{
 
   handleYup(item) {
     console.log('in submitCarData', "item", item);
-    console.log('email', this.props.login.email);
-    userEmail = this.props.login.email;
-    dispatch = this.props.dispatch;
+    var userEmail = this.props.login.email || this.props.login.facebookId;
+    var dispatch = this.props.dispatch;
     const newFavorite = {
-        users_email: this.props.login.email,
+        users_email: userEmail,
         image: item.image[0].src,
         make: this.props.query.carMake,
         model: this.props.query.model,
@@ -72,7 +71,6 @@ export default class Results extends Component{
       body: JSON.stringify(newFavorite)
     }).then(res => {
       console.log("response from SF: ", res);
-      console.log("email", this.props.login.email);
       console.log("global email", userEmail);
       return fetch('http://localhost:3000/api/carly/favorites/'+userEmail, {
         method: 'GET',

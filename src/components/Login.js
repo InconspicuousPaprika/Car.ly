@@ -131,7 +131,7 @@ export default class Login extends Component {
   retrieveFavorites() {
     favorite = this.props.favorites;
     dispatch = this.props.dispatch;
-    userEmail = this.props.login.email;
+    userEmail = this.props.login.email || this.props.login.facebookId;
     console.log('in retrieveFavorites', "email", userEmail);
     return fetch('http://localhost:3000/api/carly/favorites/'+userEmail, {
       method: 'GET',
