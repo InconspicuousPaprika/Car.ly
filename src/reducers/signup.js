@@ -5,7 +5,7 @@ import {VALID_SIGNUP, INVALID_SIGNUP, SEND_POST_SIGNUP} from '../actions/signupS
 const initialState = {
   email: '',
   password: '',
-  validSignup: false
+  validSignup: 'test'
 }
 
 export default handleActions ({

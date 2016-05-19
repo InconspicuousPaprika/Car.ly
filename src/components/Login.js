@@ -53,15 +53,14 @@ const styles = StyleSheet.create({
     fontSize: 23,
     borderWidth: 3,
     borderColor: 'white',
-
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
     borderRadius: 8,
-    color: '#e74c3c'
+    color: 'white'
   },
   image: {
     alignSelf: 'center',
     marginBottom: 40,
     height: 200,
-
   },
   passwordInput: {
     height: 35,
@@ -71,10 +70,10 @@ const styles = StyleSheet.create({
     fontSize: 23,
     borderWidth: 3,
     borderColor: 'white',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
     borderRadius: 8,
-    color: '#e74c3c'
+    color: 'white'
   },
-
   buttonText: {
     fontSize: 18,
     color: 'white',
@@ -90,14 +89,22 @@ const styles = StyleSheet.create({
     marginTop: 10,
     alignSelf: 'stretch',
     justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
   },
   orText: {
     textAlign: 'center',
+    color: 'white',
+    marginBottom: 5
   },
-
   alertText: {
     textAlign: 'center',
-    color: 'red'
+    color: 'white'
+  },
+  signupText: {
+    textAlign: 'center',
+    color: 'white',
+    marginBottom: 5,
+    textDecorationLine: 'underline'
   }
 });
 
@@ -167,12 +174,16 @@ export default class Login extends Component {
       onChange={this.handleChangeEmail.bind(this)}
       autoCorrect={false}
       style={styles.emailInput}
+      keyboardType={'email-address'}
+      placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
       />
       <TextInput placeholder={'password'}
       secureTextEntry={true}
       autoCorrect={false}
       onChange={this.handleChangePassword.bind(this)}
       style={styles.passwordInput}
+      placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
+      keyboardType={'default'}
       />
       <TouchableHighlight style={styles.button} onPress={this.handleSubmit.bind(this)}>
       <Text style={styles.buttonText}>Sign In</Text></TouchableHighlight>
@@ -181,7 +192,7 @@ export default class Login extends Component {
       <Text style={styles.orText}>
       Don't have an account yet?</Text>
       <TouchableHighlight onPress={this.handleSignup.bind(this)}>
-      <Text style={styles.orText}>Signup</Text></TouchableHighlight>
+      <Text style={styles.signupText}>Signup</Text></TouchableHighlight>
       </View>
     </Image>
 

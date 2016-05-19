@@ -20,13 +20,21 @@ import React, {
 } from 'react-native';
 
 const styles = StyleSheet.create({
-  mainContainer: {
+  container: {
     flex: 1,
-    padding: 30,
-    marginTop: 65,
+    width: undefined,
+    height: undefined,
+    backgroundColor:'transparent',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  mainContainer: {
+    flex: 2,
+    padding: 0,
+    width:300,
+    marginTop: 400,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#fff'
   },
   title: {
     marginBottom: 100,
@@ -36,62 +44,67 @@ const styles = StyleSheet.create({
     fontFamily: ''
   },
   emailInput: {
-    height: 50,
+    height: 35,
     padding: 4,
     marginRight: 5,
     fontSize: 23,
-    borderWidth: 1,
-    borderColor: '#2c3e50',
-    backgroundColor: '#fff',
+    borderWidth: 3,
+    borderColor: 'white',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
     borderRadius: 8,
-    color: '#e74c3c'
+    color: 'white'
   },
   image: {
     alignSelf: 'center',
     marginBottom: 40
   },
   passwordInput: {
-    height: 50,
+    height: 35,
     padding: 4,
     marginRight: 5,
     marginTop: 10,
     fontSize: 23,
-    borderWidth: 1,
-    borderColor: '#2c3e50',
-    backgroundColor: '#fff',
+    borderWidth: 3,
+    borderColor: 'white',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
     borderRadius: 8,
-    color: '#e74c3c'
+    color: 'white'
   },
-
   placeholder: {
     color: '#e74c3c'
   },
-
   buttonText: {
     fontSize: 18,
     color: 'white',
     alignSelf: 'center'
   },
-
   button: {
     height: 50,
     flexDirection: 'row',
-    backgroundColor: '#2c3e50',
-    borderWidth: 1,
+    borderWidth: 3,
     borderRadius: 8,
+    borderColor:'white',
     marginBottom: 10,
     marginTop: 10,
     alignSelf: 'stretch',
     justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
   },
-
-  buttonSignUp: {
-    color: 'red'
-  },
-
   orText: {
     textAlign: 'center',
+    color: 'white',
+    marginBottom: 5
   },
+  alertText: {
+    textAlign: 'center',
+    color: 'white'
+  },
+  loginText: {
+    textAlign: 'center',
+    color: 'white',
+    marginBottom: 5,
+    textDecorationLine: 'underline'
+  }
 });
 
 @connect(state => ({
@@ -115,21 +128,46 @@ export default class Signup extends Component {
     this.props.dispatch(signupAction({ password: password }));
   }
 
+  handleLogin() {
+    Actions.Login();
+  }
+
   handleSubmit() {
     this.props.dispatch(validateSignup({email: this.props.signup.email, password: this.props.signup.password}));
   }
 
   render() {
+    var text = this.props.signup.validSignup ? null : 'You already have an account!';
     return (
-      <View style={styles.mainContainer}>
         <Image 
-          style={styles.image}
-          source={require('../assets/images/carlylogo.png')}
+          source={require('../assets/images/carlytrip.jpg')}
+          style={styles.container}
+        >
+        <View style={styles.mainContainer}>
+        <Text style={[this.props.signup.validSignup ? null : styles.alertText]}>{text}</Text>
+        <TextInput placeholder={'email'} 
+        onChange={this.handleChangeEmail.bind(this)} 
+        autoCorrect={false} 
+        style={styles.emailInput}
+        placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
         />
-        <TextInput placeholder={'email'} onChange={this.handleChangeEmail.bind(this)} autoCorrect={false} style={styles.emailInput}/>
-        <TextInput placeholder={'password'} secureTextEntry={true} autoCorrect={false} onChange={this.handleChangePassword.bind(this)} style={styles.passwordInput}/>
-        <TouchableHighlight style={styles.button} onPress={this.handleSubmit.bind(this)}><Text style={styles.buttonText}>Sign Up</Text></TouchableHighlight>
-      </View>
+        <TextInput placeholder={'password'} 
+        secureTextEntry={true} 
+        autoCorrect={false} 
+        onChange={this.handleChangePassword.bind(this)} 
+        style={styles.passwordInput}
+        placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
+        />
+        <TouchableHighlight style={styles.button} 
+        onPress={this.handleSubmit.bind(this)}>
+        <Text style={styles.buttonText}>Sign Up</Text>
+        </TouchableHighlight>
+        <Text style={styles.orText}>
+        Already have an account?</Text>
+        <TouchableHighlight onPress={this.handleLogin.bind(this)}>
+        <Text style={styles.loginText}>Login</Text></TouchableHighlight>
+        </View>
+        </Image>
     );
   }
 }
