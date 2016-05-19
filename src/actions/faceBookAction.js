@@ -2,6 +2,7 @@ import { createAction } from 'redux-actions';
 
 export const FACEBOOK_SIGNIN = 'FACEBOOK_SIGNIN';
 export const FACEBOOK_ID = 'FACEBOOK_ID';
+export const FACEBOOK_TOKEN = 'FACEBOOK_TOKEN';
 
 
 export function getFacebookId(user_id) {
@@ -18,6 +19,12 @@ export function facebookSignIn(attemptedFBLogin) {
 	}
 }
 
+export function setFacebookToken(token) {
+  return {
+    type: FACEBOOK_TOKEN,
+    token
+  }
+}
 
 export function validateFBLogin(userInfo) {
   return dispatch => {

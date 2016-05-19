@@ -1,5 +1,5 @@
 var FBLoginManager = require('NativeModules').FBLoginManager;
-import { getFacebookId, facebookSignIn, validateFBLogin} from '../actions/faceBookAction';
+import { getFacebookId, facebookSignIn, setFacebookToken, validateFBLogin} from '../actions/faceBookAction';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { isValidUser } from '../actions/sendPostDataLoginAction';
@@ -12,6 +12,7 @@ import React, {
   TouchableHighlight,
   Component,
   PropTypes,
+  AsyncStorage
 } from 'react-native';
 
 @connect(state => ({
@@ -40,6 +41,7 @@ export default class FbLogin extends Component {
     var _this = this;
     FBLoginManager.login(function(error, data){
       if (!error) {
+        AsyncStorage.setItem('key', data.credentials.token);
         _this.updateView();
         _this.props.dispatch(getFacebookId({facebookId: data.credentials.userId}));
         _this.props.dispatch(validateFBLogin({userId: _this.props.fbLogin.facebookId}));
@@ -53,6 +55,7 @@ export default class FbLogin extends Component {
     var _this = this;
     FBLoginManager.logout(function(error, data){
       if (!error) {
+        AsyncStorage.removeItem('key');
         _this.props.dispatch(facebookSignIn({facebookId: null}))
       } else {
         console.log(error, data);
