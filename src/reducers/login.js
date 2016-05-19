@@ -1,13 +1,14 @@
 import { handleActions } from 'redux-actions';
 import {SIGN_IN} from '../actions/loginActions.js';
 import {SEND_POST_LOGIN, VALID_USER, INVALID_USER} from '../actions/sendPostDataLoginAction.js';
-import {FACEBOOK_SIGNIN, FACEBOOK_ID} from '../actions/faceBookAction.js';
+import {FACEBOOK_SIGNIN, FACEBOOK_ID, FACEBOOK_TOKEN} from '../actions/faceBookAction.js';
 
 const initialState = {
   email: '',
   password: '',
   isValidLogin: 'test',
-  facebookId: false
+  facebookId: false,
+  token: null
 }
 
 export default handleActions ({
@@ -39,6 +40,11 @@ export default handleActions ({
   FACEBOOK_SIGNIN: (state, payload) => ({
     ...state,
     ...payload.attemptedFBLogin
+  }),
+
+  FACEBOOK_TOKEN: (state, payload) => ({
+    ...state,
+    ...payload.token
   })
 
 }, initialState)
