@@ -15,7 +15,7 @@ const CarMakePickerContainer = (props) => ({
   render(){
     return (
       <View style={globalStyles.container}>
-        <Text style={globalStyles.label}>Chose your car</Text>
+        <Text style={globalStyles.label}>Choose your car</Text>
         <View style={globalStyles.innerBox}>
           <CarMakePicker label='Make' />
           <CarModelPicker label='Model' />

@@ -8,7 +8,7 @@ const initialState = {
   endYear:2017,
   minPrice:1000,
   maxPrice:150000,
-  zipcode:'',
+  zipcode:94111,
   model: 'Fleetwood',
   loading: false,
   modelIndex: 3,

@@ -24,7 +24,7 @@ module.exports = {
 
   retrieve: function(users_email, callback) {
     console.log("inside retrieve, users_email: ", users_email);
-    var findUserFavorites = 'Select id, users_email, image, make, model, year, price from Favorites where users_email = "'+ users_email + '"';
+    var findUserFavorites = 'Select id, users_email, purchase_url, image, make, model, year, price from Favorites where users_email = "'+ users_email + '"';
     db.query(findUserFavorites, function(err, favorites) {
       console.log("inside db.query, favorites retrieve");
       console.log(favorites);

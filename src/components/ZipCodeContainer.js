@@ -19,7 +19,7 @@ export default class ZipCodeContainer extends Component {
   render() {
     return (
     <View style={globalStyles.container}>
-           <Text style={globalStyles.label}>Zip Codes</Text>
+           <Text style={globalStyles.label}>Zip Code</Text>
            <View style={[globalStyles.innerBox, styles.innerBox]}>
              <View style={styles.zipCodeBoxs}>
              </View>
