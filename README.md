@@ -95,8 +95,25 @@ Database in MySQL
 ![](http://i63.tinypic.com/jhrl20.jpg)
 
 
-We used [react-native-mock](https://github.com/lelandrichardson/react-native-mock), and test with [Mocha](https://github.com/mochajs/mocha), [Enzyme](https://github.com/airbnb/enzyme).
+=====================
+## Meet The Engineers
+Product Owner 
+- [**Gar Lee**](https://github.com/LeeGar)
 
-```bash
-$ npm test
-```
+Scrum Master 
+- [**Alex Anthony**](https://github.com/alexanthony813)
+
+Development Team 
+- [**Chris Bassano**](https://github.com/christo4b)
+- [**Peter Lollo**](https://github.com/Peterlollo)
+
+===============
+## Contributing
+Genomie was built using waffle.io as the project organization tool.
+Please visit [here](gitflow.md) for our workflow guidelines.
+
+## Questions and Issues
+For any issues, please refer to [**our issues page**](https://github.com/ThunderousFigs/Genomes/issues)
+Please direct any questions regarding Genomie to [**our wiki page**](https://github.com/ThunderousFigs/Genomes/wiki)
+
+Thank you!
