@@ -1,5 +1,27 @@
 # Car.ly
+Vehicle shopping application
 
+## Introduction 
+
+Car.ly is a (auto)mobile application that provides aggreagated data of vehicle listings based on the information received from the user. Providing the user with a variety of results from various website, consumers can easily navigate the automobile market and compare and contrast local search results in an interactive and intuitive way. Car.ly delivers a seamless user shopping experience for drivers on the go. 
+
+<hr>
+## Table of Contents
+
+  - [Example](#example)
+  - [Installation](#installation)
+  - [Technologies](#technologies)
+  - [Architecture](#architecture)
+  - [API Endpoints](#api)
+  - [Contributing](#contributing)
+  - [Meet the Engineers](#meet-the-engineers)
+  - [Questions and Issues](#questions-and-issues)
+
+==========
+## Example
+![alt tag](http://i67.tinypic.com/2hewtn9.gif)
+
+===============
 
 ## Installation
 
@@ -46,7 +68,16 @@ $ npm run android
 
 __*[Emulator only]*__ If you're still use Android 4.0, it will cannot use `adb reverse`, you should use `10.0.2.2` (Genymotion: `10.0.3.2`) instead of `localhost` in [configureStore.js](src/configureStore.js#L15).
 
-## Test
+## Technologies
+
+## Architecture
+### High Level Architecture
+![Architecture](http://i65.tinypic.com/20123p2.jpg)
+### Database Schema
+Database in MySQL
+
+![](http://i63.tinypic.com/jhrl20.jpg)
+
 
 We used [react-native-mock](https://github.com/lelandrichardson/react-native-mock), and test with [Mocha](https://github.com/mochajs/mocha), [Enzyme](https://github.com/airbnb/enzyme).
 
