@@ -37,8 +37,6 @@ $ npm install -g react-native-cli
 $ npm install
 ```
 
-Also, you can use [generator-rnb](https://github.com/jhen0409/generator-rnb) to create project with this boilerplate.
-
 ## Development
 
 #### Start local server
