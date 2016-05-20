@@ -20,6 +20,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import ListViewer from './common/ListViewer.js';
 import fakeData from '../assets/fakeData.js';
 import Swipeout from 'react-native-swipeout';
+import globalVariables from '../styles/globalVariables.js'
 
 @connect(state => ({
   query: state.search,
@@ -48,7 +49,7 @@ export default class FavoritesList extends Component {
   convertScale(url) {
     if(url.includes('autotrader')) {
       url = 'http://images.autotrader.com/scaler/400/300/'+url.slice(42);
-    } 
+    }
     // else if (url.includes('ebay')){
     //   url = ''
     // }
@@ -129,7 +130,6 @@ export default class FavoritesList extends Component {
       .then(data => {
         console.log("favorites", data.favorites);
         dispatch(favoritesActions({favoritesList: data.favorites}));
-        renderFavorites();
       })
     })
   }
@@ -143,29 +143,29 @@ export default class FavoritesList extends Component {
     return (
       _.map(favorites, (item, index) => {
         return (
-          <Swipeout right={[
+          <Swipeout autoClose={true} right={[
             {
               text: 'Delete',
               backgroundColor: 'red',
-              onPress:d.bind(self,item)
+              onPress:d.bind(this,item)
             }
           ]}>
-          <View>
+          <View style={styles.container}>
           <Image
          key={`PhotoItem_${item.id}`}
          style={styles.image}
          source={{uri: s(item.image)}}
          />
-          <View>
-            <Text>{item.make}</Text>
-            <Text>{item.model}</Text>
-            <Text>{item.year}</Text>
-            <Text>{item.price}</Text>
+          <View style={styles.text}>
+            <Text style={styles.text}>{item.year}</Text>
+            <Text style={styles.text}>{item.make}</Text>
+            <Text style={styles.text}>{item.model}</Text>
+            <Text style={styles.text}>{item.price}</Text>
           </View>
           </View>
           </Swipeout>
         );
-      })
+      },this)
     )
   }
 
@@ -179,7 +179,7 @@ export default class FavoritesList extends Component {
       <HeaderContainer
         title="Favorites"
         // parallaxContent={profilePicture}
-        backgroundImage={require('../assets/images/main-background.png')}
+        backgroundImage={require('../assets/images/info-background.png')}
         backgroundColor={'#A8D769'}
         // onSegmentChange={this.handleSegmentChanged}
         leftItem={leftItem}>
@@ -195,8 +195,15 @@ export default class FavoritesList extends Component {
 }
 
 const styles = StyleSheet.create({
+  container:{
+    flex: 1,
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderTopWidth: 1,
+    borderColor: 'black'
+  },
   image: {
-    width:100,
+    width:150,
     height:100,
     flex: 1
   },
@@ -212,5 +219,13 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: '#fff',
     alignSelf: 'center'
+  },
+  text: {
+     backgroundColor: '#ecf0f1',
+     width:100,
+     fontSize: 19,
+     fontWeight: '200',
+     color: globalVariables.textColor,
+     textAlign: 'center'
   }
 });
