@@ -1,4 +1,8 @@
 import Promise from 'bluebird';
+import { ACTIVITY_INDICATOR, loading, CAR_DATA_REQUEST, requestedData} from '../actions/activityMonitoring.js';
+import { Actions } from 'react-native-router-flux';
+import { createAction } from 'redux-actions';
+
 
 module.exports = {
   getResponse(response) {
