@@ -12,7 +12,7 @@ CREATE TABLE Users (
 
 CREATE TABLE FacebookUsers (
   id int NOT NULL AUTO_INCREMENT,
-  userId varchar (20) NOT NULL, 
+  userId varchar (20) NOT NULL,
   PRIMARY KEY (ID)
 );
 

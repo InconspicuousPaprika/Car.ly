@@ -150,13 +150,17 @@ export default class Results extends Component{
     }
     return (
       <View >
+      <Image
+      style={styles.header}
+      source={require('../assets/images/main-background.png')}
+      >
       <Header
         title={'Results'}
         leftItem={leftItem}
         rightItem={rightItem}
-
       >
       </Header>
+      </Image>
       <SwipeCards
       cards={this.props.cards}
       loop={false}
@@ -201,5 +205,9 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: 'white'
+  },
+  header: {
+    height: 70,
+    width:375
   }
 });
