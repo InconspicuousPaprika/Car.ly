@@ -113,7 +113,7 @@ Genomie was built using waffle.io as the project organization tool.
 Please visit [here](gitflow.md) for our workflow guidelines.
 
 ## Questions and Issues
-For any issues, please refer to [**our issues page**](https://github.com/ThunderousFigs/Genomes/issues)
-Please direct any questions regarding Genomie to [**our wiki page**](https://github.com/ThunderousFigs/Genomes/wiki)
+For any issues, please refer to [**our issues page**](https://github.com/InconspicuousPaprika/Car.ly/issues)
+Please direct any questions regarding Genomie to [**our wiki page**](https://github.com/InconspicuousPaprika/Car.ly/wiki)
 
 Thank you!
