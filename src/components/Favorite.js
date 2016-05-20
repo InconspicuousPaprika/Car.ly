@@ -33,10 +33,10 @@ export default class FavoritesList extends Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     query: React.PropTypes.object.isRequired,
-    results: React.PropTypes.object.isRequired,
+    results: React.PropTypes.array.isRequired,
     login: React.PropTypes.object.isRequired,
     signup: React.PropTypes.object.isRequired,
-    favorites: React.PropTypes.object.isRequired
+    favorites: React.PropTypes.array.isRequired
   };
 
   // constructor(props){

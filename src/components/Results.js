@@ -80,6 +80,8 @@ export default class Results extends Component{
       body: JSON.stringify(newFavorite)
     }).then(res => {
       console.log("response from SF: ", res);
+      console.log("email", this.props.login.email || this.props.signup.email || this.props.login.facebookId);
+      var userEmail = this.props.login.email || this.props.signup.email || this.props.login.facebookId;
       console.log("global email", userEmail);
       return fetch('http://localhost:3000/api/carly/favorites/'+userEmail, {
         method: 'GET',
