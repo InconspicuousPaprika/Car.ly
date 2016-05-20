@@ -109,8 +109,7 @@ Development Team
 
 ===============
 ## Contributing
-Genomie was built using waffle.io as the project organization tool.
-Please visit [here](gitflow.md) for our workflow guidelines.
+Car.ly was built using waffle.io as the project organization tool.
 
 ## Questions and Issues
 For any issues, please refer to [**our issues page**](https://github.com/InconspicuousPaprika/Car.ly/issues)
