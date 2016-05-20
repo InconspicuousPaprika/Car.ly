@@ -9,6 +9,7 @@ const {
 
 import globalStyles from '../styles/SearchGlobalStyles.js';
 import PricePicker from './PricePicker.js';
+import globalVariables from '../styles/globalVariables.js';
 
 const PricePickerContainer = (props) => ({
   render(){

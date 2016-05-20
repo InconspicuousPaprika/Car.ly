@@ -25,6 +25,9 @@ import ListViewer from './common/ListViewer.js';
 import HeaderContainer from './common/HeaderContainer.js';
 import Icon from 'react-native-vector-icons/Ionicons';
 import fakeData from '../assets/fakeData.js';
+
+import { ACTIVITY_INDICATOR, loading, CAR_DATA_REQUEST, requestedData} from '../actions/activityMonitoring.js';
+
 var Header = require('./common/Header');
 var ParallaxBackground = require('./common/ParallaxBackground');
 import ActionButton from 'react-native-action-button';
@@ -120,7 +123,8 @@ export default class Results extends Component{
     // }
 
   }
-  renderCards(){
+  renderCards() {
+    
     return (
       <SwipeCards
       cards={fakeData}
@@ -131,7 +135,6 @@ export default class Results extends Component{
       renderNoMoreCards={() => <NoMoreCards />}
       showYup={true}
       showNope={true}
-
       handleYup={this.handleYup.bind(this)}
       handleNope={this.handleNope}
       cardRemoved={this.cardRemoved}/>

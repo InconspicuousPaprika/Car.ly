@@ -1,4 +1,5 @@
 import { handleActions } from 'redux-actions';
+import { ACTIVITY_INDICATOR, loading, CAR_DATA_REQUEST, requestedData} from '../actions/activityMonitoring.js';
 
 const initialState = {
   carMake: 'cadillac',
@@ -7,11 +8,12 @@ const initialState = {
   endYear:2017,
   minPrice:1000,
   maxPrice:150000,
-  zipcode:'',
+  zipcode:94111,
   model: 'Fleetwood',
   loading: false,
   modelIndex: 3,
   searchResults:[],
+  requestedCarData: false,
   allCars: {
     acura: {
       name: 'Acura',
@@ -458,5 +460,15 @@ export default handleActions({
   GET_CARDATA: (state, action ) => ({ ...state, searchResults:action.payload}),
   SET_QUERY: (state, action) => ({
     ...state,
-    ...action.payload })
+    ...action.payload }),
+
+  ACTIVITY_INDICATOR: (state, payload) => ({
+    ...state,
+    ...payload.activityIndication
+  }),
+
+  CAR_DATA_REQUEST: (state, payload) => ({
+    ...state,
+    ...payload.request
+  })
 }, initialState);

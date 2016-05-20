@@ -9,7 +9,8 @@ import React, {
   TouchableHighlight,
   PickerIOS,
   Slider,
-  StatusBar
+  StatusBar,
+  ActivityIndicatorIOS
 } from 'react-native';
 import globalVariables from '../styles/globalVariables.js'
 import PricePickerContainer from './PricePickerContainer.js'
@@ -19,6 +20,7 @@ import CarMakePickerContainer from './CarMakePickerContainer.js';
 import ZipCodeContainer from './ZipCodeContainer.js';
 import setQueryAction from '../actions/setQueryAction.js';
 import searchActions from '../actions/searchActions.js';
+import { ACTIVITY_INDICATOR, loading, CAR_DATA_REQUEST, requestedData} from '../actions/activityMonitoring.js';
 import MultiSlider from 'react-native-multi-slider';
 import Immutable from 'immutable';
 import { connect } from 'react-redux';
@@ -28,6 +30,7 @@ import ListViewer from './common/ListViewer.js';
 import { Actions } from 'react-native-router-flux';
 import loginActions from '../actions/loginActions';
 import signupAction from '../actions/signupActions.js';
+import { getResponseJSON } from '../utils/getResponse.js'
 
 let PickerItemIOS = PickerIOS.Item;
 
@@ -51,6 +54,25 @@ export default class Search extends Component {
     console.log('going');
     console.log(this.props.query);
     this.props.dispatch(searchActions(this.props.query));
+    this.props.dispatch(requestedData({requestedCarData: true}));
+    this.navigateToResults();
+    this.turnOffActivity();
+  }
+
+  navigateToResults() {
+    setTimeout(function() {
+      Actions.Results();
+    }, 4900);
+  }
+
+  turnOffActivity() {
+    var that = this
+    if (this.props.query.requestedCarData) {
+      setTimeout(function() {
+        that.props.dispatch(requestedData({requestedCarData: false}))
+      },
+    4000);
+    }
   }
 
   handleLogout() {
@@ -99,7 +121,6 @@ export default class Search extends Component {
           <YearPickerContainer />
           <ZipCodeContainer />
           <CarConditionPicker />
-
         <TouchableHighlight
           underlayColor="#88D4F5"
           onPress={this.goToResults.bind(this)}
@@ -109,6 +130,11 @@ export default class Search extends Component {
         </TouchableHighlight>
         <TouchableHighlight onPress={this.handleLogout.bind(this)}>
         <Text style={styles.loginText}>Logout</Text></TouchableHighlight>
+        <ActivityIndicatorIOS
+          animating={this.props.query.requestedCarData}
+          style={[styles.centering, {height: 200}]}
+          size="large"
+          />
         </View>
         </View>
     )
@@ -128,12 +154,12 @@ const styles = StyleSheet.create({
 
   searchButton: {
     padding: 14,
-    backgroundColor: globalVariables.green,
+    backgroundColor: '#248F95',
     alignSelf: 'stretch',
     justifyContent: 'center',
     borderRadius: 8,
     height: 40,
-    borderColor: globalVariables.green,
+    borderColor: '#248F95',
   },
 
   searchButtonText: {
@@ -148,5 +174,18 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     textDecorationLine: 'underline',
     marginTop: 10
-  }
+  },
+
+  centering: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  gray: {
+    backgroundColor: '#cccccc',
+  },
+  horizontal: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+
 });

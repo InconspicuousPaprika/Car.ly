@@ -32,6 +32,7 @@ export default class CarMakePicker extends Component {
         <Text style={styles.label}>{`${query.startYear} - ${query.endYear}`}</Text>
         <MultiSlider
           containerStyle={styles.slider}
+          selectedStyle={styles.selectedTab}
           values={[query.startYear, query.endYear]}
           min={1990}
           max={2017}
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
   },
 
   label: {
-    fontSize: 12,
+    fontSize: 15,
     color: globalVariables.textColor,
     textAlign: 'center'
   },
@@ -66,6 +67,9 @@ const styles = StyleSheet.create({
     paddingLeft: 30,
     paddingBottom: 20,
     paddingTop:10
+  },
+  selectedTab: {
+    backgroundColor: '#248F95'
   },
   value: {
     fontSize: 22,

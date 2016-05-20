@@ -19,7 +19,7 @@ export default class ZipCodeContainer extends Component {
   render() {
     return (
     <View style={globalStyles.container}>
-           <Text style={globalStyles.label}>Zip Codes</Text>
+           <Text style={globalStyles.label}>Zip Code</Text>
            <View style={[globalStyles.innerBox, styles.innerBox]}>
              <View style={styles.zipCodeBoxs}>
              </View>
@@ -36,7 +36,15 @@ export default class ZipCodeContainer extends Component {
 
 const styles = StyleSheet.create({
   innerBox: {
-    flexDirection: 'column'
+    flexDirection: 'column',
+    elevation: 1,
+    shadowColor: '#000000',
+    shadowOpacity: 0.50,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 5,
+      width: 5
+    }
   },
 
   zipCodeBoxs: {
