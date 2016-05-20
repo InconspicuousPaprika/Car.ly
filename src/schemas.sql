@@ -12,7 +12,7 @@ CREATE TABLE Users (
 
 CREATE TABLE FacebookUsers (
   id int NOT NULL AUTO_INCREMENT,
-  userId varchar (20) NOT NULL, 
+  userId varchar (20) NOT NULL,
   PRIMARY KEY (ID)
 );
 
@@ -26,9 +26,5 @@ CREATE TABLE Favorites (
   year int,
   price varchar(10),
   vin varchar(50),
-  UNIQUE (image),
-  PRIMARY KEY (ID),
-  INDEX (users_email),
-  FOREIGN KEY (users_email)
-  REFERENCES Users (email)
+  PRIMARY KEY (ID)
 );

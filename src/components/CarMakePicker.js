@@ -50,6 +50,7 @@ export default class CarMakePicker extends Component {
   }
 };
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

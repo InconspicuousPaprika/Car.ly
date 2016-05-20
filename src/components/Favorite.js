@@ -18,7 +18,8 @@ import favoritesActions from '../actions/favoritesActions';
 import HeaderContainer from './common/HeaderContainer.js';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ListViewer from './common/ListViewer.js';
-
+import fakeData from '../assets/fakeData.js';
+import Swipeout from 'react-native-swipeout';
 
 @connect(state => ({
   query: state.search,
@@ -123,36 +124,48 @@ export default class FavoritesList extends Component {
       .then(data => {
         console.log("favorites", data.favorites);
         dispatch(favoritesActions({favoritesList: data.favorites}));
+        renderFavorites();
       })
     })
   }
   renderFavorites(){
-    const { query, convertScale, results, login, signup, dispatch, favorites, CAR_MAKES_AND_MODELS } = this.props;
-    <View style={{flex: 1, backgroundColor: '#f2f2f2'}}>
-    {
-      _.map(favorites, function(item, index) {
+    let d = this.deleteFavorite;
+    let s = this.convertScale;
+    let self = this;
+    const { query, convertScale, favorites, results, login, signup, dispatch, CAR_MAKES_AND_MODELS } = this.props;
+
+
+    return (
+      _.map(favorites, (item, index) => {
         return (
-          <TouchableWithoutFeedback onPress={this.deleteFavorite.bind(this, item)}>
+          <Swipeout right={[
+            {
+              text: 'Delete',
+              backgroundColor: 'red',
+              onPress:d.bind(self,item)
+            }
+          ]}>
           <View>
           <Image
-          key={`PhotoItem_${item.id}`}
-          style={styles.image}
-          source={{uri: this.convertScale(item.image)}}
-          />
-          <Text>{item.make}</Text>
-          <Text>{item.model}</Text>
-          <Text>{item.year}</Text>
-          <Text>{item.price}</Text>
+         key={`PhotoItem_${item.id}`}
+         style={styles.image}
+         source={{uri: s(item.image)}}
+         />
+          <View>
+            <Text>{item.make}</Text>
+            <Text>{item.model}</Text>
+            <Text>{item.year}</Text>
+            <Text>{item.price}</Text>
           </View>
-          </TouchableWithoutFeedback>
+          </View>
+          </Swipeout>
         );
-      }, this)
-    }
-    </View>
+      })
+    )
   }
 
   render() {
-
+    const {favorites} = this.props;
     const leftItem = {
       title: 'ios-car',
       icon: 'ios-car',
@@ -167,7 +180,6 @@ export default class FavoritesList extends Component {
         leftItem={leftItem}>
         <ListViewer
         renderEmptyList={this.renderFavorites.bind(this)}
-
         >
         </ListViewer>
 
@@ -179,8 +191,8 @@ export default class FavoritesList extends Component {
 
 const styles = StyleSheet.create({
   image: {
-    width:414,
-    height:310,
+    width:100,
+    height:100,
     flex: 1
   },
   button: {
