@@ -13,14 +13,7 @@ module.exports = {
 
   getResponseJSON(response) {
   return Promise.resolve(response.json())
-    .then((res) => {
-    	console.log('RESP', res)
-    	console.log(typeof res.pageData.statusCode);	
-    	if (res.pageData.statusCode === 200) {
-    		console.log('HIT');
-    		Actions.Results();
-    	} 
-  	})
+    .then((res) => res)
     .catch((err) => console.log(err));
   }
 };

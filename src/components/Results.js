@@ -62,7 +62,6 @@ export default class Results extends Component{
   outOfCards = false;
 
   handleYup(item) {
-    this.props.dispatch(requestedData({requestedCarData: false}));
     console.log('in submitCarData', "item", item);
     var userEmail = this.props.login.email || this.props.signup.email || this.props.login.facebookId;
     var dispatch = this.props.dispatch;
@@ -102,7 +101,6 @@ export default class Results extends Component{
     })
   }
   handleNope (card) {
-    this.props.dispatch(requestedData({requestedCarData: false}));
     console.log("nope")
   }
   cardRemoved (index) {

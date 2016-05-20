@@ -55,6 +55,24 @@ export default class Search extends Component {
     console.log(this.props.query);
     this.props.dispatch(searchActions(this.props.query));
     this.props.dispatch(requestedData({requestedCarData: true}));
+    this.navigateToResults();
+    this.turnOffActivity();
+  }
+  
+  navigateToResults() {
+    setTimeout(function() {
+      Actions.Results();
+    }, 4900);
+  }
+
+  turnOffActivity() {
+    var that = this 
+    if (this.props.query.requestedCarData) {
+      setTimeout(function() {
+        that.props.dispatch(requestedData({requestedCarData: false}))
+      },
+    4000);
+    }
   }
 
   handleLogout() {
