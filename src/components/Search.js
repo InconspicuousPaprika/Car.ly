@@ -28,12 +28,9 @@ import HeaderContainer from './common/HeaderContainer.js';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ListViewer from './common/ListViewer.js';
 import { Actions } from 'react-native-router-flux';
-<<<<<<< d3f314e476758c53f3ead4e934a57b38912402af
 import loginActions from '../actions/loginActions';
 import signupAction from '../actions/signupActions.js';
-=======
 import { getResponseJSON } from '../utils/getResponse.js'
->>>>>>> Added activity monitor
 
 let PickerItemIOS = PickerIOS.Item;
 
@@ -57,10 +54,7 @@ export default class Search extends Component {
     console.log('going');
     console.log(this.props.query);
     this.props.dispatch(searchActions(this.props.query));
-<<<<<<< d3f314e476758c53f3ead4e934a57b38912402af
-=======
     this.props.dispatch(requestedData({requestedCarData: true}));
->>>>>>> Added activity monitor
   }
 
   handleLogout() {
@@ -116,16 +110,13 @@ export default class Search extends Component {
         >
         <Text style={styles.searchButtonText}>Search</Text>
         </TouchableHighlight>
-<<<<<<< d3f314e476758c53f3ead4e934a57b38912402af
         <TouchableHighlight onPress={this.handleLogout.bind(this)}>
         <Text style={styles.loginText}>Logout</Text></TouchableHighlight>
-=======
         <ActivityIndicatorIOS
           animating={this.props.query.requestedCarData}
           style={[styles.centering, {height: 200}]}
           size="large"
           />
->>>>>>> Added activity monitor
         </View>
         </View>
     )
@@ -158,7 +149,6 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center'
   },
-<<<<<<< d3f314e476758c53f3ead4e934a57b38912402af
 
   loginText: {
     textAlign: 'center',
@@ -166,8 +156,8 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     textDecorationLine: 'underline',
     marginTop: 10
-  }
-=======
+  },
+
   centering: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -180,6 +170,5 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
 
->>>>>>> Added activity monitor
 });
 
