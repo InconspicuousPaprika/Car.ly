@@ -58,7 +58,7 @@ export default class Search extends Component {
     this.navigateToResults();
     this.turnOffActivity();
   }
-  
+
   navigateToResults() {
     setTimeout(function() {
       Actions.Results();
@@ -66,7 +66,7 @@ export default class Search extends Component {
   }
 
   turnOffActivity() {
-    var that = this 
+    var that = this
     if (this.props.query.requestedCarData) {
       setTimeout(function() {
         that.props.dispatch(requestedData({requestedCarData: false}))
@@ -97,7 +97,7 @@ export default class Search extends Component {
       <HeaderContainer
         title="Search"
         // parallaxContent={profilePicture}
-        backgroundImage={require('../assets/images/main-background.png')}
+        backgroundImage={require('../assets/images/opl-parallax-universe.jpg')}
         backgroundColor={'#A8D769'}
         // onSegmentChange={this.handleSegmentChanged}
         leftItem={leftItem}
@@ -154,12 +154,12 @@ const styles = StyleSheet.create({
 
   searchButton: {
     padding: 14,
-    backgroundColor: globalVariables.green,
+    backgroundColor: '#248F95',
     alignSelf: 'stretch',
     justifyContent: 'center',
     borderRadius: 8,
     height: 40,
-    borderColor: globalVariables.green,
+    borderColor: '#248F95',
   },
 
   searchButtonText: {
@@ -189,4 +189,3 @@ const styles = StyleSheet.create({
   },
 
 });
-

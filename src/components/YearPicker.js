@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     paddingTop:10
   },
   selectedTab: {
-    backgroundColor: globalVariables.green
+    backgroundColor: '#248F95'
   },
   value: {
     fontSize: 22,
