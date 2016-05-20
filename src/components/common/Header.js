@@ -102,7 +102,6 @@ class ItemWrapperIOS extends React.Component {
       <TouchableOpacity
         accessibilityLabel={title}
         accessibilityTraits="button"
-        onPress={onPress}
         style={styles.itemWrapper}>
         {content}
       </TouchableOpacity>
