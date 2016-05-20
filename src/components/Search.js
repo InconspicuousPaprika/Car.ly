@@ -26,11 +26,15 @@ import HeaderContainer from './common/HeaderContainer.js';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ListViewer from './common/ListViewer.js';
 import { Actions } from 'react-native-router-flux';
+import loginActions from '../actions/loginActions';
+import signupAction from '../actions/signupActions.js';
 
 let PickerItemIOS = PickerIOS.Item;
 
 @connect(state => ({
   query: state.search,
+  login: state.login,
+  signup: state.signup,
   CAR_MAKES_AND_MODELS: state.search.allCars
 }))
 export default class Search extends Component {
@@ -50,6 +54,8 @@ export default class Search extends Component {
   }
 
   handleLogout() {
+    this.props.dispatch(loginActions({ email: null }));
+    this.props.dispatch(signupAction({ email: null }));
     Actions.Login();
   }
 

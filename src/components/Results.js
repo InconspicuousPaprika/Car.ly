@@ -65,9 +65,10 @@ export default class Results extends Component{
     const newFavorite = {
         users_email: userEmail,
         image: item.image[0].src,
+        purchase_url: item.vehicleTitle[0].href,
         make: this.props.query.carMake,
         model: this.props.query.model,
-        year: this.props.query.endYear,
+        year: item.vehicleTitle[0].text.slice(0,4),
         price: item.price[0].text
     };
     console.log('newFavorite', newFavorite);

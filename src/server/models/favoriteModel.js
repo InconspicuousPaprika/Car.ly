@@ -4,7 +4,7 @@ module.exports = {
 
   post: function(car, callback) {
     console.log("inside post, car: ", car);
-    var checkIfFavoriteExists = 'Insert into Favorites (users_email, image, make, model, year, price) select * from (select "' + car.users_email + '", "' + car.image + '", "' + car.make + '", "' + car.model + '", "' + car.year + '", "' + car.price + '") AS temp where not exists(select id from Favorites where (users_email, image) = ("' + car.users_email + '", "' + car.image + '")) LIMIT 1';
+    var checkIfFavoriteExists = 'Insert into Favorites (users_email, image, purchase_url, make, model, year, price) select * from (select "' + car.users_email + '", "' + car.image + '", "' + car.purchase_url + '", "' + car.make + '", "' + car.model + '", "' + car.year + '", "' + car.price + '") AS temp where not exists(select id from Favorites where (users_email, image) = ("' + car.users_email + '", "' + car.image + '")) LIMIT 1';
     db.query(checkIfFavoriteExists, function(err, favorite) {
       console.log("inside db.query, favorite check");
       console.log(favorite);
