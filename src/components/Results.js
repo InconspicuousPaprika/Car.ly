@@ -25,6 +25,9 @@ import ListViewer from './common/ListViewer.js';
 import HeaderContainer from './common/HeaderContainer.js';
 import Icon from 'react-native-vector-icons/Ionicons';
 import fakeData from '../assets/fakeData.js';
+
+import { ACTIVITY_INDICATOR, loading, CAR_DATA_REQUEST, requestedData} from '../actions/activityMonitoring.js';
+
 var Header = require('./common/Header');
 var ParallaxBackground = require('./common/ParallaxBackground');
 import ActionButton from 'react-native-action-button';
@@ -59,6 +62,7 @@ export default class Results extends Component{
   outOfCards = false;
 
   handleYup(item) {
+    this.props.dispatch(requestedData({requestedCarData: false}));
     console.log('in submitCarData', "item", item);
     var userEmail = this.props.login.email || this.props.signup.email || this.props.login.facebookId;
     var dispatch = this.props.dispatch;
@@ -98,6 +102,7 @@ export default class Results extends Component{
     })
   }
   handleNope (card) {
+    this.props.dispatch(requestedData({requestedCarData: false}));
     console.log("nope")
   }
   cardRemoved (index) {
@@ -120,7 +125,8 @@ export default class Results extends Component{
     // }
 
   }
-  renderCards(){
+  renderCards() {
+    
     return (
       <SwipeCards
       cards={this.props.cards}
@@ -131,7 +137,6 @@ export default class Results extends Component{
       renderNoMoreCards={() => <NoMoreCards />}
       showYup={true}
       showNope={true}
-
       handleYup={this.handleYup.bind(this)}
       handleNope={this.handleNope}
       cardRemoved={this.cardRemoved}/>

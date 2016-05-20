@@ -9,7 +9,8 @@ import React, {
   TouchableHighlight,
   PickerIOS,
   Slider,
-  StatusBar
+  StatusBar,
+  ActivityIndicatorIOS
 } from 'react-native';
 import globalVariables from '../styles/globalVariables.js'
 import PricePickerContainer from './PricePickerContainer.js'
@@ -19,6 +20,7 @@ import CarMakePickerContainer from './CarMakePickerContainer.js';
 import ZipCodeContainer from './ZipCodeContainer.js';
 import setQueryAction from '../actions/setQueryAction.js';
 import searchActions from '../actions/searchActions.js';
+import { ACTIVITY_INDICATOR, loading, CAR_DATA_REQUEST, requestedData} from '../actions/activityMonitoring.js';
 import MultiSlider from 'react-native-multi-slider';
 import Immutable from 'immutable';
 import { connect } from 'react-redux';
@@ -26,8 +28,12 @@ import HeaderContainer from './common/HeaderContainer.js';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ListViewer from './common/ListViewer.js';
 import { Actions } from 'react-native-router-flux';
+<<<<<<< d3f314e476758c53f3ead4e934a57b38912402af
 import loginActions from '../actions/loginActions';
 import signupAction from '../actions/signupActions.js';
+=======
+import { getResponseJSON } from '../utils/getResponse.js'
+>>>>>>> Added activity monitor
 
 let PickerItemIOS = PickerIOS.Item;
 
@@ -51,6 +57,10 @@ export default class Search extends Component {
     console.log('going');
     console.log(this.props.query);
     this.props.dispatch(searchActions(this.props.query));
+<<<<<<< d3f314e476758c53f3ead4e934a57b38912402af
+=======
+    this.props.dispatch(requestedData({requestedCarData: true}));
+>>>>>>> Added activity monitor
   }
 
   handleLogout() {
@@ -99,7 +109,6 @@ export default class Search extends Component {
           <YearPickerContainer />
           <ZipCodeContainer />
           <CarConditionPicker />
-
         <TouchableHighlight
           underlayColor="#88D4F5"
           onPress={this.goToResults.bind(this)}
@@ -107,8 +116,16 @@ export default class Search extends Component {
         >
         <Text style={styles.searchButtonText}>Search</Text>
         </TouchableHighlight>
+<<<<<<< d3f314e476758c53f3ead4e934a57b38912402af
         <TouchableHighlight onPress={this.handleLogout.bind(this)}>
         <Text style={styles.loginText}>Logout</Text></TouchableHighlight>
+=======
+        <ActivityIndicatorIOS
+          animating={this.props.query.requestedCarData}
+          style={[styles.centering, {height: 200}]}
+          size="large"
+          />
+>>>>>>> Added activity monitor
         </View>
         </View>
     )
@@ -141,6 +158,7 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center'
   },
+<<<<<<< d3f314e476758c53f3ead4e934a57b38912402af
 
   loginText: {
     textAlign: 'center',
@@ -149,5 +167,19 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
     marginTop: 10
   }
+=======
+  centering: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  gray: {
+    backgroundColor: '#cccccc',
+  },
+  horizontal: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+
+>>>>>>> Added activity monitor
 });
 
