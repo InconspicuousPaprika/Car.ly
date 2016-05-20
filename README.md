@@ -115,7 +115,7 @@ Scrum Master
 
 Development Team 
 - [**David Gilroy**](https://github.com/dgilroy77)
-- [**John Zucarelli**](https://github.com/jzucca)
+- [**John Zuccarelli**](https://github.com/jzucca)
 
 ===============
 ## Contributing
@@ -123,6 +123,6 @@ Car.ly was built using waffle.io as the project organization tool.
 
 ## Questions and Issues
 For any issues, please refer to [**our issues page**](https://github.com/InconspicuousPaprika/Car.ly/issues)
-Please direct any questions regarding Genomie to [**our wiki page**](https://github.com/InconspicuousPaprika/Car.ly/wiki)
+Please direct any questions regarding Car.ly to [**our wiki page**](https://github.com/InconspicuousPaprika/Car.ly/wiki)
 
 Thank you!
