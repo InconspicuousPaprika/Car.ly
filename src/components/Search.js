@@ -75,7 +75,7 @@ export default class Search extends Component {
       <HeaderContainer
         title="Search"
         // parallaxContent={profilePicture}
-        backgroundImage={require('../assets/images/main-background.png')}
+        backgroundImage={require('../assets/images/opl-parallax-universe.jpg')}
         backgroundColor={'#A8D769'}
         // onSegmentChange={this.handleSegmentChanged}
         leftItem={leftItem}
@@ -150,4 +150,3 @@ const styles = StyleSheet.create({
     marginTop: 10
   }
 });
-
