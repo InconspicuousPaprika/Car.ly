@@ -47,7 +47,7 @@ class HeaderIOS extends React.Component {
         </Text>
       : this.props.children;
     return (
-      <View style={[styles.header, this.props.style]}>
+      <View style={[styles.header, this.props.style]} >
         <View style={styles.leftItem}>
           <ItemWrapperIOS color={itemsColor} item={leftItem} />
         </View>
