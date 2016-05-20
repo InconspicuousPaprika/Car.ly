@@ -27,6 +27,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import fakeData from '../assets/fakeData.js';
 var Header = require('./common/Header');
 var ParallaxBackground = require('./common/ParallaxBackground');
+import ActionButton from 'react-native-action-button';
+
+
 
 
 
@@ -119,6 +122,7 @@ export default class Results extends Component{
       <SwipeCards
       cards={fakeData}
       loop={false}
+      style={styles.container}
 
       renderCard={(cardData) => <Card {...cardData} />}
       renderNoMoreCards={() => <NoMoreCards />}
@@ -142,38 +146,44 @@ export default class Results extends Component{
       onPress: 'Actions.Results.bind(this)'
     }
     return (
-      <HeaderContainer
-
-        title="Results"
-        // parallaxContent={profilePicture}
-        backgroundImage={require('../assets/images/main-background.png')}
-        backgroundColor={'#A8D769'}
-        // onSegmentChange={this.handleSegmentChanged}
+      <View >
+      <Header
+        title={'Results'}
         leftItem={leftItem}
-        rightItem={rightItem}>
-        <ListViewer
-        renderEmptyList={this.renderCards.bind(this)}
-        >
-        </ListViewer>
+        rightItem={rightItem}
 
-      </HeaderContainer>
+      >
+      </Header>
+      <SwipeCards
+      cards={fakeData}
+      loop={false}
+      style={styles.container}
+
+      renderCard={(cardData) => <Card {...cardData} />}
+      renderNoMoreCards={() => <NoMoreCards />}
+      showYup={true}
+      showNope={true}
+
+      handleYup={this.handleYup.bind(this)}
+      handleNope={this.handleNope}
+      cardRemoved={this.cardRemoved}/>
+
+      </View>
+
     )
   }
 }
 
 
 const styles = StyleSheet.create({
-  card: {
-    alignItems: 'center',
-    overflow: 'hidden',
-    backgroundColor: globalVariables.background,
-    elevation: 1,
-    width: 900,
-    height: 1200,
+  actionButtonIcon: {
+    fontSize: 20,
+    height: 22,
+    color: 'white',
   },
   thumbnail: {
     flex: 1,
-    width: 300,
+    width: 200,
     height: 300
   },
   text: {
@@ -185,5 +195,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  container: {
+    backgroundColor: 'white'
   }
 });
