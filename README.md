@@ -103,7 +103,7 @@ Database in MySQL
 |[Log-in user](#post)|POST /login|
 |[Get User Info](#get-userbasicinfo)|GET /favorites/:user-email|
 |[Create user favorites](#post)|POST /favorites|
-|[Delete user favorites](#post)|POST /favorites|
+|[Delete user favorites](#post)|DELETE /favorites|
 
 =====================
 ## Meet The Engineers
