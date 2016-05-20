@@ -34,10 +34,10 @@ export default class FavoritesList extends Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     query: React.PropTypes.object.isRequired,
-    results: React.PropTypes.object.isRequired,
+    results: React.PropTypes.array.isRequired,
     login: React.PropTypes.object.isRequired,
     signup: React.PropTypes.object.isRequired,
-    favorites: React.PropTypes.object.isRequired
+    favorites: React.PropTypes.array.isRequired
   };
 
   // constructor(props){
@@ -46,8 +46,13 @@ export default class FavoritesList extends Component {
   //
 
   convertScale(url) {
-    let newurl = 'http://images.autotrader.com/scaler/400/300/'+url.slice(42);
-    return newurl;
+    if(url.includes('autotrader')) {
+      url = 'http://images.autotrader.com/scaler/400/300/'+url.slice(42);
+    } 
+    // else if (url.includes('ebay')){
+    //   url = ''
+    // }
+    return url;
   }
 
   submitCarData(id) {
@@ -100,7 +105,7 @@ export default class FavoritesList extends Component {
     console.log('in deleteFavorite', "item", item);
     favorite = this.props.favorites;
     dispatch = this.props.dispatch;
-    userEmail = this.props.login.email;
+    userEmail = this.props.login.email || this.props.signup.email || this.props.login.facebookId;
     return fetch('http://localhost:3000/api/carly/favorites', {
       method: 'DELETE',
       headers: {

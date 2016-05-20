@@ -26,11 +26,15 @@ import HeaderContainer from './common/HeaderContainer.js';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ListViewer from './common/ListViewer.js';
 import { Actions } from 'react-native-router-flux';
+import loginActions from '../actions/loginActions';
+import signupAction from '../actions/signupActions.js';
 
 let PickerItemIOS = PickerIOS.Item;
 
 @connect(state => ({
   query: state.search,
+  login: state.login,
+  signup: state.signup,
   CAR_MAKES_AND_MODELS: state.search.allCars
 }))
 export default class Search extends Component {
@@ -47,9 +51,13 @@ export default class Search extends Component {
     console.log('going');
     console.log(this.props.query);
     this.props.dispatch(searchActions(this.props.query));
-    Actions.Results();
   }
 
+  handleLogout() {
+    this.props.dispatch(loginActions({ email: null }));
+    this.props.dispatch(signupAction({ email: null }));
+    Actions.Login();
+  }
 
   render() {
     var action = Actions
@@ -95,9 +103,12 @@ export default class Search extends Component {
         <TouchableHighlight
           underlayColor="#88D4F5"
           onPress={this.goToResults.bind(this)}
+          style={styles.searchButton}
         >
-        <Text>Search </Text>
+        <Text style={styles.searchButtonText}>Search</Text>
         </TouchableHighlight>
+        <TouchableHighlight onPress={this.handleLogout.bind(this)}>
+        <Text style={styles.loginText}>Logout</Text></TouchableHighlight>
         </View>
         </View>
     )
@@ -117,12 +128,26 @@ const styles = StyleSheet.create({
 
   searchButton: {
     padding: 14,
-    backgroundColor: globalVariables.green
+    backgroundColor: globalVariables.green,
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    borderRadius: 8,
+    height: 40,
+    borderColor: globalVariables.green,
   },
 
   searchButtonText: {
     fontSize: 16,
     color: 'white',
     textAlign: 'center'
+  },
+
+  loginText: {
+    textAlign: 'center',
+    color: 'black',
+    marginBottom: 5,
+    textDecorationLine: 'underline',
+    marginTop: 10
   }
 });
+

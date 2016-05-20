@@ -60,14 +60,15 @@ export default class Results extends Component{
 
   handleYup(item) {
     console.log('in submitCarData', "item", item);
-    var userEmail = this.props.login.email || this.props.login.facebookId;
+    var userEmail = this.props.login.email || this.props.signup.email || this.props.login.facebookId;
     var dispatch = this.props.dispatch;
     const newFavorite = {
         users_email: userEmail,
         image: item.image[0].src,
+        purchase_url: item.vehicleTitle[0].href,
         make: this.props.query.carMake,
         model: this.props.query.model,
-        year: this.props.query.endYear,
+        year: item.vehicleTitle[0].text.slice(0,4),
         price: item.price[0].text
     };
     console.log('newFavorite', newFavorite);
@@ -80,6 +81,8 @@ export default class Results extends Component{
       body: JSON.stringify(newFavorite)
     }).then(res => {
       console.log("response from SF: ", res);
+      console.log("email", this.props.login.email || this.props.signup.email || this.props.login.facebookId);
+      var userEmail = this.props.login.email || this.props.signup.email || this.props.login.facebookId;
       console.log("global email", userEmail);
       return fetch('http://localhost:3000/api/carly/favorites/'+userEmail, {
         method: 'GET',
@@ -120,7 +123,7 @@ export default class Results extends Component{
   renderCards(){
     return (
       <SwipeCards
-      cards={fakeData}
+      cards={this.props.cards}
       loop={false}
       style={styles.container}
 
@@ -159,7 +162,7 @@ export default class Results extends Component{
       </Header>
       </Image>
       <SwipeCards
-      cards={fakeData}
+      cards={this.props.cards}
       loop={false}
       style={styles.container}
 
