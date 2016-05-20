@@ -433,15 +433,3 @@ export const CAR_MAKES_AND_MODELS = {
     models: ['MV-1'],
   }
 };
-
-
-
-
-
-
-
-
-
-
-
-

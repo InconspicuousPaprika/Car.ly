@@ -104,7 +104,7 @@ export default class FavoritesList extends Component {
     console.log('in deleteFavorite', "item", item);
     favorite = this.props.favorites;
     dispatch = this.props.dispatch;
-    userEmail = this.props.login.email;
+    userEmail = this.props.login.email || this.props.signup.email || this.props.login.facebookId;
     return fetch('http://localhost:3000/api/carly/favorites', {
       method: 'DELETE',
       headers: {
