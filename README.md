@@ -94,6 +94,16 @@ Database in MySQL
 
 ![](http://i63.tinypic.com/jhrl20.jpg)
 
+## API
+##### Public End Points
+|Description|Endpoint|
+|---|---|
+|[Sign up](#post)|POST /users|
+|[Log-in OAuth](#post)|POST /users/Fblogin|
+|[Log-in user](#post)|POST /login|
+|[Get User Info](#get-userbasicinfo)|GET /favorites/:user-email|
+|[Create user favorites](#post)|POST /favorites|
+|[Delete user favorites](#post)|POST /favorites|
 
 =====================
 ## Meet The Engineers
