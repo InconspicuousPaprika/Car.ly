@@ -26,7 +26,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white',
-    borderRadius: 15
+    borderRadius: 15,
+    elevation: 1,
+    shadowColor: '#000000',
+    shadowOpacity: 0.50,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 5,
+      width: 5
+    }
   },
 });
 
