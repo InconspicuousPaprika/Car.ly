@@ -123,7 +123,7 @@ export default class Results extends Component{
   renderCards(){
     return (
       <SwipeCards
-      cards={this.props.cards}
+      cards={fakeData}
       loop={false}
       style={styles.container}
 
@@ -152,7 +152,7 @@ export default class Results extends Component{
       <View >
       <Image
       style={styles.header}
-      source={require('../assets/images/main-background.png')}
+      source={require('../assets/images/parallaxtest1.jpg')}
       >
       <Header
         title={'Results'}
@@ -204,10 +204,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   container: {
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    paddingTop:100
   },
   header: {
     height: 70,
-    width:375
+    width:undefined
   }
 });

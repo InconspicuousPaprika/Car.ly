@@ -63,7 +63,7 @@ const Card = React.createClass({
           <Image style={styles.thumbnail} source={{uri: this.convertScale(this.props.image[0].src)}} />
               <View>
                  <View style={styles.iconContainer}>
-                   <SpecIconBox value={this.props.vehicleTitle[0].text.slice(5,9) } label={'Year'} icon={require('../assets/images/year-large.png')} />
+                   <SpecIconBox value={this.props.vehicleTitle[0].text.slice(0,4) } label={'Year'} icon={require('../assets/images/year-large.png')} />
                    <SpecIconBox value={this.props.miles[0].text} label={'Miles'} icon={require('../assets/images/sqft-large.png')} />
                    <SpecIconBox value={this.props.price[0].text} label={'Price'} icon={require('../assets/images/tax-large.png')}/>
                  </View>
@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
   },
   card: {
     height:400,
+    marginTop:100,
     alignItems: 'center',
     backgroundColor: globalVariables.background,
     elevation: 1,
