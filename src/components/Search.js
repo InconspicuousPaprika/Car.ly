@@ -97,8 +97,9 @@ export default class Search extends Component {
         <TouchableHighlight
           underlayColor="#88D4F5"
           onPress={this.goToResults.bind(this)}
+          style={styles.searchButton}
         >
-        <Text>Search </Text>
+        <Text style={styles.searchButtonText}>Search</Text>
         </TouchableHighlight>
         <TouchableHighlight onPress={this.handleLogout.bind(this)}>
         <Text style={styles.loginText}>Logout</Text></TouchableHighlight>
@@ -121,7 +122,12 @@ const styles = StyleSheet.create({
 
   searchButton: {
     padding: 14,
-    backgroundColor: globalVariables.green
+    backgroundColor: globalVariables.green,
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    borderRadius: 8,
+    height: 40,
+    borderColor: globalVariables.green,
   },
 
   searchButtonText: {
@@ -134,6 +140,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'black',
     marginBottom: 5,
-    textDecorationLine: 'underline'
+    textDecorationLine: 'underline',
+    marginTop: 10
   }
 });
+
