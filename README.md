@@ -98,14 +98,14 @@ Database in MySQL
 =====================
 ## Meet The Engineers
 Product Owner 
-- [**Gar Lee**](https://github.com/LeeGar)
+- [**Bo Sanders**](https://github.com/biletnikoff)
 
 Scrum Master 
-- [**Alex Anthony**](https://github.com/alexanthony813)
+- [**Claire Hsu**](https://github.com/cehsu)
 
 Development Team 
-- [**Chris Bassano**](https://github.com/christo4b)
-- [**Peter Lollo**](https://github.com/Peterlollo)
+- [**David Gilroy**](https://github.com/dgilroy77)
+- [**John Zucarelli**](https://github.com/jzucca)
 
 ===============
 ## Contributing
