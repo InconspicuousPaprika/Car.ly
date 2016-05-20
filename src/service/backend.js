@@ -25,7 +25,7 @@ module.exports = {
   },
 
   getAutoTempestData(searchQuery) {
-   searchQuery.zipcode = 30022;
+   //searchQuery.zipcode = 30022;
    console.log('inside autoTempestExtractor');
    console.log(autoTempestExtractor+
 `&url=http%3A%2F%2Fwww.autotempest.com%2Fresults%2F%3Fmake%3D`+
@@ -51,7 +51,7 @@ module.exports = {
 
   getTrueCarData(searchQuery) {
     console.log('in truecar');
-    searchQuery.zipcode = 30022;
+    //searchQuery.zipcode = 30022;
     return fetch(trueCarExtractor+
        `&url=https%3A%2F%2Fwww.truecar.com%2Fused-cars-for-sale%2Flistings%2F`+
        `${searchQuery.make}%2F`+

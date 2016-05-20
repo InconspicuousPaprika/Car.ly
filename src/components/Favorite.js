@@ -4,6 +4,7 @@ import React, {
   View,
   Text,
   Image,
+  LinkingIOS,
   ListView,
   ScrollView,
   TouchableHighlight,
@@ -71,7 +72,8 @@ export default class FavoritesList extends Component {
         make: carQuery.carMake,
         model: carQuery.model,
         year: carQuery.endYear,
-        price: favorites.price
+        price: favorites.price,
+        purchase_url: favorites.purchase_url
       })
     })
       // .then(getResponse)
@@ -133,6 +135,17 @@ export default class FavoritesList extends Component {
       })
     })
   }
+
+  // handleClick(item) {
+  //   Linking.canOpenURL(item.purchase_url).then(supported => {
+  //     if (supported) {
+  //       Linking.openURL(item.purchase_url);
+  //     } else {
+  //       console.log('Don\'t know how to open URI: ' + item.purchase_url);
+  //     }
+  //   });
+  // }
+
   renderFavorites(){
     let d = this.deleteFavorite;
     let s = this.convertScale;
@@ -161,6 +174,7 @@ export default class FavoritesList extends Component {
             <Text>{item.model}</Text>
             <Text>{item.year}</Text>
             <Text>{item.price}</Text>
+            <Text onPress={() => LinkingIOS.openURL(item.purchase_url)}>{item.purchase_url}</Text>
           </View>
           </View>
           </Swipeout>
