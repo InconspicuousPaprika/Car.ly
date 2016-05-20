@@ -19,7 +19,12 @@ Car.ly is a (auto)mobile application that provides aggreagated data of vehicle l
 
 ==========
 ## Example
-![alt tag](http://i67.tinypic.com/2hewtn9.gif)
+![alt tag](http://i63.tinypic.com/2111gsh.jpg)  
+![alt tag](http://i63.tinypic.com/23ra6j7.jpg)  
+![alt tag](http://i67.tinypic.com/15xr4tw.jpg)  
+![alt tag](http://i65.tinypic.com/33z5h75.jpg)  
+  
+  
 
 ===============
 
