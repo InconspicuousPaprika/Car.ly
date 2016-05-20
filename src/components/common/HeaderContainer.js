@@ -182,7 +182,7 @@ class ListContainer extends React.Component {
     let y = 0;
 
       this.state.anim.setValue(e.nativeEvent.contentOffset.y);
-      const height = EMPTY_CELL_HEIGHT - this.state.stickyHeaderHeight;
+      const height = EMPTY_CELL_HEIGHT- this.state.stickyHeaderHeight;
       y = Math.min(e.nativeEvent.contentOffset.y, height);
     this._refs.forEach((ref, ii) => {
       if (ii !== idx && ref) {

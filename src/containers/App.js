@@ -23,11 +23,11 @@ import activeSearch from '../assets/images/TabBar-House-Icon-Active@3x.png'
 
 const scenes = Actions.create(
   <Scene key="root" hideNavBar={true}>
-    <Scene type="push" key="Login"  initial={true} direction='horizontal' component={Login} duration={100} title='Login' />
+    <Scene type="push" key="Login"  direction='horizontal' component={Login} duration={100} title='Login' />
     <Scene type="push" key="Search" component={Search} panHandlers={null} />
     <Scene type="push" key="SignUp" component={Signup} direction='horizontal' duration={100} title='Signup' />
-    <Scene type="push" key="Results"  component={Results} panHandlers={null}  duration={100} title='Results' />
-    <Scene type="push" key="Favorites"  component={Favorites}  panHandlers={null} direction='horizontal' duration={100} title='Favorites'  />
+    <Scene type="push" key="Results" component={Results} panHandlers={null} sceneStyle={{flex:1, backgroundColor:'#bdc3c7'}} duration={100} title='Results' />
+    <Scene type="push" key="Favorites"  component={Favorites} panHandlers={null} direction='horizontal' duration={100} title='Favorites'  />
   </Scene>
 );
 
@@ -57,6 +57,9 @@ const styles = StyleSheet.create({
      shadowRadius: 3,
     flexDirection: 'row',
     justifyContent: 'center'
+  },
+  results: {
+    backgroundColor: '#34495e'
   }
 });
 
