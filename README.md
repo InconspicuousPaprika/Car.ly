@@ -3,7 +3,7 @@ Vehicle shopping application
 
 ## Introduction 
 
-Car.ly is a (auto)mobile application that provides aggreagated data of vehicle listings based on the information received from the user. Providing the user with a variety of results from various website, consumers can easily navigate the automobile market and compare and contrast local search results in an interactive and intuitive way. Car.ly delivers a seamless user shopping experience for drivers on the go. 
+Car.ly is a (auto)mobile application that provides aggregated vehicle listing  data, according to user input. Delivering a variety of results from various websites, Car.ly empowers users to effortlessly navigate the automobile market and to compare and contrast local search results in an interactive and intuitive way. Car.ly delivers a seamless  shopping experience for drivers on the go. 
 
 <hr>
 ## Table of Contents
