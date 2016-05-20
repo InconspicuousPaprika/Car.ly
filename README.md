@@ -70,16 +70,16 @@ __*[Emulator only]*__ If you're still use Android 4.0, it will cannot use `adb r
 
 ## Technologies
 
-Front-end
-  -React Native
-  -Redux
-  -Facebook oauth
-  -Import.io
+###Front-end
+React Native  
+Redux  
+Facebook oauth    
+Import.io  
 
-Back-end
-  -MySql
-  -Express.js
-  -Node.js
+###Back-end
+MySql   
+Express.js  
+Node.js  
 
 ## Architecture
 ### High Level Architecture
