@@ -158,6 +158,14 @@ export default class FavoritesList extends Component {
         return (
           <Swipeout autoClose={true} right={[
             {
+            component:(  <View style={styles.text}>
+                <Text style={styles.text}>{item.year}</Text>
+                <Text style={styles.text}>{item.make}</Text>
+                <Text style={styles.text}>{item.model}</Text>
+                <Text style={styles.text}>{item.price}</Text>
+              </View>)
+            },
+            {
               text: 'Dealer Site',
               backgroundColor: '#f1c40f',
               onPress:() => LinkingIOS.openURL(item.purchase_url)
@@ -174,12 +182,7 @@ export default class FavoritesList extends Component {
          style={styles.image}
          source={{uri: s(item.image)}}
          />
-          <View style={styles.text}>
-            <Text style={styles.text}>{item.year}</Text>
-            <Text style={styles.text}>{item.make}</Text>
-            <Text style={styles.text}>{item.model}</Text>
-            <Text style={styles.text}>{item.price}</Text>
-          </View>
+
           </View>
           </Swipeout>
         );
@@ -218,11 +221,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderBottomWidth: 1,
     borderTopWidth: 1,
-    borderColor: 'black'
+    borderColor: 'grey'
   },
   image: {
-    width:150,
-    height:100,
+    width:100,
+    height:130,
     flex: 1
   },
   button: {
@@ -239,11 +242,12 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   text: {
-     backgroundColor: '#ecf0f1',
+     backgroundColor: '#7f8c8d',
      width:100,
-     fontSize: 19,
-     fontWeight: '200',
-     color: globalVariables.textColor,
-     textAlign: 'center'
+     height: 35,
+     fontSize: 15,
+     fontWeight: 'bold',
+     color: 'white',
+     textAlign: 'left'
   }
 });
