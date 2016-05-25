@@ -1,9 +1,9 @@
 # Car.ly
 Vehicle shopping application
 
-## Introduction 
+## Introduction
 
-Car.ly is a (auto)mobile application that provides aggregated vehicle listing  data, according to user input. Delivering a variety of results from various websites, Car.ly empowers users to effortlessly navigate the automobile market and to compare and contrast local search results in an interactive and intuitive way. Car.ly delivers a seamless  shopping experience for drivers on the go. 
+Car.ly is a (auto)mobile application that provides aggregated vehicle listing  data, according to user input. Delivering a variety of results from various websites, Car.ly empowers users to effortlessly navigate the automobile market and to compare and contrast local search results in an interactive and intuitive way. Car.ly delivers a seamless  shopping experience for drivers on the go.
 
 <hr>
 ## Table of Contents
@@ -20,11 +20,10 @@ Car.ly is a (auto)mobile application that provides aggregated vehicle listing  d
 ==========
 ## Example
 
-![alt tag](http://i63.tinypic.com/23ra6j7.jpg)  
-![alt tag](http://i67.tinypic.com/15xr4tw.jpg)  
-![alt tag](http://i65.tinypic.com/33z5h75.jpg)  
-  
-  
+![alt tag](src/assets/images/carlymock.png)  
+
+
+
 
 ===============
 
@@ -105,13 +104,13 @@ Database in MySQL
 
 =====================
 ## Meet The Engineers
-Product Owner 
+Product Owner
 - [**Bo Sanders**](https://github.com/biletnikoff)
 
-Scrum Master 
+Scrum Master
 - [**Claire Hsu**](https://github.com/cehsu)
 
-Development Team 
+Development Team
 - [**David Gilroy**](https://github.com/dgilroy77)
 - [**John Zuccarelli**](https://github.com/jzucca)
 
