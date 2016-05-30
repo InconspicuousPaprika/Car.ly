@@ -25,28 +25,17 @@ module.exports = {
   },
 
   getAutoTempestData(searchQuery) {
-   //searchQuery.zipcode = 30022;
-   console.log('inside autoTempestExtractor');
-   console.log(autoTempestExtractor+
-`&url=http%3A%2F%2Fwww.autotempest.com%2Fresults%2F%3Fmake%3D`+
-`${searchQuery.carMake}%26model%3D`+
-`${searchQuery.model}%26radius%3D300%26zip%3D`+
-`${searchQuery.zipcode}%26keywords%3D%26minyear%3D`+
-`${searchQuery.startYear}%26maxyear%3D`+
-`${searchQuery.endYear}%26domesticonly%3D1%26minprice%3D`+
-`${searchQuery.minPrice}%26maxprice%3D`+
-`${searchQuery.maxPrice}%26minmiles%3D%26maxmiles%3D%26transmission%3Dany%26bodystyle%3Dany%26saleby%3Dany`);
-   return fetch(autoTempestExtractor+
-`&url=http%3A%2F%2Fwww.autotempest.com%2Fresults%2F%3Fmake%3D`+
-`${searchQuery.carMake}%26model%3D`+
-`${searchQuery.model}%26radius%3D300%26zip%3D`+
-`${searchQuery.zipcode}%26keywords%3D%26minyear%3D`+
-`${searchQuery.startYear}%26maxyear%3D`+
-`${searchQuery.endYear}%26domesticonly%3D1%26minprice%3D`+
-`${searchQuery.minPrice}%26maxprice%3D`+
-`${searchQuery.maxPrice}%26minmiles%3D%26maxmiles%3D%26transmission%3Dany%26bodystyle%3Dany%26saleby%3Dany`,{
-        method:'GET',
-      }).then(util.getResponseJSON);
+    return fetch(autoTempestExtractor+
+      `&url=http%3A%2F%2Fwww.autotempest.com%2Fresults%2F%3Fmake%3D`+
+      `${searchQuery.carMake}%26model%3D`+
+      `${searchQuery.model}%26radius%3D300%26zip%3D`+
+      `${searchQuery.zipcode}%26keywords%3D%26minyear%3D`+
+      `${searchQuery.startYear}%26maxyear%3D`+
+      `${searchQuery.endYear}%26domesticonly%3D1%26minprice%3D`+
+      `${searchQuery.minPrice}%26maxprice%3D`+
+      `${searchQuery.maxPrice}%26minmiles%3D%26maxmiles%3D%26transmission%3Dany%26bodystyle%3Dany%26saleby%3Dany`,{
+          method:'GET',
+        }).then(util.getResponseJSON);
   },
 
   getTrueCarData(searchQuery) {
@@ -62,7 +51,7 @@ module.exports = {
          method:'GET',
        }).then(util.getResponseJSON);
  },
- 
+
  getEbayData(searchQuery){
    var year = '';
    for (var i = searchQuery.startYear; i < searchQuery.endYear; i+=1000) {
