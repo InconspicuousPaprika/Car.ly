@@ -200,7 +200,7 @@ export default class FavoritesList extends Component {
       <HeaderContainer
         title="Favorites"
         // parallaxContent={profilePicture}
-        backgroundImage={require('../assets/images/info-background.png')}
+        backgroundImage={require('../assets/images/opl-parallax-universe.jpg')}
         backgroundColor={'#A8D769'}
         // onSegmentChange={this.handleSegmentChanged}
         leftItem={leftItem}>

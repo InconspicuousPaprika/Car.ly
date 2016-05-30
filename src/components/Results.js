@@ -124,7 +124,7 @@ export default class Results extends Component{
 
   }
   renderCards() {
-    
+
     return (
       <SwipeCards
       cards={fakeData}
@@ -164,6 +164,7 @@ export default class Results extends Component{
       >
       </Header>
       </Image>
+      <Text>'TEST'</Text>
       <SwipeCards
       cards={this.props.cards}
       loop={false}
