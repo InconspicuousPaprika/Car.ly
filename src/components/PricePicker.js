@@ -14,7 +14,7 @@ import MultiSlider from 'react-native-multi-slider';
 import Immutable from 'immutable';
 import { connect } from 'react-redux';
 import globalVariables from '../styles/globalVariables.js'
-import globalStyles from '../styles/SearchGlobalStyles.js'
+import globalStyles from '../styles/SearchGlobalStyles.js';
 @connect(state => ({
   query: state.search,
   CAR_MAKES_AND_MODELS: state.search.allCars
