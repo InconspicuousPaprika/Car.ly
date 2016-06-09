@@ -20,12 +20,10 @@ import React, {
 }))
 
 export default class FbLogin extends Component {
-
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     fbLogin: PropTypes.object.isRequired,
   }
-
   updateView() {
     var _this = this;
     FBLoginManager.getCredentials(function(error, data){
