@@ -15,8 +15,6 @@ var ParallaxBackground = require('./ParallaxBackground');
 var { Text } = require('../../styles/text.js');
 var Platform = require('Platform');
 var NativeModules = require('NativeModules');
-var Relay = require('react-relay');
-var RelayRenderer = require('react-relay/lib/RelayRenderer.js');
 var PageView = require('./PageView.js')
 
 import type {Item as HeaderItem} from 'Header';
