@@ -13,6 +13,7 @@ const autoTempestExtractor = 'https://extraction.import.io/query/extractor/7a187
 
 module.exports = {
 
+//each function calls a RESTful API attached to a Webscraper on Import.io (1/4)
   getCarData(searchQuery) {
     return fetch(autotraderExtractor+
       `&url=http%3A%2F%2Fwww.autotrader.com%2Fcars-for-sale%2FUsed%2BCars%2F`+
@@ -24,6 +25,7 @@ module.exports = {
       }).then(util.getResponseJSON);
   },
 
+//(2/4)
   getAutoTempestData(searchQuery) {
     return fetch(autoTempestExtractor+
       `&url=http%3A%2F%2Fwww.autotempest.com%2Fresults%2F%3Fmake%3D`+
@@ -38,6 +40,7 @@ module.exports = {
         }).then(util.getResponseJSON);
   },
 
+  //(3/4)
   getTrueCarData(searchQuery) {
     console.log('in truecar');
     //searchQuery.zipcode = 30022;
@@ -52,6 +55,7 @@ module.exports = {
        }).then(util.getResponseJSON);
  },
 
+ //(4/4)
  getEbayData(searchQuery){
    var year = '';
    for (var i = searchQuery.startYear; i < searchQuery.endYear; i+=1000) {
@@ -71,6 +75,8 @@ module.exports = {
        method:'GET',
      }).then(util.getResponseJSON)
  },
+ 
+ // SignUp
 submitUserData(emailAndPassword) {
     return fetch('http://localhost:3000/api/carly/users', {
       method: 'POST',
@@ -84,6 +90,8 @@ submitUserData(emailAndPassword) {
       })
     }).then(util.getResponse)
   },
+  
+  //Login
 login(emailAndPassword) {
     return fetch('http://localhost:3000/api/carly/users/login', {
       method: 'POST',
@@ -98,21 +106,4 @@ login(emailAndPassword) {
     }).then(util.getResponse)
   }
 
-  // obtainUserData(email) {
-  //   return fetch('http://localhost:3000/api/carly/users/getID', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       email: email
-  //     })
-  //   }).then ((response) => {
-  //     console.log('THE FUCKING RESPONSE', response.json());
-  //     return response.json();
-  //   }).catch((err) => {
-  //     console.log('Error', err);
-  //   })
-  // }
 };
